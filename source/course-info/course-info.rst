@@ -1,48 +1,36 @@
 General info
 ============
 
-Course meetings in Period II
-----------------------------
+Course Python part
+------------------
 
-- Mondays 12:15-16:00, C122, Exactum (30.10 - 11.12)
-- Work sessions on Thursdays 12:15-16:00, A113-114, Physicum (02.11 - 14.12)
+- Wednesdays and Thursdays, 09:15-12:00, R206, Vanemuise 46 (31.10. - 22.11.)
+- subsequently continued with R-part 09:15-12:00, R206, Vanemuise 46 (28.11. - 20.12.)
 
 Instructors
 -----------
 
 **Lecturer**:
 
-* Henrikki Tenkanen
+* Alexander Kmoch (Python)
 
-  * Office: A120, Physicum
-  * Email: *firstname.lastname@helsinki.fi*
-  * Phone: +358 50 4484436
+  * Email: *alexander.kmoch@ut.ee*
 
-**Course assistants**:
+* Evelyn Uuemaa (Python)
 
-* Vuokko Heikinheimo
+  * Email: *evelyn.uuemaa@ut.ee*
 
-  * Office: A120, Physicum
-  * Email: *firstname.lastname@helsinki.fi*
-  * Phone: +358 2941 50760
+* Anto Aasa (R)
 
-* Samuli Massinen
+  * Email: *anto.aasa@ut.ee*
 
-  * Email: *firstname.lastname@helsinki.fi*
+Course websites for Python part
+-------------------------------
 
-* Antti Kallanranta
+- Course sites for Python programming:
 
-  * Email: *firstname.lastname@helsinki.fi*
-
-Course websites
----------------
-
-- Course sites for Period I (Introduction to Python programming):
-
-  - Main course site: `<https://geo-python.github.io>`_
-  - Pebbles (cloud computing) site: `<https://pb.geo.helsinki.fi>`_
-  - Slack (Q&A + chat): `<https://geo-python2017.slack.com>`_
-  - Polling / voting (active during lectures only): `<https://geo-python.github.io/poll>`_
+  - Moodle course site: `<https://moodle.ut.ee>`_
+  - Lectures course site (Python): `<http://kodu.ut.ee/~kmoch/geopython2018>`_
 
 Textbooks
 ---------

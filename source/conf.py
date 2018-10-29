@@ -51,7 +51,7 @@ extensions = [
     'sphinx.ext.mathjax',
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
-    'sphinx.ext.githubpages',
+    # 'sphinx.ext.githubpages',
 
     # IPython console
     'IPython.sphinxext.ipython_console_highlighting',
@@ -60,7 +60,7 @@ extensions = [
     # Enable Google Analytics ( requires: https://pypi.python.org/pypi/sphinxcontrib-googleanalytics )
     # Install with: pip install sphinxcontrib-googleanalytics
     
-    'sphinxcontrib.googleanalytics',
+    # 'sphinxcontrib.googleanalytics',
     
     # Enable Sphinx Slides ( reqiores: https://pypi.python.org/pypi/sphinxcontrib-slide )
     # Install with: pip install sphinxcontrib-slide
@@ -86,16 +86,16 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'Geo-Python - AutoGIS'
-copyright = '2017, Henrikki Tenkanen'
-author = 'Henrikki Tenkanen'
+project = 'Geospatial Analysis with Python and R'
+copyright = '2018, Alexander Kmoch, Evelyn Uuemaa'
+author = 'Alexander Kmoch, Evelyn Uuemaa'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
 # The short X.Y version.
-version = '2017'
+version = '2018'
 # The full version, including alpha/beta/rc tags.
 release = ''
 
@@ -173,7 +173,7 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 html_context = {
     # Enable the "Edit in GitHub link within the header of each page.
-    'display_github': True,
+    'display_github': False,
     # Set the following variables to generate the resulting github URL for each page.
     # Format Template: https://{{ github_host|default("github.com") }}/{{ github_user }}/{{ github_repo }}/blob/{{ github_version }}{{ conf_py_path }}{{ pagename }}{{ suffix }}
     'github_user': 'Automating-GIS-processes',
@@ -196,7 +196,7 @@ html_context = {
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
 #
-html_logo = 'img/logo_hy_geo_135.png'
+html_logo = 'img/logo_ut.png'
 
 # The name of an image file (relative to this directory) to use as a favicon of
 # the docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
@@ -314,7 +314,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'Geo-Python.tex', 'Geo-Python Documentation',
-     'Henrikki Tenkanen \\& David Whipp', 'manual'),
+     'Alexander Kmoch \\& Evelyn Uuemaa', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -398,4 +398,4 @@ intersphinx_mapping = {'https://docs.python.org/': None}
 #googleanalytics_enabled = True
 
 # google analytics
-googleanalytics_id = 'UA-88382509-1'
+# googleanalytics_id = 'UA-88382509-1'

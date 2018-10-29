@@ -9,6 +9,11 @@ out installing Python and all those modules into your own computer. Even though 
 languages for large-scale data processing, predictive analytics, and scientific computing, that aims to simplify package management and deployment. In short,
 it makes life much easier when installing new tools on your Python to play with.
 
+.. note::
+
+    In the University computer lab you DO NOT have to install Anaconda or Miniconda or any other Python distribution.
+    This section only for general info if you want to install Python on your own computer.
+
 Install Python + GIS on Windows
 -------------------------------
 
@@ -21,9 +26,27 @@ Install it to **all users** and use default settings.
 
 .. note::
 
-    Note for University of Helsinki workers: you need to set the installation location as ``C:\HYapp`` so that it can be used easily by anyone without the need to
-    pass admin credentials all the time. If you don't have ``C:\HYapp`` -folder, create one with admin rights.
+    **Miniconda** is an encapsulated versatile virtual python environment installer,
+    that works under the hood of the big Anaconda python distribution.
+    Miniconda is basically a mini version of Anaconda that includes only the conda package manager and its dependencies:
 
+    https://conda.io/miniconda.html
+
+    Python 3.6, 64-bit (exe installer)
+    https://repo.continuum.io/miniconda/Miniconda3-latest-Windows-x86_64.exe
+
+    BEWARE:
+
+    - To install miniconda SYSTEM-WIDE for ALL users, this does require administrator permissions;
+      every users can then create their own environments with the conda tool.
+    - Please do NOT make Conda the default python for the system if you don't want it to interfere with other Python installations you might have,
+      eg. Pythons of ArcGIS and QGis etc
+
+    Additional install information:
+    https://conda.io/docs/user-guide/install/index.html
+
+Testing the installation
+------------------------
 
 Test that the Anaconda´s package manage called ``conda`` works by `opening a command prompt as a admin user <http://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/>`_
 and running command ``conda --version``.
