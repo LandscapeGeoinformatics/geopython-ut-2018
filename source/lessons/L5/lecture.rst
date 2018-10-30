@@ -1,5 +1,5 @@
-Lecture
-=======
+Video Lecture for Home Study
+============================
 
 .. admonition:: Lesson 5.1 - Visualization; Static maps; Interactive maps with Bokeh part I
 

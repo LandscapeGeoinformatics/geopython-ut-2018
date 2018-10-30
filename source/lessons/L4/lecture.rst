@@ -1,5 +1,5 @@
-Lecture
-=======
+Video Lecture for Home Study
+============================
 
 .. admonition:: Lesson 4.1 - Data classification; Pysal map classification schemes
 
@@ -9,7 +9,7 @@ Lecture
         <p>Henrikki Tenkanen, University of Helsinki <a href="https://www.youtube.com/channel/UCGrJqJjVHGDV5l0XijSAN1Q/playlists">@ AutoGIS channel on Youtube</a>.</p>
 
 
-.. admonition:: Lesson 4.2 - Overlay analysis; Aggregate spatial data; Simplify geometries; Exercise 4 overview
+.. admonition:: Lesson 4.2 - Overlay analysis; Aggregate spatial data; Simplify geometries;
 
     .. raw:: html
 

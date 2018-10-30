@@ -29,7 +29,7 @@ https://conda.io/miniconda.html
 
 Following steps have been tested to work on Windows 7 and 10 with Anaconda/Miniconda 64 bit.
 
-`Download Miniconda installer (64 bit) <https://repo.continuum.io/miniconda/Miniconda3-latest-Windows-x86_64.exes>`_ a Python 3.6, 64-bit (exe installer) for Windows.
+`Download Miniconda installer (64 bit) <https://repo.continuum.io/miniconda/Miniconda3-latest-Windows-x86_64.exe>`_ a Python 3.6, 64-bit (exe installer) for Windows.
 
 .. admonition:: BEWARE:
 
@@ -48,11 +48,12 @@ https://conda.io/docs/user-guide/install/index.html
 Verifying the installation
 --------------------------
 
-Test that the ``conda`` package manager works. After successful installation you should have a menu entry in the Windows Start Menu:
+In order to test that the ``conda`` package manager works we have to go through a few more steps:
+After successful installation you should have a menu entry in the Windows Start Menu:
 
 ``Anaconda Prompt``
 
-This is a Windows CMD (Commandline window, that "knows" about, where your Minionda/Anaconda installation lies, and wher eto find the ``conda`` tool (without interfering other Python installations on your computer).
+This is a Windows CMD (Commandline window, that "knows" about, where your Miniconda/Anaconda installation lies, and where to find the ``conda`` tool (without interfering other Python installations on your computer). After it opens it should display somehow like so:
 
 .. code::
 
@@ -86,7 +87,7 @@ Here it becomes obvious how practical virtual environments can be. They help you
 
     (C:\dev\conda3) conda create --name geopython-environment python=3.6
 
-and then show all environments:
+In order to show all environments that have already been created you can ask conda to list these:
 
 .. code::
 

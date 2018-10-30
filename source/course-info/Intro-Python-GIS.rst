@@ -162,7 +162,3 @@ the module that you need:
       fast and geospatial raster I/O for Python.
    -  `RSGISLib <http://www.rsgislib.org/index.html#python-documentation>`__
       --> Remote Sensing and GIS Software Library for Python.
-
-.. admonition:: Install on your own computer!
-
-    See **directions how to install these modules to your own computer from** `here <Installing_Anacondas_GIS.html>`_ (NOT NECESSARY for UNIVERSITY computers)

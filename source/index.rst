@@ -95,54 +95,53 @@ Contents
    :caption: Lesson 1
 
    lessons/L1/overview
-   lessons/L1/lecture
    lessons/L1/Geometric-Objects
    lessons/L1/ex-1
    lessons/L1/exercise-1-hints
+   lessons/L1/lecture
 
 .. toctree::
    :maxdepth: 2
    :caption: Lesson 2
 
    lessons/L2/overview
-   lessons/L2/lecture
    lessons/L0/Introduction-GIT
    lessons/L2/geopandas-basics
    lessons/L2/projections
    lessons/L2/using-functions
    lessons/L2/ex-2
    lessons/L2/exercise-2-hints
+   lessons/L2/lecture
 
 .. toctree::
    :maxdepth: 2
    :caption: Lesson 3
 
    lessons/L3/overview
-   lessons/L3/lecture
    lessons/L3/geocoding
    lessons/L3/point-in-polygon
    lessons/L3/spatial-join
    lessons/L3/nearest-neighbour
    lessons/L3/ex-3
    lessons/L3/exercise-3-hints
+   lessons/L3/lecture
 
 .. toctree::
    :maxdepth: 2
    :caption: Lesson 4
 
    lessons/L4/overview
-   lessons/L4/lecture
    lessons/L4/reclassify
    lessons/L4/geometric-operations
    lessons/L4/ex-4
    lessons/L4/exercise-4-hints
+   lessons/L4/lecture
 
 .. toctree::
    :maxdepth: 2
    :caption: Lesson 5
 
    lessons/L5/overview
-   lessons/L5/lecture
    lessons/L5/static-maps
    lessons/L5/interactive-map-bokeh
    lessons/L5/advanced-bokeh
@@ -150,3 +149,4 @@ Contents
    lessons/L5/share-on-github
    lessons/L5/ex-5
    lessons/L5/exercise-5-hints
+   lessons/L5/lecture

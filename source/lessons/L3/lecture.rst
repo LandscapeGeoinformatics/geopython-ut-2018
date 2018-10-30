@@ -1,5 +1,5 @@
-Lecture
-=======
+Video Lecture for Home Study
+============================
 
 .. admonition:: Lesson 3.1 - Geocoding addresses; Point in Polygon queries
 
@@ -9,7 +9,7 @@ Lecture
         <p>Henrikki Tenkanen, University of Helsinki <a href="https://www.youtube.com/channel/UCGrJqJjVHGDV5l0XijSAN1Q/playlists">@ AutoGIS channel on Youtube</a>.</p>
 
 
-.. admonition:: Lesson 3.2 - Spatial join; Nearest neighbor analysis; Exercise 3 overview
+.. admonition:: Lesson 3.2 - Spatial join; Nearest neighbor analysis;
 
     .. raw:: html
 
