@@ -118,6 +118,9 @@ Make sure you are in the correct enviroment (don't install into ``base``, instal
 
     # Install matplotlib (v 2.0.2) --> bundled with cycler, freetype, icu, jpeg, libpng, pyqt, qt, sip, sqlite, tornado, zlib
     conda install matplotlib
+    
+    #Install Jupyter Notebook
+    conda install jupyter
 
     # Install scikit-learn (v 0.19.0)
     conda install scikit-learn
