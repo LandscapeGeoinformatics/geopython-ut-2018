@@ -57,7 +57,7 @@ Python Refresher as Jupyter Notebooks
 
 In the previous sections you should have installed all required packages for your conda environment, including the Jupyter Notebook.
 
-Download the linked **.ipynb** files (Jupyter Notebook files) and save them into your "geopython" folder.
+Download the linked **.ipynb** files (Jupyter Notebook files) - right click on the links below (Chapter 1, Chapter 2 etc) and save them into your "geopython" folder.
 Go back into the console/commandline prompt, make sure you are in the directory where you extracted the materials. There you should now start the Jupyter notebook.
 
 All you need to do to play notebooks is to type the following command in your project folder:
