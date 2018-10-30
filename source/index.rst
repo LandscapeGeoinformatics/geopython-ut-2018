@@ -1,12 +1,12 @@
 
-.. figure:: img/AutoGIS_banner_2017.png
+.. figure:: img/AutoGIS_UT_banner_2018.png
 
 Welcome to Geospatial Analysis with Python and R (the Python part)
 ==================================================================
 
-**Automating Geospatial Analysis and GIS-processes**: The course teaches you how to do different GIS-related tasks in Python programming language. Each lesson is a tutorial with specific topic(s) where the aim is to learn
-how to solve common GIS-related problems and tasks using Python tools. In the lessons we use only publicly available data which can be used and downloaded by anyone anywhere. In this course,
-we assume that you know the basics of Python programming.
+**Automating Geospatial Analysis and GIS-processes**: The course teaches you how to do different GIS-related tasks in the Python programming language. Each lesson is a tutorial with specific topic(s) where the aim is to learn
+how to solve common GIS-related problems and tasks using Python tools. In the lessons we use only publicly available data which can be used and downloaded by anyone anywhere.
+In this course, we assume that you know the basics of Python programming - but we will also repeat Python basics in order to refresh everyone's memory.
 
 Course format
 -------------
@@ -20,12 +20,12 @@ on the laboratory exercises, however the independent assignment write-ups that y
 
 .. admonition:: Open Access!
 
-    The course is **open for everyone**. The aim of this course is to share the knowledge and help people to get started with their journey for doing GIS more efficiently and in a reproducible manner
-    using Python programming.
+    The aim of this course is to share the knowledge and help people to get started with their journey for doing GIS more efficiently and in a reproducible manner
+    using Python programming. This course is using many parts on the following course:
 
     - `Auto-GIS course University of Helsinki <https://automating-gis-processes.github.io/2017/>`__
 
-    Please read more about how to do it from `here <License-terms.html>`_.
+    Read more about open licensing terms from `here <course-info/License-terms.html>`_.
 
 
 Course topics
@@ -36,30 +36,32 @@ The materials are divided into several sections:
 +----------------+---------------------------------+
 | Time           | Theme                           |
 +================+=================================+
-| **Lesson 1**   | Recap Getting started Python;   |
-|                | Setup Anaconda and Git;         |
+| **Lesson 0**   | Recap Getting started Python;   |
+|                | Setup Miniconda environments;   |
 |                | Jupyter Notebooks               |
 |                |                                 |
 +----------------+---------------------------------+
-| **Lesson 2**   | GIS in Python;                  |
+| **Lesson 1**   | GIS in Python;                  |
+|                | Git Versioning Control System;  |
 |                | Spatial data model;             |
 |                | Geometric Objects; Shapely      |
 |                |                                 |
 +----------------+---------------------------------+
-| **Lesson 3**   | Working with GeoDataFrames;     |
+| **Lesson 2**   | Introduction to Git;            |
+|                | Working with GeoDataFrames;     |
 |                | Managing projections;           |
 |                | Table join;                     |
 |                |                                 |
 +----------------+---------------------------------+
-| **Lesson 4**   | Geocoding and making spatial    |
+| **Lesson 3**   | Geocoding and making spatial    |
 |                | queries                         |
 |                |                                 |
 +----------------+---------------------------------+
-| **Lesson 5**   | Geometric operations;           |
+| **Lesson 4**   | Geometric operations;           |
 |                | Reclassifying data with Pysal   |
 |                |                                 |
 +----------------+---------------------------------+
-| **Lesson 6**   | Visualization, making static    |
+| **Lesson 5**   | Visualization, making static    |
 |                | and interactive maps            |
 |                |                                 |
 +----------------+---------------------------------+
@@ -69,27 +71,29 @@ Contents
 --------
 *Lesson content, readings and due dates are subject to change*
 
+*We will make more contents visible during the course*
+
 .. toctree::
    :maxdepth: 2
    :caption: Course information
 
+   course-info/Intro-Python-GIS
    course-info/course-info
    course-info/License-terms
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Lesson 0
+
+   lessons/L0/overview
+   lessons/L0/Installing_Miniconda_GIS
+   lessons/L0/recap-python
 
 .. toctree::
    :maxdepth: 2
    :caption: Lesson 1
 
-   lessons/L0/overview
-   lessons/L0/Installing_Anacondas_GIS
-   lessons/L0/Introduction-GIT
-   lessons/L0/recap-python
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Lesson 2
-
-   lessons/L1/Intro-Python-GIS
    lessons/L1/overview
    lessons/L1/lecture
    lessons/L1/Geometric-Objects
@@ -98,10 +102,11 @@ Contents
 
 .. toctree::
    :maxdepth: 2
-   :caption: Lesson 3
+   :caption: Lesson 2
 
    lessons/L2/overview
    lessons/L2/lecture
+   lessons/L0/Introduction-GIT
    lessons/L2/geopandas-basics
    lessons/L2/projections
    lessons/L2/using-functions
@@ -110,7 +115,7 @@ Contents
 
 .. toctree::
    :maxdepth: 2
-   :caption: Lesson 4
+   :caption: Lesson 3
 
    lessons/L3/overview
    lessons/L3/lecture
@@ -123,7 +128,7 @@ Contents
 
 .. toctree::
    :maxdepth: 2
-   :caption: Lesson 5
+   :caption: Lesson 4
 
    lessons/L4/overview
    lessons/L4/lecture
@@ -134,7 +139,7 @@ Contents
 
 .. toctree::
    :maxdepth: 2
-   :caption: Lesson 6
+   :caption: Lesson 5
 
    lessons/L5/overview
    lessons/L5/lecture
@@ -145,4 +150,3 @@ Contents
    lessons/L5/share-on-github
    lessons/L5/ex-5
    lessons/L5/exercise-5-hints
-

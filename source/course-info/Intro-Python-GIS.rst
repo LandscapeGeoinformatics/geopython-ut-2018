@@ -1,13 +1,30 @@
 Introduction to Python GIS
 ==========================
 
-General overview of the latter part of the course
--------------------------------------------------
+Why Python for GIS?
+-------------------
 
-Now as we know `the basics of Python programming <https://geo-python.github.io>`_ we are ready to
-apply those skills to different GIS related tasks. During the next
-seven weeks we will learn how to deal with spatial data and analyze it
-using "pure" Python.
+Python is extremely useful language to learn in terms of GIS since many
+(or most) of the different GIS Software packages (such as ArcGIS, QGIS,
+PostGIS etc.) provide an interface to do analysis using Python
+scripting. During this course, we will mostly focus on doing GIS without
+any third party softwares such as ArcGIS. **Why?** There are several
+reasons for doing GIS using Python without any additional software:
+
+-  **Everything is free**: you don't need to buy and expensive license
+   for ArcGIS (for example)
+-  You will **learn and understand** much more deeply how different
+   geoprocessing operations work
+-  Python is **highly efficient**: used for analysing Big Data
+-  Python is **highly flexible**: supports all data formats that you can
+   imagine
+-  Using Python (or any other open-source programming language)
+   **supports open source softwares/codes and open science** by making
+   it possible for everyone to reproduce your work, free-of-charge.
+-  **Plug-in and chain different third-party softwares** to build e.g. a
+   fancy web-GIS applications as you want (using e.g.
+   `GeoDjango <https://docs.djangoproject.com/en/1.8/ref/contrib/gis/>`__
+   with `PostGIS <http://postgis.net/>`__ as a back-end)
 
 Learning objectives
 -------------------
@@ -64,31 +81,6 @@ At the end of the course you should be able to:
                 </script>
             </body>
 
-
-Why Python for GIS?
--------------------
-
-Python is extremely useful language to learn in terms of GIS since many
-(or most) of the different GIS Software packages (such as ArcGIS, QGIS,
-PostGIS etc.) provide an interface to do analysis using Python
-scripting. During this course, we will mostly focus on doing GIS without
-any third party softwares such as ArcGIS. **Why?** There are several
-reasons for doing GIS using Python without any additional software:
-
--  **Everything is free**: you don't need to buy and expensive license
-   for ArcGIS (for example)
--  You will **learn and understand** much more deeply how different
-   geoprocessing operations work
--  Python is **highly efficient**: used for analysing Big Data
--  Python is **highly flexible**: supports all data formats that you can
-   imagine
--  Using Python (or any other open-source programming language)
-   **supports open source softwares/codes and open science** by making
-   it possible for everyone to reproduce your work, free-of-charge.
--  **Plug-in and chain different third-party softwares** to build e.g. a
-   fancy web-GIS applications as you want (using e.g.
-   `GeoDjango <https://docs.djangoproject.com/en/1.8/ref/contrib/gis/>`__
-   with `PostGIS <http://postgis.net/>`__ as a back-end)
 
 What sort of tools are available for doing GIS in pure Python?
 --------------------------------------------------------------
@@ -171,6 +163,6 @@ the module that you need:
    -  `RSGISLib <http://www.rsgislib.org/index.html#python-documentation>`__
       --> Remote Sensing and GIS Software Library for Python.
 
-.. admonition:: Install to your own computer!
+.. admonition:: Install on your own computer!
 
-    See **directions how to install these modules to your own computer from** `here <Installing_Anacondas_GIS.html>`_
+    See **directions how to install these modules to your own computer from** `here <Installing_Anacondas_GIS.html>`_ (NOT NECESSARY for UNIVERSITY computers)

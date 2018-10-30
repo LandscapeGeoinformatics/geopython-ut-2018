@@ -1,5 +1,5 @@
-Lesson overview
-===============
+Lesson 1 overview
+=================
 
 In this week's lesson we will introduce you a spatial data model (geometric objects) and some basics of how spatial data
 can be manipulated in pure Python.
