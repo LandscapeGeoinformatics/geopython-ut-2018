@@ -5,3 +5,32 @@ docs
 
 
 
+source/savefig/big_lakes.png
+source/savefig/big_lakes_simplified.png
+source/savefig/city_plot.png
+source/savefig/corine-level3.png
+source/savefig/damselfish.png
+source/savefig/europe_euqdist.png
+source/savefig/graph.png
+source/savefig/helsinki_districts.png
+source/savefig/helsinki_districts_pip.png
+source/savefig/helsinki_grid_borders_intersect.png
+source/savefig/natural_breaks_pt_accessibility.png
+source/savefig/population_points.png
+source/savefig/proj_graph.png
+source/savefig/projected.png
+source/savefig/pt_time.png
+source/savefig/routing.png
+source/savefig/routing_with_buildings.png
+source/savefig/small-big-lakes.png
+source/savefig/static_map.png
+source/savefig/street_network.png
+source/savefig/suitable_areas.png
+source/savefig/walk_distances.png
+source/savefig/wgs84.png
+
+data/metro_map.html
+data/point_map.html
+data/point_map_hover.html
+data/points.html
+

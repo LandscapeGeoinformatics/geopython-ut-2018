@@ -7,17 +7,17 @@ This week we will practice how to create geometric objects using Shapely module 
 We will also take advantage of what we have learned earlier, specifically functions, that you should use for making different GIS operations easier to use
 in the future. We will also use Pandas to read data from a file.
 
-- Don't forget to check out the [hints for this week's exercise](exercise-1-hints.html) if you're having trouble.
+- Don't forget to check out the `hints for this week's exercise <exercise-1-hints.html>`_ if you're having trouble.
 
 - Scores on this exercise are out of **10 points**.
 
 Sections
 --------
 
- - [Problem 1: Creating basic geometries](#problem-1-creating-basic-geometries)
- - [Problem 2: Attributes of geometries](#problem-2-attributes-of-geometries)
- - [Problem 3: Reading coordinates from a file and creating a geometries](#problem-3-Reading-coordinates-from-a-file-and-creating-a-geometries)
- - [Problem 4 (optional): Creating LineStrings that represent the movements](#problem-4-Creating-LineStrings-that-represent-the-movements-optional-task-for-advanced-students)
+ - `Problem 1: Creating basic geometries <#problem-1-creating-basic-geometries>`_
+ - `Problem 2: Attributes of geometries <#problem-2-attributes-of-geometries>`_
+ - `Problem 3: Reading coordinates from a file and creating a geometries <#problem-3-Reading-coordinates-from-a-file-and-creating-a-geometries>`_
+ - `Problem 4 (optional): Creating LineStrings that represent the movements <#problem-4-Creating-LineStrings-that-represent-the-movements-optional-task-for-advanced-students>`_
 
 Problem 1: Creating basic geometries
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -58,15 +58,16 @@ tool to solve this problem as with Python it is basically possible to read data 
 So far, I haven't faced any kind of data or file that would be impossible to read with Python.
 
 Thus, let's see how we can read data from a file and create Point -objects from them that can be saved e.g. as a new Shapefile (we will learn this next week).
-Our dataset **[travelTimes_2015_Helsinki.txt](data/travelTimes_2015_Helsinki.txt)** consist of
+Our dataset ** `travelTimes_2015_Helsinki.txt <../../_static/exercises/Exercise-1/data/travelTimes_2015_Helsinki.txt>`_ ** consist of
 travel times between specific locations in Helsinki Region. The first four rows of our data looks like this:
 
-```
+.. code::
+
    from_id;to_id;fromid_toid;route_number;at;from_x;from_y;to_x;to_y;total_route_time;route_time;route_distance;route_total_lines
    5861326;5785640;5861326_5785640;1;08:10;24.9704379;60.3119173;24.8560344;60.399940599999994;125.0;99.0;22917.6;2.0
    5861326;5785641;5861326_5785641;1;08:10;24.9704379;60.3119173;24.8605682;60.4000135;123.0;102.0;23123.5;2.0
    5861326;5785642;5861326_5785642;1;08:10;24.9704379;60.3119173;24.865102;60.4000863;125.0;103.0;23241.3;2.0
-```
+
 
 Thus, we have many columns of data, but the few important ones are:
 
@@ -81,7 +82,7 @@ Thus, we have many columns of data, but the few important ones are:
 Tasks
 -----
 
-1. Save the [travelTimes_2015_Helsinki.txt](data/travelTimes_2015_Helsinki.txt) into your computer.
+1. Save the `travelTimes_2015_Helsinki.txt <../../_static/exercises/Exercise-1/data/travelTimes_2015_Helsinki.txt>`_ into your computer.
 2. Read 4 columns, i.e. 'from_x', 'from_y', 'to_x', 'to_y' from the data into Python using Pandas.
 3. Create two lists called `orig_points` and `dest_points`
 4. Iterate over the rows of your DataFrame and add Shapely Point -objects into the orig_points -list and dest_point -list representing the origin
