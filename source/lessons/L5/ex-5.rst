@@ -1,11 +1,44 @@
 Exercise 5
 ==========
 
-.. admonition:: Start your assignment
+This week we will practice how to create static and interactive maps in Python.
 
-    You can start working on your copy of Exercise 5 by `accepting the GitHub Classroom assignment <https://classroom.github.com/a/U4vyT3Lc>`__.
+- Don't forget to check out the [hints for this week's exercise](exercise-5-hints.html) if you're having trouble.
 
-    **Exercise 5 is due by the start of lecture on 4.12**.
+- Scores on this exercise are out of **10 points**.
 
-You can also take a look at the open course copy of `Exercise 5 in the course GitHub repository <https://github.com/AutoGIS-2017/Exercise-5>`__ (does not require logging in).
-Note that you should not try to make changes to this copy of the exercise, but rather only to the copy available via GitHub Classroom.
+Sections
+--------
+
+
+Instructions for storing the maps
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For this exercise a folder called `docs` have been created the Exercise 5 repository. You should upload **ALL** your maps under that folder and add links
+to those maps in the specific Entrance page (index.md) that is also located under that folder. There are more instructions how the links should be formatted in the [**docs/index.md -file**](docs/index.md).
+
+Problem 1: Visualize a static map with multiple layers on it (8 points)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Play around with the data that was provided for you and used during the lesson and **create as interesting, good and beautiful STATIC map(s) that you can**.
+You can read a few useful hints about [what to consider when creating maps from this post](https://www.gislounge.com/ten-things-to-consider-when-making-a-map/).
+
+Upload your maps to the `docs` folder and create link to those map(s) in the `index.md` file. **Use your imagination**, you can e.g. do some calculations on the current datasets
+or use also the analyses that we have done earlier in the course.
+
+But notice that the main aim here is that you try to do the visualizations as best as you can, thus the subject what you are presenting is not important.
+
+Problem 2: Visualize an interactive map (12 points)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Play around with the data that was provided for you and used during the lesson and **create as interesting, good and beautiful INTERACTIVE map(s)
+that you can** using either Bokeh or Folium or both. You can read a few useful hints about [what to consider when creating maps from this post](https://www.gislounge.com/ten-things-to-consider-when-making-a-map/).
+
+Questions
+---------
+
+Upload your maps to the `docs` folder and create link to those map(s) in the `index.md` file. **Use your imagination**, you can e.g. do some calculations on the current datasets
+or use also the analyses that we have done earlier in the course.
+
+But notice that the main aim here is that you try to do the visualizations as best as you can, thus the subject what you are presenting is not important.
+

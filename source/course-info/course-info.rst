@@ -1,16 +1,12 @@
 General info
 ============
 
-Course Python part
-------------------
+**Course Python part**
 
 - Wednesdays and Thursdays, 09:15-12:00, R202, Vanemuise 46 (31.10. - 22.11.)
 - subsequently continued with R-part 09:15-12:00, R202, Vanemuise 46 (28.11. - 20.12.)
 
-Instructors
------------
-
-**Lecturer**:
+**Lecturers**:
 
 * Alexander Kmoch (Python)
 
@@ -24,6 +20,7 @@ Instructors
 
   * Email: *anto.aasa@ut.ee*
 
+
 Course websites for Python part
 -------------------------------
 
@@ -31,6 +28,7 @@ Course websites for Python part
 
   - Moodle course site: `<https://moodle.ut.ee/course/view.php?id=7948>`_
   - Lectures course site (Python): `<http://kodu.ut.ee/~kmoch/geopython2018>`_
+
 
 Textbooks
 ---------

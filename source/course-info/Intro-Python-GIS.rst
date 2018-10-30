@@ -31,6 +31,15 @@ Learning objectives
 
 At the end of the course you should be able to:
 
+- know basic concepts, skills, and tools for working with the Python and R scripting environments
+- receive an overview of practical Python (and R) libraries for everyday scientific and professional GIS use
+- understand how to make use of integration of Python (and R) environments from other software packages
+- apply Python (and R) to solve common data-related tasks in concrete GIS projects
+- competent use spatial and non-spatial data in order to answer a research question
+- knows how to conduct and automate different standard GIS-related tasks that support clear documentation of methods in the Python (and R) scripting environments
+
+In particular that translates to following direct tasks for Python during the next weeks:
+
 -  Read / write spatial data from/to different file formats
 -  Deal with different projections
 -  Do different geometric operations and geocoding

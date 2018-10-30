@@ -104,9 +104,6 @@ Contents
    :maxdepth: 2
    :caption: Lesson 1
 
-   lessons/currently-not-available
-
-.. commented out
    lessons/L1/overview
    lessons/L1/Geometric-Objects
    lessons/L1/ex-1
@@ -117,9 +114,6 @@ Contents
    :maxdepth: 2
    :caption: Lesson 2
 
-   lessons/currently-not-available
-
-.. commented out
    lessons/L2/overview
    lessons/L2/Introduction-GIT
    lessons/L2/geopandas-basics
@@ -133,9 +127,6 @@ Contents
    :maxdepth: 2
    :caption: Lesson 3
 
-   lessons/currently-not-available
-
-.. commented out
    lessons/L3/overview
    lessons/L3/geocoding
    lessons/L3/point-in-polygon
@@ -149,9 +140,6 @@ Contents
    :maxdepth: 2
    :caption: Lesson 4
 
-   lessons/currently-not-available
-
-.. commented out
    lessons/L4/overview
    lessons/L4/reclassify
    lessons/L4/geometric-operations
@@ -163,9 +151,6 @@ Contents
    :maxdepth: 2
    :caption: Lesson 5
 
-   lessons/currently-not-available
-
-.. commented out
    lessons/L5/overview
    lessons/L5/static-maps
    lessons/L5/interactive-map-bokeh
