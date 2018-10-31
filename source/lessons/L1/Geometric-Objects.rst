@@ -168,8 +168,8 @@ In order to calculate the distance in more human understandable values we need s
     print( "{0:8.4f} for polar radius in km".format(distance))
 
 
-But as Earth is not a perfect sphere but an bubbly space rock (geoid). The most widely used approximations are ellipsoids.
-These are well-defined simplifications for computational reasons., we should eventually consider definitions. And the most widely used standard 
+But Earth is not a perfect sphere but an bubbly space rock (geoid). The most widely used approximations are ellipsoids.
+These are well-defined simplifications for computational reasons. And the most widely used standard
 ellipsoid is "WGS84". So, using PyProj with the "WGS84" ellipsoid, we can easily calculate distances
 (and the angles towards each other, aka forward and back azimuths) between initial points (specified by lons1, lats1) and terminus points (specified by lons2, lats2).
 
