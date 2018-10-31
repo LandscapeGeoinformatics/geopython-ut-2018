@@ -87,7 +87,7 @@ represented in a specific format that is based on
 standard libraries in GIS. GEOS, a port of the Java Topology Suite (JTS), 
 is the geometry engine of the PostGIS spatial extension for the 
 PostgreSQL RDBMS. The designs of JTS and GEOS are largely guided by the
-`Open Geospatial Consortium’s <http://www.opengeospatial.org/>` 
+`Open Geospatial Consortium’s <http://www.opengeospatial.org/>`__ 
 Simple Features Access Specification. It runs under the hood e.g. in `Quantum
 GIS <http://www.qgis.org/en/site/>`__. 3D-point can be recognized from
 the capital Z -letter in front of the coordinates.
