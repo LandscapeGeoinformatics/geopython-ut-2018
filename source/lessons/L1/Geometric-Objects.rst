@@ -167,7 +167,7 @@ In order to calculate the distance in more human understandable values we need s
 
 .. ipython:: python
 
-    # Haversine formula
+    # Haversine formula - determines the great-circle distance between two points on a sphere given their longitudes and latitudes. Important in navigation, it is a special case of a more general formula in spherical trigonometry, the law of haversines, that relates the sides and angles of spherical triangles.
     dLat = math.radians(point2.y) - math.radians(point1.y)
     dLon = math.radians(point2.x) - math.radians(point1.x)
     a = math.sin(dLat/2) * math.sin(dLat/2) + math.cos(math.radians(point1.y)) * math.cos(math.radians(point2.y)) * math.sin(dLon/2) * math.sin(dLon/2)
