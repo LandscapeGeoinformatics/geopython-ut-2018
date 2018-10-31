@@ -3,7 +3,8 @@ General info
 
 **Course Python part**
 
-- Wednesdays and Thursdays, 09:15-12:00, R202, Vanemuise 46 (31.10. - 22.11.)
+- Wednesdays , 09:15-12:00, R202, Vanemuise 46 (31.10. - 22.11.)
+- Thursdays, 14:15-17:00, R202, Vanemuise 46 (31.10. - 22.11.)
 - subsequently continued with R-part 09:15-12:00, R202, Vanemuise 46 (28.11. - 20.12.)
 
 **Lecturers**:

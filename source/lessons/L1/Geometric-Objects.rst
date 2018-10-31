@@ -394,6 +394,37 @@ Polygon attributes and functions
      print("Poly Exterior: ", world_ext)
      print("Poly Exterior Length: ", world_ext_length)
 
+Reading X/Y Coordinates from Text files
+---------------------------------------
+
+One of the "classical" problems in GIS is the situation where you have a set of coordinates in a file and you need to get them into a map (or into a GIS-software). Python is a really handy
+tool to solve this problem as with Python it is basically possible to read data from any kind of input datafile (such as csv-, txt-, excel-, or gpx-files (gps data) or from different databases).
+
+Python provides various helpful packages and functions to work with data.
+While you could of course also manually program to open the file, read it line by line, extract fields and process variables,
+we can also use a widely used library called Pandas to read a file with tabular data and present it to us as a so called dataframe:
+
+.. code::
+
+    import pandas as pd
+    df = pd.read_csv('global-city-population-estimates.csv', sep=';', encoding='latin1')
+    print(df.head(5))
+
+Now we want to process the tabular data. Thus, let's see how we can go through our data and  create Point -objects from them:
+
+.. code::
+
+    # we make a function, that takes a row object coming from Pandas. The single fields per row are addressed by their column name.
+    def make_point(row):
+        return Point(row['Longitude'], row['Latitude'])
+
+    # Go through every row, and make a point out of its lat and lon, by **apply**ing the function from above (downwards row by row -> axis=1)
+    df['points'] = df.apply(make_point, axis=1)
+
+    print(df.head(5))
+
+
+
 Geometry collections (optional)
 -------------------------------
 

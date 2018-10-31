@@ -54,7 +54,7 @@ it should tell the user --> ``"Error: LineString or Polygon geometries required!
 
 .. _problem-3-Reading-coordinates-from-a-file-and-creating-a-geometries:
 
-Problem 3: Reading coordinates from a file and creating a geometries (3 Points)
+Problem 3: Reading coordinates from a file and creating a geometries (4 Points)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Write your codes for Problem 3 into a single ``file_coords_to_geom.py`` -file, submit for grading.
