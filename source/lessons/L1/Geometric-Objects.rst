@@ -1,4 +1,3 @@
-
 Geometric Objects - Spatial Data Model
 ======================================
 
@@ -144,6 +143,47 @@ However, our x and y variables are plain decimal numbers.
      point_dist = point1.distance(point2)
      
      print("Distance between the points is {0:.2f} decimal degrees".format(point_dist))
+
+
+Side note on distances in GIS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In Shapely the distance is the Euclidean Distance or Linear distance between two points on a plane and not the Great-circle distance between two points on a sphere.
+The radius of Earth at the equator is 6,378 kilometers, according to NASA's Goddard Space Flight Center, and Earth's polar radius is 6,356 km - a difference of 22 km.
+In order to calculate the distance in more human understandable values we need some math:
+
+.. ipython:: python
+
+    # law of cosines
+    import math
+    distance = math.acos(math.sin(math.radians(point1.y))*math.sin(math.radians(point2.y))+math.cos(math.radians(point1.y))*math.cos(math.radians(point2.y))*math.cos(math.radians(point2.x)-math.radians(point1.x)))*6371
+    print( "{0:8.4f}".format(distance))
+    # 110.8544 # in km
+
+
+.. ipython:: python
+
+    # Haversine formula
+    dLat = math.radians(point2.y) - math.radians(point1.y)
+    dLon = math.radians(point2.x) - math.radians(point1.x)
+    a = math.sin(dLat/2) * math.sin(dLat/2) + math.cos(math.radians(point1.y)) * math.cos(math.radians(point2.y)) * math.sin(dLon/2) * math.sin(dLon/2)
+    distance = 6371 * 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
+    print ('{0:8.4f}'.format(distance))
+    # 110.8544 #in km
+
+
+With PyProj *inv* function: inverse transformation - Returns forward and back azimuths,
+plus distances between initial points (specified by lons1, lats1) and terminus points (specified by lons2, lats2).
+
+.. ipython:: python
+
+    # with pyproj
+    import pyproj
+    geod = pyproj.Geod(ellps='WGS84')
+    angle1,angle2,distance = geod.inv(point1.x, point1.y, point2.x, point2.y)
+    print ("{0:8.4f}".format(distance/1000))
+    # 110.9807 #in km
+
 
 LineString
 ----------

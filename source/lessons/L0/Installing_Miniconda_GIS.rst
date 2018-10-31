@@ -193,6 +193,16 @@ At first start the Python console:
 
 If you don't receive any errors, everything should be working!
 
+Final Remarks
+~~~~~~~~~~~~~
+
+We saw that in some installations importing of ``import matplotlib.pyplot as plt`` or ``import osmnx`` crashed the Python.
+If that happens we had success in re-installing **matplotlib** again: ``conda install matplotlib``.
+
+Furthermore, a warning can appear, that a package (mkl-random) might require "cython" and complain that it is not installed. So far we can ignore that.
+
+Also, a warning occured in some instances that ``pip`` was in an older version (9.x) and it was recommended to upgrade pip to a newer version (10.x). The warning shows the command to update pip in this conda environment.
+
 In order to close the Python interpreter type ``exit()`` or press **Ctrl+Z** plus Return to exit.
 
 .. code::

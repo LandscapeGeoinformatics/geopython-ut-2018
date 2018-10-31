@@ -14,44 +14,50 @@ in the future. We will also use Pandas to read data from a file.
 Sections
 --------
 
- - `Problem 1: Creating basic geometries <#problem-1-creating-basic-geometries>`_
- - `Problem 2: Attributes of geometries <#problem-2-attributes-of-geometries>`_
- - `Problem 3: Reading coordinates from a file and creating a geometries <#problem-3-Reading-coordinates-from-a-file-and-creating-a-geometries>`_
- - `Problem 4 (optional): Creating LineStrings that represent the movements <#problem-4-Creating-LineStrings-that-represent-the-movements-optional-task-for-advanced-students>`_
+ - Problem 1: Creating basic geometries problem-1-creating-basic-geometries_
+ - Problem 2: Attributes of geometries problem-2-attributes-of-geometries_
+ - Problem 3: Reading coordinates from a file and creating a geometries problem-3-Reading-coordinates-from-a-file-and-creating-a-geometries_
+ - Problem 4 (optional): Creating LineStrings that represent the movements problem-4-Creating-LineStrings-that-represent-the-movements-optional-task-for-advanced-students_
 
-Problem 1: Creating basic geometries
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. _problem-1-creating-basic-geometries:
 
-Write your codes into a single `create_geometries.py` -file and upload the script to your personal GitHub Exercise-1 repository.
+Problem 1: Creating basic geometries (3 Points)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Create a function called `createPointGeom()` that has two parameters (x_coord, y_coord). Function should create a shapely Point geometry object and return that.
+Write your codes for Problem 1 into a single ``create_geometries.py`` -file, submit for grading.
+
+1. Create a function called ``createPointGeom()`` that has two parameters (x_coord, y_coord). Function should create a shapely Point geometry object and return that.
 Demonstrate the usage of the function by creating Point -objects with the function.
 
-2. Create a function called `createLineGeom()` that takes a list of Shapely Point objects as parameter and returns a
+2. Create a function called ``createLineGeom()`` that takes a list of Shapely Point objects as parameter and returns a
 LineString object of those input points. Function should first check that the input list really contains Shapely Point(s).
 Demonstrate the usage of the function by creating LineString -objects with the function.
 
-3. Create a function called `createPolyGeom()` that takes a list of coordinate tuples **OR** a list of Shapely Point objects and creates/returns
+3. Create a function called ``createPolyGeom()`` that takes a list of coordinate tuples **OR** a list of Shapely Point objects and creates/returns
 a Polygon object of the input data. Both ways of passing the data to the function should be working.
 Demonstrate the usage of the function by passing data first with coordinate-tuples and then with Point -objects.
 
-Problem 2: Attributes of geometries
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. _problem-2-attributes-of-geometries:
 
-Write your codes into a single `read_attributes.py` -file and upload the script to your personal GitHub Exercise-1 repository.
+Problem 2: Attributes of geometries (3 Points)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Create a function called `getCentroid()` that takes any kind of Shapely's geometric -object as input and returns a centroid of that geometry. Demonstrate the usage of the function.
+Write your codes for Problem 2 into a single ``read_attributes.py`` -file, submit for grading.
 
-2. Create a function called `getArea()` that takes a Shapely's Polygon -object as input and returns the area of that geometry. Demonstrate the usage of the function.
+1. Create a function called ``getCentroid()`` that takes any kind of Shapely's geometric -object as input and returns a centroid of that geometry. Demonstrate the usage of the function.
 
-3. Create a function called `getLength()` takes either a Shapely's LineString or Polygon -object as input. Function should check the type of the input and returns the length of
+2. Create a function called ``getArea()`` that takes a Shapely's Polygon -object as input and returns the area of that geometry. Demonstrate the usage of the function.
+
+3. Create a function called ``getLength()`` takes either a Shapely's LineString or Polygon -object as input. Function should check the type of the input and returns the length of
 the line if input is LineString and length of the exterior ring if input is Polygon. If something else is passed to the function,
-it should tell the user --> `"Error: LineString or Polygon geometries required!"`.  Demonstrate the usage of the function.
+it should tell the user --> ``"Error: LineString or Polygon geometries required!"``.  Demonstrate the usage of the function.
 
-Problem 3: Reading coordinates from a file and creating a geometries
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. _problem-3-Reading-coordinates-from-a-file-and-creating-a-geometries:
 
-Write your codes into a single `file_coords_to_geom.py` -file and upload the script to your personal GitHub Exercise-1 repository.
+Problem 3: Reading coordinates from a file and creating a geometries (3 Points)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Write your codes for Problem 3 into a single ``file_coords_to_geom.py`` -file, submit for grading.
 
 One of the "classical" problems in GIS is the situation where you have a set of coordinates in a file and you need to get them into a map (or into a GIS-software). Python is a really handy
 tool to solve this problem as with Python it is basically possible to read data from any kind of input datafile (such as csv-, txt-, excel-, or gpx-files (gps data) or from different databases).
@@ -71,29 +77,32 @@ travel times between specific locations in Helsinki Region. The first four rows 
 
 Thus, we have many columns of data, but the few important ones are:
 
++--------+-------------+
 | Column | Description |
-|--------|-------------|
++========+=============+
 | from_x | x-coordinate of the **origin** location (longitude) |
 | from_y | y-coordinate of the **origin** location (latitude) |
 | to_x   | x-coordinate of the **destination** location (longitude)|
 | to_y   | y-coordinate of the **destination** location (latitude) |
 | total_route_time | Travel time with public transportation at the route |
++----------------+---------------------------------+
 
-Tasks
------
+**Tasks**
 
 1. Save the `travelTimes_2015_Helsinki.txt <../../_static/exercises/Exercise-1/data/travelTimes_2015_Helsinki.txt>`_ into your computer.
 2. Read 4 columns, i.e. 'from_x', 'from_y', 'to_x', 'to_y' from the data into Python using Pandas.
-3. Create two lists called `orig_points` and `dest_points`
+3. Create two lists called ``orig_points`` and ``dest_points``
 4. Iterate over the rows of your DataFrame and add Shapely Point -objects into the orig_points -list and dest_point -list representing the origin
 locations and destination locations accordingly.
 
-Problem 4: Creating LineStrings that represent the movements (optional task for advanced students):
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. _problem-4-Creating-LineStrings-that-represent-the-movements-optional-task-for-advanced-students:
+
+Problem 4: Creating LineStrings that represent the movements (optional task for advanced students, additional 4 points)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This is an optional extra task for those who likes to learn even more. Write your codes into the same file as in previous Problem (3).
 
-1. Create a list called `lines`
+1. Create a list called ``lines``
 2. Iterate over the origin and destination lists and create a Shapely LineString -object between the origin and destination point
 3. Add that line into the lines -list.
 4. Find out what is the average (Euclidian) distance of all the origin-destination LineStrings that we just created, and print it out.
