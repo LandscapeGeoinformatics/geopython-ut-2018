@@ -152,32 +152,26 @@ However, our x and y variables are plain decimal numbers.
 Side note on distances in GIS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In Shapely the distance is the Euclidean Distance or Linear distance between two points on a plane and not the Great-circle distance between two points on a sphere.
-The radius of Earth at the equator is 6,378 kilometers, according to NASA's Goddard Space Flight Center, and Earth's polar radius is 6,356 km - a difference of 22 km.
+In Shapely the distance is the Euclidean Distance or Linear distance between two points on a plane. However, if we want to calculate the real distance on Earth's surface,
+we need to calculate the distance on a sphere. The radius of Earth at the equator is 6378 kilometers, according to NASA's Goddard Space Flight Center,
+and Earth's polar radius is 6,356 km - a difference of 22 km. In order to approximate Earth size as a simple sphere we use these as radius.
 In order to calculate the distance in more human understandable values we need some math:
 
 .. ipython:: python
 
-    # law of cosines
+    # law of cosines - determines the great-circle distance between two points on a sphere given their longitudes and latitudes based on "basic math"
     import math
-    distance = math.acos(math.sin(math.radians(point1.y))*math.sin(math.radians(point2.y))+math.cos(math.radians(point1.y))*math.cos(math.radians(point2.y))*math.cos(math.radians(point2.x)-math.radians(point1.x)))*6371
-    print( "{0:8.4f}".format(distance))
-    # 110.8544 # in km
+    distance = math.acos(math.sin(math.radians(point1.y))*math.sin(math.radians(point2.y))+math.cos(math.radians(point1.y))*math.cos(math.radians(point2.y))*math.cos(math.radians(point2.x)-math.radians(point1.x)))*6378
+    print( "{0:8.4f} for equatorial radius in km".format(distance))
+    
+    distance = math.acos(math.sin(math.radians(point1.y))*math.sin(math.radians(point2.y))+math.cos(math.radians(point1.y))*math.cos(math.radians(point2.y))*math.cos(math.radians(point2.x)-math.radians(point1.x)))*6356
+    print( "{0:8.4f} for polar radius in km".format(distance))
 
 
-.. ipython:: python
-
-    # Haversine formula - determines the great-circle distance between two points on a sphere given their longitudes and latitudes. Important in navigation, it is a special case of a more general formula in spherical trigonometry, the law of haversines, that relates the sides and angles of spherical triangles.
-    dLat = math.radians(point2.y) - math.radians(point1.y)
-    dLon = math.radians(point2.x) - math.radians(point1.x)
-    a = math.sin(dLat/2) * math.sin(dLat/2) + math.cos(math.radians(point1.y)) * math.cos(math.radians(point2.y)) * math.sin(dLon/2) * math.sin(dLon/2)
-    distance = 6371 * 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
-    print ('{0:8.4f}'.format(distance))
-    # 110.8544 #in km
-
-
-With PyProj *inv* function: inverse transformation - Returns forward and back azimuths,
-plus distances between initial points (specified by lons1, lats1) and terminus points (specified by lons2, lats2).
+But as Earth is not a perfect sphere but an bubbly space rock (geoid). The most widely used approximations are ellipsoids.
+These are well-defined simplifications for computational reasons., we should eventually consider definitions. And the most widely used standard 
+ellipsoid is "WGS84". So, using PyProj with the "WGS84" ellipsoid, we can easily calculate distances
+(and the angles towards each other, aka forward and back azimuths) between initial points (specified by lons1, lats1) and terminus points (specified by lons2, lats2).
 
 .. ipython:: python
 
@@ -185,8 +179,8 @@ plus distances between initial points (specified by lons1, lats1) and terminus p
     import pyproj
     geod = pyproj.Geod(ellps='WGS84')
     angle1,angle2,distance = geod.inv(point1.x, point1.y, point2.x, point2.y)
-    print ("{0:8.4f}".format(distance/1000))
-    # 110.9807 #in km
+    print ("{0:8.4f} for ellipsoid WGS84 in km".format(distance/1000))
+
 
 
 LineString
