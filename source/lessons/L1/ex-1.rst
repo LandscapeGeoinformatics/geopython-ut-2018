@@ -88,22 +88,19 @@ Thus, we have many columns of data, but the few important ones are:
 **Tasks**
 
 1. Save the `travelTimes_2015_Helsinki.txt <../../_static/exercises/Exercise-1/data/travelTimes_2015_Helsinki.txt>`_ into your computer.
-2. Read 4 columns, i.e. 'from_x', 'from_y', 'to_x', 'to_y' from the data into Python using Pandas.
-3. Create two lists called ``orig_points`` and ``dest_points``
-4. Iterate over the rows of your DataFrame and add Shapely Point -objects into the orig_points -list and dest_point -list representing the origin
-locations and destination locations accordingly.
+2. We will use only 4 columns, i.e. 'from_x', 'from_y', 'to_x', 'to_y' from the data in.
+3. Iterate over the rows of your DataFrame and create Shapely Point -objects for ``orig_points`` and ``dest_points`` representing the origin locations and destination locations of a travel row, accordingly. Therefore, create two additional columns called ``orig_points`` and ``dest_points`` by applying a function that creates shapely points from the coordinates. Think through, how to make a step-by-step approach based on the lecture and hints provided.
 
 .. _problem-4-Creating-LineStrings-that-represent-the-movements-optional-task-for-advanced-students:
 
-Problem 4: Creating LineStrings that represent the movements (optional task for advanced students, additional max 5 points)
+Problem 4: Creating LineStrings that represent the movements (optional task for advanced students, additional max 3 points)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This is an optional extra task for those who likes to learn even more.
 
-1. Create a list called ``lines``
-2. Iterate over the origin and destination lists and create a Shapely LineString -object between the origin and destination point
-3. Add that line into the lines -list.
-4. Find out what is the average (Euclidian) distance of all the origin-destination LineStrings that we just created, and print it out.
-5. To make things more reusable: write creation of the LineString and calculating the average distance into dedicated functions and use them.
+1. Create an additional column called ``lines``: Iterate over the dataframe again, row by row, and use the origin and destination fields from above and create a Shapely LineString -object between the origin and destination point and add as a new column to your dataframe
+2. Find out what is the average (Euclidian) distance of all the origin-destination LineStrings that we just created, and print it; see `Pandas calculate mean for a dataframe. <https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.mean.html?highlight=mean#pandas.DataFrame.mean>`_
+
+Consider: To make things more reusable: write creation of the LineString and calculating the average distance into dedicated functions and use them.
 
 

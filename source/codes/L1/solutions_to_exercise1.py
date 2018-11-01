@@ -80,7 +80,72 @@ def getArea(test_poly):
         print("error, is not a Polygon")
 
 
+poly1_area = getArea(poly1)
+
 # problem 2 getLength()
 
-line1_area = getArea(line1)
-poly1_area = getArea(poly1)
+def getLength(geom):
+    # getLength() takes either a Shapely’s LineString or Polygon
+    if isinstance(geom, LineString) or isinstance(geom, Polygon):
+        return geom.length
+    else:
+        print("Error: LineString or Polygon geometries required!")
+
+
+point1_length = getLength(point1)
+line1_length = getLength(line1)
+poly2_length = getLength(poly2)
+
+
+# Problem 3: Reading coordinates from a file and creating a geometries
+
+import pandas as pd
+
+#/_static/exercises/Exercise-1/data/travelTimes_2015_Helsinki.txt
+df = pd.read_csv('source/_static/exercises/Exercise-1/data/travelTimes_2015_Helsinki.txt', sep=';', encoding='latin1')
+pd.set_option('max_columns',20)
+print(df.head(5))
+
+
+def make_point(x, y):
+    return Point(x, y)
+
+def make_orig_location(row):
+    return Point(row['from_x'], row['from_y'])
+
+def make_dest_location(row):
+    return Point(row['to_x'], row['to_y'])
+
+
+# Go through every row, and make a point out of its lat and lon
+df['orig_points'] = df.apply(make_orig_location, axis=1)
+
+df['dest_points'] = df.apply(make_dest_location, axis=1)
+
+print(df.head(5))
+
+
+def make_lines(row):
+    point_list = [row['orig_points'], row['dest_points']]
+    return LineString(point_list)
+
+
+df['lines'] = df.apply(make_lines, axis=1)
+
+print(df.head(5))
+
+
+def calc_all_lengths(row):
+    line = row['lines']
+    return line.length
+
+
+df['lengths'] = df.apply(calc_all_lengths, axis=1)
+
+print(df['lengths'].mean())
+
+
+
+
+
+
