@@ -1,5 +1,5 @@
 
-.. figure:: img/AutoGIS_UT_banner_2018.png
+.. figure:: img/AutoGIS_new_UT_banner_2018.jpg
 
 Welcome to Geospatial Analysis with Python and R (the Python part)
 ==================================================================
@@ -52,13 +52,13 @@ The materials are divided into several sections:
 |                |                                 |
 +----------------+---------------------------------+
 | **Lesson 1**   | GIS in Python;                  |
-|                | Git Versioning Control System;  |
 |                | Spatial data model;             |
 |                | Geometric Objects; Shapely      |
 |                |                                 |
 +----------------+---------------------------------+
 | **Lesson 2**   | Introduction to Git;            |
 |                | Working with GeoDataFrames;     |
+|                | Working with an IDE (Spyder);   |
 |                | Managing projections;           |
 |                | Table join;                     |
 |                |                                 |
@@ -108,6 +108,8 @@ Contents
    lessons/L1/Geometric-Objects
    lessons/L1/ex-1
    lessons/L1/exercise-1-hints
+
+.. commented out
    lessons/L1/lecture
 
 .. toctree::

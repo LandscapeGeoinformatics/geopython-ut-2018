@@ -404,6 +404,8 @@ Python provides various helpful packages and functions to work with data.
 While you could of course also manually program to open the file, read it line by line, extract fields and process variables,
 we can also use a widely used library called Pandas to read a file with tabular data and present it to us as a so called dataframe:
 
+`file: global-city-population-estimates.csv <../../_static/data/L1/global-city-population-estimates.csv>`_
+
 .. ipython:: python
 
     import pandas as pd

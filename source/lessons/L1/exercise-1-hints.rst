@@ -13,7 +13,7 @@ if the ``actual_object`` is of the variable typpe ``variable_type``. Basic types
 - int: Integer number
 - float: Floating point numbers
 - list: List of thing aka [ ] brackety things
-- dict: Dictionaries, Python versatile data structures, based on associative lists and objects, where you address via named fields (see Python recap lecture)
+- dict: Dictionaries, Python versatile data structures, based on associative lists and objects, where you address via named fields (see `Python recap lecture <../L0/recap-python.html>`_ )
 
 An example:
 
@@ -55,6 +55,7 @@ if it's false, go only through the else block.
     # guess the final value of ``initial_demo_output`` ?
     print(initial_demo_output)
 
+For more details and practice, see `Python recap lecture <../L0/recap-python.html>`_
 
 Reading a CSV file into Pandas
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

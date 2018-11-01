@@ -7,8 +7,8 @@ This lesson we will practice how to create geometric objects using Shapely modul
 We will also take advantage of what we have learned earlier, specifically functions, that you should use for making different GIS operations easier to use
 in the future. We will also use Pandas to read data from a file.
 
-Write all your codes for all the challenges here into a single ``exercise1.ipynb`` -file, submit for grading.
-Use common sense to structure your Jupyter Notebook file cells according to solving the problems from this exercise.
+Write all your codes for all the challenges here into a single ``exercise1.ipynb`` -file, **submit for grading in Moodle**.
+Use common sense to structure your Jupyter Notebook file with several cells according to solving the problems from this exercise.
 Include comments in order to document your functions and codes.
 
 - Don't forget to check out the `hints for this lesson's exercise <exercise-1-hints.html>`_ if you're having trouble.
