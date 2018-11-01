@@ -34,8 +34,8 @@ An example:
     print(true_or_false)
 
 
-Control flow for checks with ``if`` and ``else
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Control flow for checks with ``if`` and ``else``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you want to make a "left" or "right" decision, you can use Python's if then construct.
 For that you need to check a *condition* (or a fact)  if it's *true* or *false*. If it's true, go only through the first block,

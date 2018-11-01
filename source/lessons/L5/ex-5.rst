@@ -1,9 +1,9 @@
 Exercise 5
 ==========
 
-This week we will practice how to create static and interactive maps in Python.
+This lesson we will practice how to create static and interactive maps in Python.
 
-- Don't forget to check out the [hints for this week's exercise](exercise-5-hints.html) if you're having trouble.
+- Don't forget to check out the [hints for this lesson's exercise](exercise-5-hints.html) if you're having trouble.
 
 - Scores on this exercise are out of **10 points**.
 

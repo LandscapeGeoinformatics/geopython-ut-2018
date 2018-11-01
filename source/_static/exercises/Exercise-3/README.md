@@ -1,10 +1,10 @@
 # Exercise 3
 
-This week we will practice how to do geocoding, spatial joins and nearest neighbour analysis in Geopandas. The overall aim this week is to make practical study to find out how many people live within 5 km (Euclidian) distance from big shopping centers in Helsinki Region, and which of those shopping centers is closest to your home and work location. 
+This lesson we will practice how to do geocoding, spatial joins and nearest neighbour analysis in Geopandas. The overall aim this lesson is to make practical study to find out how many people live within 5 km (Euclidian) distance from big shopping centers in Helsinki Region, and which of those shopping centers is closest to your home and work location. 
 
 - **Exercise 3 is due by the start of lecture on 20.11**.
 
-- Don't forget to check out the [hints for this week's exercise](https://automating-gis-processes.github.io/2017/lessons/L3/exercise-3-hints.html) if you're having trouble.
+- Don't forget to check out the [hints for this lesson's exercise](https://automating-gis-processes.github.io/2017/lessons/L3/exercise-3-hints.html) if you're having trouble.
 
 - Scores on this exercise are out of **20 points**.
 

@@ -1,7 +1,7 @@
 Lesson 4 overview
 =================
 
-During this week we will learn a few really useful and commonly used GIS functionalities using Geopandas, namely:
+During this lesson we will learn a few really useful and commonly used GIS functionalities using Geopandas, namely:
 
 1. :doc:`Data classification <reclassify>`
 2. :doc:`Geometric operations: Overlay analysis, spatial aggregation <geometric-operations>`
@@ -11,7 +11,7 @@ During this week we will learn a few really useful and commonly used GIS functio
 Learning goals
 --------------
 
-After this week's lesson you should be able to:
+After this lesson's lesson you should be able to:
 
  - Reclassify data based on different criteria (custom or common classifiers).
 

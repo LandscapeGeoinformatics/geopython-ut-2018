@@ -13,7 +13,7 @@ Created on Tue Dec  5 15:48:04 2017
 # OpenStreetMap (OSM) is a global crowd-sourced dataset that contains a lot of information about the our built environment. It contains data about streets, buildings, and services to mention a few. 
 # OSM 
 
-# This week we will explore a new and exciting Python module called `osmnx <https://github.com/gboeing/osmnx>`__
+# This lesson we will explore a new and exciting Python module called `osmnx <https://github.com/gboeing/osmnx>`__
 # that can be used to retrieve, construct, analyze, and visualize street networks from OpenStreetMap. 
 # It also offers a simple interface to do network routing based on walking and driving by car. 
 

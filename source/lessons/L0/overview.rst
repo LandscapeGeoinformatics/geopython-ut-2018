@@ -3,12 +3,12 @@ Lesson 0 overview
 
 Python in a Notebook
 
-This weeks materials contain notebooks that are intended to aid students in learning and refreshing Python programming.
+This lessons materials contain notebooks that are intended to aid students in learning and refreshing Python programming.
 
 Learning goals
 --------------
 
-After this week you should:
+After this lesson you should:
 
 - learned/refreshed the basics of Python programming;
 - understand best practices as early as possible, even if only little or no background in programming;

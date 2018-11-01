@@ -3,7 +3,7 @@ Exercise 1
 
 **Working with Geometric Objects**
 
-This week we will practice how to create geometric objects using Shapely module and how to find out different useful attributes from those geometries.
+This lesson we will practice how to create geometric objects using Shapely module and how to find out different useful attributes from those geometries.
 We will also take advantage of what we have learned earlier, specifically functions, that you should use for making different GIS operations easier to use
 in the future. We will also use Pandas to read data from a file.
 
@@ -11,7 +11,7 @@ Write all your codes for all the challenges here into a single ``exercise1.ipynb
 Use common sense to structure your Jupyter Notebook file cells according to solving the problems from this exercise.
 Include comments in order to document your functions and codes.
 
-- Don't forget to check out the `hints for this week's exercise <exercise-1-hints.html>`_ if you're having trouble.
+- Don't forget to check out the `hints for this lesson's exercise <exercise-1-hints.html>`_ if you're having trouble.
 
 - Scores on this exercise are out of **10 points**.
 
@@ -61,7 +61,7 @@ One of the "classical" problems in GIS is the situation where you have a set of 
 tool to solve this problem as with Python it is basically possible to read data from any kind of input datafile (such as csv-, txt-, excel-, or gpx-files (gps data) or from different databases).
 So far, I haven't faced any kind of data or file that would be impossible to read with Python.
 
-Thus, let's see how we can read data from a file and create Point -objects from them that can be saved e.g. as a new Shapefile (we will learn this next week).
+Thus, let's see how we can read data from a file and create Point -objects from them that can be saved e.g. as a new Shapefile (we will learn this next lesson).
 Our dataset ** `travelTimes_2015_Helsinki.txt <../../_static/exercises/Exercise-1/data/travelTimes_2015_Helsinki.txt>`_ ** consist of
 travel times between specific locations in Helsinki Region. The first four rows of our data looks like this:
 

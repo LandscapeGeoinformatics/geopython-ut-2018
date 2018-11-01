@@ -38,7 +38,7 @@ At the end of the course you should be able to:
 - competent use spatial and non-spatial data in order to answer a research question
 - knows how to conduct and automate different standard GIS-related tasks that support clear documentation of methods in the Python (and R) scripting environments
 
-In particular that translates to following direct tasks for Python during the next weeks:
+In particular that translates to following direct tasks for Python during the next lessons:
 
 -  Read / write spatial data from/to different file formats
 -  Deal with different projections

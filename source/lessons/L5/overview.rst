@@ -1,7 +1,7 @@
 Lesson 5 Overview
 =================
 
-This week we will focus on learning how to create beautiful maps in Python and how to share them on GitHub using `GitHub Pages <https://pages.github.com/>`_.
+This lesson we will focus on learning how to create beautiful maps in Python and how to share them on GitHub using `GitHub Pages <https://pages.github.com/>`_.
 
 1. :doc:`Static maps <static-maps>`
 2. :doc:`Interactive maps with bokeh <interactive-map-bokeh>`
@@ -29,7 +29,7 @@ In addition to these modules, there are also at least a few good and interesting
 Learning goals
 --------------
 
-After this weeks lesson you should be able to (at least):
+After this lessons lesson you should be able to (at least):
 
  - Create a static map using Geopandas
 

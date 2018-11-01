@@ -1,15 +1,15 @@
 Exercise 4
 ==========
 
-This week we will practice how to do data classification and aggregation in Geopandas. We continue from the last week's exerise with rather similar idea.
-The overall aim this week is to define *dominance areas* \[0\] for 8 shopping centers in Helsinki with different travel modes (Public tranport, private car).
+This lesson we will practice how to do data classification and aggregation in Geopandas. We continue from the last lesson's exerise with rather similar idea.
+The overall aim this lesson is to define *dominance areas* \[0\] for 8 shopping centers in Helsinki with different travel modes (Public tranport, private car).
 The last step is to find out how many people live within the dominance areas of those big shopping centers in Helsinki Region.
 
 *The exercise might be a rather demanding one, so don't panic, we will help you and we will go through the exercise.*
 
 \[0\]: Here, we define the dominance area of a service as the geographical area from where the given service (shopping center) is the closest one to reach in terms of travel time.
 
-- Don't forget to check out the [hints for this week's exercise](exercise-4-hints.html) if you're having trouble.
+- Don't forget to check out the [hints for this lesson's exercise](exercise-4-hints.html) if you're having trouble.
 
 - Scores on this exercise are out of **10 points**.
 
@@ -60,7 +60,7 @@ How you could proceed with the given problem is:
 Problem 3: How many people live under the dominance area of each shopping center? (5 points)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Take advantage of the materials last week and find out how many people live under the dominance area of each shopping center. You should first [aggregate](file:///D:/KOODIT/Opetus/Automating-GIS-processes/AutoGIS-Sphinx/build/html/Lesson4-geometric-operations.html#aggregating-data) your dominance areas into a unified geometries using [`dissolve()`](http://geopandas.org/aggregation_with_dissolve.html#dissolve-example) -function in Geopandas.
+Take advantage of the materials last lesson and find out how many people live under the dominance area of each shopping center. You should first [aggregate](file:///D:/KOODIT/Opetus/Automating-GIS-processes/AutoGIS-Sphinx/build/html/Lesson4-geometric-operations.html#aggregating-data) your dominance areas into a unified geometries using [`dissolve()`](http://geopandas.org/aggregation_with_dissolve.html#dissolve-example) -function in Geopandas.
 
 Questions
 ---------

@@ -1,10 +1,10 @@
 # Exercise-5
 
-This week we will practice how to create static and interactive maps in Python.  
+This lesson we will practice how to create static and interactive maps in Python.  
 
 - Exercise 5 is due by the start of lecture on 4.12.
 
-- Don't forget to check out the [hints for this week's exercise](https://automating-gis-processes.github.io/2017/lessons/L5/exercise-5-hints.html) if you're having trouble.
+- Don't forget to check out the [hints for this lesson's exercise](https://automating-gis-processes.github.io/2017/lessons/L5/exercise-5-hints.html) if you're having trouble.
 
 - Scores on this exercise are out of 20 points.
 

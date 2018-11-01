@@ -1,10 +1,10 @@
 Exercise 2
 ==========
 
-This week we will focus on how to create geometries in Geopandas and how to re-project data and do some basic
+This lesson we will focus on how to create geometries in Geopandas and how to re-project data and do some basic
 geometric calculations.
 
-- Don't forget to check out the [hints for this week's exercise](exercise-2-hints.html) if you're having trouble.
+- Don't forget to check out the [hints for this lesson's exercise](exercise-2-hints.html) if you're having trouble.
 
 - Scores on this exercise are out of **10 points**.
 
@@ -30,7 +30,7 @@ the problem 1. Each step that you need to fill is marked with capital P -letter 
 Problem 2: Points to map (3 points)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The problem 2 this week continues the process that we started last week, i.e. creating geometric point -objects and putting them into a map.
+The problem 2 this lesson continues the process that we started last lesson, i.e. creating geometric point -objects and putting them into a map.
 Here our aim is to plot a set of x and y coordinates that we should read from a `some_posts.csv` comma separated file that contains following kind of data:
 
 ```
