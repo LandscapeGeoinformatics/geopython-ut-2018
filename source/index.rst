@@ -104,6 +104,9 @@ Contents
    :maxdepth: 2
    :caption: Lesson 1
 
+   lessons/currently-not-available
+
+.. commented out
    lessons/L1/overview
    lessons/L1/Geometric-Objects
    lessons/L1/ex-1

@@ -8,8 +8,8 @@ These materials are partly based on `Shapely
 E. (2013), Chapter
 3 <https://www.packtpub.com/application-development/python-geospatial-development-second-edition>`__.
 
-Overview of geometric objects and Shapely -module
--------------------------------------------------
+Overview of geometric objects - Simple Features Implementation in Shapely
+-------------------------------------------------------------------------
 
 .. figure:: http://www.helsinki.fi/science/accessibility/maintenance/Kuvia/SpatialDataModel.PNG
 
@@ -404,10 +404,22 @@ Python provides various helpful packages and functions to work with data.
 While you could of course also manually program to open the file, read it line by line, extract fields and process variables,
 we can also use a widely used library called Pandas to read a file with tabular data and present it to us as a so called dataframe:
 
-.. code::
+.. ipython:: python
+
+    import os
+    print(os.getcwd() + "\n")
+
+
+.. ipython:: python
 
     import pandas as pd
-    df = pd.read_csv('global-city-population-estimates.csv', sep=';', encoding='latin1')
+    df = pd.read_csv('source/_static/data/L1/global-city-population-estimates.csv', sep=';', encoding='latin1')
+    print(df.head(5))
+
+    df = pd.read_csv('../../_static/data/L1/global-city-population-estimates.csv', sep=';', encoding='latin1')
+    print(df.head(5))
+
+    df = pd.read_csv('_static/data/L1/global-city-population-estimates.csv', sep=';', encoding='latin1')
     print(df.head(5))
 
 Now we want to process the tabular data. Thus, let's see how we can go through our data and  create Point -objects from them:
