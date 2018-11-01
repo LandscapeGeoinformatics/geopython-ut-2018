@@ -406,25 +406,20 @@ we can also use a widely used library called Pandas to read a file with tabular 
 
 .. ipython:: python
 
-    import os
-    print(os.getcwd() + "\n")
-
-
-.. ipython:: python
-
     import pandas as pd
+
+    # make sure you have the correct path to your working file, ideally in the same folder
     df = pd.read_csv('source/_static/data/L1/global-city-population-estimates.csv', sep=';', encoding='latin1')
+
+    # this option tells pandas to print up to 20 columns, typically a the print function will cut the output for better visibility
+    # (depending on the size and dimension of the dataframe)
+    pd.set_option('max_columns',20)
     print(df.head(5))
 
-    df = pd.read_csv('../../_static/data/L1/global-city-population-estimates.csv', sep=';', encoding='latin1')
-    print(df.head(5))
-
-    df = pd.read_csv('_static/data/L1/global-city-population-estimates.csv', sep=';', encoding='latin1')
-    print(df.head(5))
 
 Now we want to process the tabular data. Thus, let's see how we can go through our data and  create Point -objects from them:
 
-.. code::
+.. ipython:: python
 
     # we make a function, that takes a row object coming from Pandas. The single fields per row are addressed by their column name.
     def make_point(row):

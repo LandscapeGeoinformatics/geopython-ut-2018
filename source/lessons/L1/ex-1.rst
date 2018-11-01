@@ -7,6 +7,10 @@ This week we will practice how to create geometric objects using Shapely module 
 We will also take advantage of what we have learned earlier, specifically functions, that you should use for making different GIS operations easier to use
 in the future. We will also use Pandas to read data from a file.
 
+Write all your codes for all the challenges here into a single ``exercise1.ipynb`` -file, submit for grading.
+Use common sense to structure your Jupyter Notebook file cells according to solving the problems from this exercise.
+Include comments in order to document your functions and codes.
+
 - Don't forget to check out the `hints for this week's exercise <exercise-1-hints.html>`_ if you're having trouble.
 
 - Scores on this exercise are out of **10 points**.
@@ -24,14 +28,12 @@ Sections
 Problem 1: Creating basic geometries (3 Points)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Write your codes for Problem 1 into a single ``create_geometries.py`` -file, submit for grading.
-
 1. Create a function called ``createPointGeom()`` that has two parameters (x_coord, y_coord). Function should create a shapely Point geometry object and return that.
-Demonstrate the usage of the function by creating Point -objects with the function.
+Demonstrate the usage of the function by creating 3 Point -objects with the function.
 
 2. Create a function called ``createLineGeom()`` that takes a list of Shapely Point objects as parameter and returns a
-LineString object of those input points. Function should first check that the input list really contains Shapely Point(s).
-Demonstrate the usage of the function by creating LineString -objects with the function.
+LineString object of those input points. Ideally, the function should try to check that the input list really contains Shapely Point(s).
+Demonstrate the usage of the function by creating 2 LineString -objects with the function (one with coordinate tuples, and one with list of shapely Points).
 
 3. Create a function called ``createPolyGeom()`` that takes a list of coordinate tuples **OR** a list of Shapely Point objects and creates/returns
 a Polygon object of the input data. Both ways of passing the data to the function should be working.
@@ -41,8 +43,6 @@ Demonstrate the usage of the function by passing data first with coordinate-tupl
 
 Problem 2: Attributes of geometries (3 Points)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Write your codes for Problem 2 into a single ``read_attributes.py`` -file, submit for grading.
 
 1. Create a function called ``getCentroid()`` that takes any kind of Shapely's geometric -object as input and returns a centroid of that geometry. Demonstrate the usage of the function.
 
@@ -56,8 +56,6 @@ it should tell the user --> ``"Error: LineString or Polygon geometries required!
 
 Problem 3: Reading coordinates from a file and creating a geometries (4 Points)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Write your codes for Problem 3 into a single ``file_coords_to_geom.py`` -file, submit for grading.
 
 One of the "classical" problems in GIS is the situation where you have a set of coordinates in a file and you need to get them into a map (or into a GIS-software). Python is a really handy
 tool to solve this problem as with Python it is basically possible to read data from any kind of input datafile (such as csv-, txt-, excel-, or gpx-files (gps data) or from different databases).
@@ -97,10 +95,10 @@ locations and destination locations accordingly.
 
 .. _problem-4-Creating-LineStrings-that-represent-the-movements-optional-task-for-advanced-students:
 
-Problem 4: Creating LineStrings that represent the movements (optional task for advanced students, additional 4 points)
+Problem 4: Creating LineStrings that represent the movements (optional task for advanced students, additional max 5 points)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This is an optional extra task for those who likes to learn even more. Write your codes into the same file as in previous Problem (3).
+This is an optional extra task for those who likes to learn even more.
 
 1. Create a list called ``lines``
 2. Iterate over the origin and destination lists and create a Shapely LineString -object between the origin and destination point
