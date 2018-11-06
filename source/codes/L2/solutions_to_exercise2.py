@@ -1,6 +1,7 @@
 import geopandas as gpd
-
 from shapely.geometry import Polygon
+
+empty_var_to_be_replaced = None
 
 # X -coordinates
 xcoords = [29.99671173095703, 31.58196258544922, 27.738052368164062, 26.50013542175293, 26.652359008789062, 25.921663284301758, 22.90027618408203, 23.257217407226562,
@@ -23,22 +24,32 @@ ycoords = [63.748023986816406, 62.90789794921875, 60.511383056640625, 60.4449958
 # ------------------------------------------------------------------------
 # Coordinate pair can be either a tuple or a list.
 # The first coordinate pair in the 'coordpairs' -list should look like: (29.99671173095703, 63.748023986816406)
-# Hint: you might want to iterate over items in the lists using a for-loop
+# Hint: you might want to iterate over items in the lists using a loop
 
-coordpairs =
+if not len(xcoords) == len(ycoords):
+    print("Error, coordinate arrays don't have same length")
+
+coordpairs = []
+i=0
+while i < len(xcoords):
+    coordpairs.append((xcoords[i], ycoords[i]))
+    i = i+1
+
+print(coordpairs[0])
+
 
 # P2. Create a shapely Polygon using the 'coordpairs' -list
 # ------------------------------------------------------------------------
-poly =
+poly = Polygon(coordpairs)
 
 # P3. Create an empty GeoDataFrame
 # ---------------------------------
-geo =
+geo = gpd.GeoDataFrame()
 
 # P4. Insert our 'poly' -polygon into the 'geo' GeoDataFrame using a column name 'geometry'
 # ------------------------------------------------------------------------------------------
 # Hint: Take advantage of .loc -function
-geo.loc
+geo.loc[0, 'geometry'] = poly
 
 # P5. Save the GeoDataFrame into a new Shapefile called 'polygon.shp'
 # --------------------------------------------------------------------
@@ -47,6 +58,7 @@ geo.loc
 
 # P6. Plot the polygon using taking advantage of the .plot() -function in GeoDataFrame. Save a PNG figure out of your plot and upload it to your GitHub repository.
 # -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 
 

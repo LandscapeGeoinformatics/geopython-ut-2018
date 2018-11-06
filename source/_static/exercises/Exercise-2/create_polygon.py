@@ -1,6 +1,8 @@
 import geopandas as gpd
 from shapely.geometry import Polygon
 
+empty_var_to_be_replaced = None
+
 # X -coordinates 
 xcoords = [29.99671173095703, 31.58196258544922, 27.738052368164062, 26.50013542175293, 26.652359008789062, 25.921663284301758, 22.90027618408203, 23.257217407226562,
            23.335693359375, 22.87444305419922, 23.08465003967285, 22.565473556518555, 21.452774047851562, 21.66388702392578, 21.065969467163086, 21.67659568786621,
@@ -24,15 +26,15 @@ ycoords = [63.748023986816406, 62.90789794921875, 60.511383056640625, 60.4449958
 # The first coordinate pair in the 'coordpairs' -list should look like: (29.99671173095703, 63.748023986816406)
 # Hint: you might want to iterate over items in the lists using a for-loop
 
-coordpairs =
+coordpairs = empty_var_to_be_replaced
 
 # P2. Create a shapely Polygon using the 'coordpairs' -list
 # ------------------------------------------------------------------------
-poly =
+poly = empty_var_to_be_replaced
 
 # P3. Create an empty GeoDataFrame
 # ---------------------------------
-geo =
+geo = empty_var_to_be_replaced
 
 # P4. Insert our 'poly' -polygon into the 'geo' GeoDataFrame using a column name 'geometry' 
 # ------------------------------------------------------------------------------------------
