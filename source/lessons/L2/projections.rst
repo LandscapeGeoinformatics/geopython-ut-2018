@@ -214,20 +214,6 @@ maps out of them.
 Indeed, they look quite different and our re-projected one looks much better
 in Europe as the areas especially in the north are more realistic and not so stretched as in WGS84.
 
-Next, we still need to change the crs of our GeoDataFrame into EPSG
-3035 as now we only modified the values of the ``geometry`` column.
-We can take use of fiona's ``from_epsg`` -function.
-
-.. ipython:: python
-
-    from fiona.crs import from_epsg
-    
-    # Determine the CRS of the GeoDataFrame
-    data_proj.crs = from_epsg(3035)
-    
-    # Let's see what we have
-    data_proj.crs
-
 Finally, let's save our projected layer into a Shapefile so that we can use it later.
 
 .. code:: python
