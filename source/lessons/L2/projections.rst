@@ -85,8 +85,6 @@ that contains a Shapefile with following files:
     Europe_borders.dbf  Europe_borders.sbn  Europe_borders.shp
 
 
-Coordinate reference system (CRS)
----------------------------------
 
 GeoDataFrame that is read from a Shapefile contains *always* (well not
 always but should) information about the coordinate system in which the
