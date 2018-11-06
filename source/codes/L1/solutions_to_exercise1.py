@@ -24,18 +24,34 @@ point3 = createPointGeom(9.26, -2.456)
 
 def createLineGeom(points_list):
     # Function should first check that the input list really contains Shapely Point(s)
+    checked_points = []
     for p in points_list:
-        if not isinstance(p, Point):
+        if isinstance(p, Point):
+            checked_points.append(p)
+        else:
             print("point {} is not a Point object".format(str(p)))
             # there are more sophisticated ways to check that, and make the program safer to bad input -> later
     # takes a list of Shapely Point objects as parameter and returns a LineString object of those input points
-    new_line = LineString(points_list)
-    return new_line
+    if len(checked_points) >= 2:
+        new_line = LineString(checked_points)
+        return new_line
+    else:
+        print("not enough points in input list t ocreate line")
+        return None
 
 
 list_of_points = [point1, point2, point3]
 
+line_coords = [(2.2, 4.2), (7.2, -25.1), (9.26, -2.456)]
+created_points = []
+for tup in line_coords:
+    point = Point(tup[0], tup[1])
+    created_points.append(point)
+
+
 line1 = createLineGeom(list_of_points)
+
+line2 = createLineGeom(created_points)
 
 
 # problem 1 Polygon
@@ -44,12 +60,20 @@ def createPolyGeom(input_list):
     # input list should contain either points or coords
     # we can call shapely Polygon only with coord list, so we need to check
     first_data = input_list[0]
-    if isinstance(first_data, Point):
-        poly_from_points = Polygon([[p.x, p.y] for p in input_list])
-        return poly_from_points
-    else:
-        new_poly = Polygon(input_list)
+    p_coord_list = []
+    for elem in input_list:
+        if isinstance(elem, Point):
+            p_coord_list.append((elem.x, elem.y))
+        elif isinstance(elem, tuple):
+            p_coord_list.append((elem[0], elem[1]))
+        else:
+            print("elem {} is not Point or Tuple object".format(str(elem)))
+    if len(p_coord_list) >= 3:
+        new_poly = Polygon(p_coord_list)
         return new_poly
+    else:
+        print("not enough points in input list to create polygon")
+        return None
 
 
 coord_list = [(2.2, 4.2), (7.2, -25.1), (9.26, -2.456)]
@@ -58,7 +82,7 @@ poly1 = createPolyGeom(coord_list)
 
 list_of_points = [point1, point2, point3]
 
-poly2 = createPolyGeom(coord_list)
+poly2 = createPolyGeom(list_of_points)
 
 # problem 2 getCentroid()
 

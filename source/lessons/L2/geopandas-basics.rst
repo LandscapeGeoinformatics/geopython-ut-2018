@@ -164,7 +164,7 @@ Let's check what is the min and the max of those areas using familiar functions 
     # Mean area
     mean_area = data['area'].mean()
 
-    print("Max area: %s\nMean area: %s" % (round(max_area, 2), round(mean_area, 2)))
+    print("Max area: {:.2f}\nMean area: {:.2f}" format(round(max_area, 2), round(mean_area, 2)))
 
 So the largest Polygon in our dataset seems to be 1494 square decimal degrees (~ 165 000 km2) and the average size is ~20 square decimal degrees (~2200 km2).
 

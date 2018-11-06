@@ -393,7 +393,7 @@ Let's check what is the longest and mean distance to Helsinki from the centroids
 
    max_dist = data_d['dist_to_tartu'].max()
    mean_dist = data_d['dist_to_tartu'].mean()
-   print("Maximum distance to Helsinki is {:.2f} km, and the mean distance is {:.2f} km.".format(max_dist, mean_dist))
+   print("Maximum distance to Tartu is {:.2f} km, and the mean distance is {:.2f} km.".format(max_dist, mean_dist))
 
 It seems that the Finns in the North are fairly far away from all other European countries as the mean distance to other countries is 1185 kilometers.
 

@@ -1,7 +1,8 @@
 import geopandas as gpd
+
 from shapely.geometry import Polygon
 
-# X -coordinates 
+# X -coordinates
 xcoords = [29.99671173095703, 31.58196258544922, 27.738052368164062, 26.50013542175293, 26.652359008789062, 25.921663284301758, 22.90027618408203, 23.257217407226562,
            23.335693359375, 22.87444305419922, 23.08465003967285, 22.565473556518555, 21.452774047851562, 21.66388702392578, 21.065969467163086, 21.67659568786621,
            21.496871948242188, 22.339998245239258, 22.288192749023438, 24.539581298828125, 25.444232940673828, 25.303749084472656, 24.669166564941406, 24.689163208007812,
@@ -34,7 +35,7 @@ poly =
 # ---------------------------------
 geo =
 
-# P4. Insert our 'poly' -polygon into the 'geo' GeoDataFrame using a column name 'geometry' 
+# P4. Insert our 'poly' -polygon into the 'geo' GeoDataFrame using a column name 'geometry'
 # ------------------------------------------------------------------------------------------
 # Hint: Take advantage of .loc -function
 geo.loc
@@ -46,7 +47,6 @@ geo.loc
 
 # P6. Plot the polygon using taking advantage of the .plot() -function in GeoDataFrame. Save a PNG figure out of your plot and upload it to your GitHub repository.
 # -----------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 
 
 
