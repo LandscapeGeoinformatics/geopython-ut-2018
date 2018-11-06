@@ -279,7 +279,7 @@ Let's take a look of our data and create a map, so we can see what we have now.
 
 .. ipython:: python
 
-   data_d.plot(facecolor='white');
+   data_d.plot(facecolor='purple');
    @savefig europe_euqdist.png width=4.5in
    plt.tight_layout();
 
