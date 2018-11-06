@@ -314,7 +314,7 @@ Next we need to calculate the centroids for all the Polygons of the European cou
 So now we have a new column ``country_centroid`` that has the Point geometries representing the centroids of each Polygon.
 
 Now we can calculate the distances between the centroids and Tartu.
-We saw an example in an erarlier lessen/exercise where we used ``apply()`` function for doing the loop instead of using the ``iterrows()`` function.
+We saw an example in an erarlier lesson/exercise where we used ``apply()`` function for doing the loop instead of using the ``iterrows()`` function.
 
 In (Geo)Pandas, the ``apply()`` function takes advantage of numpy when looping, and is hence much faster
 which can give a lot of speed benefit when you have many rows to iterate over. Here, we will see how we can use that
