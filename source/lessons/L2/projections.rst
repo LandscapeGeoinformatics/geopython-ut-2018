@@ -22,8 +22,8 @@ Coordinate Reference Systems (CRS), also referred to as Spatial Reference System
 
 .. admonition:: Attention
 
-    In developer jargon and often sloppily used by GIS technicians we talk about *projections* for all types of CRS/SRS.
-    However, to be correct, WGS84 for example, is technically a Geographic Coordinate System and **NOT** a projection.
+    In developer jargon and often also sloppily used by GIS technicians, the term "projection" is often used for all types of CRS/SRS. For example, WGS84 is called WGS84 projection.
+    To be correct, WGS84, is a Geographic Coordinate System and **NOT** a projection.
 
 
 Geographic coordinate system
