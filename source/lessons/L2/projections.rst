@@ -56,7 +56,8 @@ Projected Coordinate Systems consist of:
 - Projection Parameters (standard points and lines, Latitude of Origin, Longitude of Origin, False Easting, False Northing etc)
 - Linear units (meters, kilometers, miles etc)
 
-defining and changing CRSs is easy in Geopandas
+Defining and changing CRSs in Geopandas
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Luckily, defining and changing CRSs is easy in Geopandas. In this tutorial we will see how to retrieve the
 coordinate reference system information from the data, and how to change it. We will re-project a data file from
