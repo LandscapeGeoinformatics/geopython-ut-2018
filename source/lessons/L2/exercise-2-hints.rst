@@ -28,11 +28,11 @@ Quite often you are in a situation where you have read data e.g. from text file 
 
 
 - We need to convert the DataFrame into a GeoDataFrame, so that we can e.g. save it into a Shapefile. It is easily done by passing the DataFrame into a GeoDataFrame object. We need to determine
- which column contains the geometry information (needs to be always a column called 'geometry'), and optionally we can also determine the coordinate reference system when creating the GeoDataFrame:
+    which column contains the geometry information (needs to be always a column called 'geometry'), and optionally we can also determine the coordinate reference system when creating the GeoDataFrame:
 
 .. code:: python
 
-    # Convert DataFrame into a GeoDataFrame
+    # Convert DataFrame into a GeoDataFrame (providing the "geomtry" column from the pandas dataframe explicitly for GeoPandas dataframe as the geometry per feature)
     geo = gpd.GeoDataFrame(data, geometry='geometry', crs=from_epsg(4326))
 
     >>> type(geo)

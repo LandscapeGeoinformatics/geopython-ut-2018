@@ -5,15 +5,10 @@ Downloading data
 ----------------
 
 For this lesson we are using data that you can download from `here <https://github.com/Automating-GIS-processes/Lesson-2-Geo-DataFrames/raw/master/data/Data.zip>`_.
-Once you have downloaded the Data.zip file into your home directory, you can unzip the file using e.g. 7Zip (on Windows).
+Once you have downloaded the Data.zip file into your ``geopython`` directory (ideally undr **L2**), you can unzip the file using e.g. 7Zip (on Windows).
 
-You can also use the ``unzip`` command in the Terminal window on Linux and Mac (following assumes that the file is downloaded to ``HOME`` directory:
+ .. code::
 
- .. code:: bash
-
-    $ cd $HOME
-    $ unzip Data.zip
-    $ ls Data
     DAMSELFISH_distributions.dbf   DAMSELFISH_distributions.prj
     DAMSELFISH_distributions.sbn   DAMSELFISH_distributions.sbx
     DAMSELFISH_distributions.shp   DAMSELFISH_distributions.shp.xml
@@ -24,8 +19,7 @@ The Data folder includes a Shapefile called **DAMSELFISH_distribution.shp** (and
 Reading a Shapefile
 -------------------
 
-Spatial data can be read easily with geopandas using ``gpd.from_file()``
--function:
+Spatial data can be read easily with geopandas using ``gpd.from_file()`` -function:
 
 .. ipython:: python
 
@@ -35,14 +29,14 @@ Spatial data can be read easily with geopandas using ``gpd.from_file()``
     # Import necessary modules
     import geopandas as gpd
 
-    # Set filepath (fix path relative to yours)
-    fp = "/home/geo/Data/DAMSELFISH_distributions.shp"
+    # Set filepath (fix path relative to yours, from where your Jupyter Notebook or spyder is started)
+    fp = r"L2\Data\DAMSELFISH_distributions.shp"
 
     @suppress
     import os
 
     @suppress
-    """ NOTICE: Following is the real path to the data, the one above is for online documentation to reflect the situation at computing instance """
+    """ NOTICE: Following is the real path to the data, the one above is for online documentation to reflect the situation at your computing instance """
 
     @suppress
     fp = os.path.join(os.path.abspath('data'), "DAMSELFISH_distributions.shp")
@@ -50,26 +44,25 @@ Spatial data can be read easily with geopandas using ``gpd.from_file()``
     # Read file using gpd.read_file()
     data = gpd.read_file(fp)
 
-- Let's see what datatype is our 'data' variable
+Let's see what datatype is our 'data' variable
 
 .. ipython:: python
 
    type(data)
 
-Okey so from the above we can see that our ``data`` -variable is a
+So from the above we can see that our ``data`` -variable is a
 **GeoDataFrame**. GeoDataFrame extends the functionalities of
 **pandas.DataFrame** in a way that it is possible to use and handle
 spatial data within pandas (hence the name geopandas). GeoDataFrame have
 some special features and functions that are useful in GIS.
 
-- Let's take a look at our data and print the first 5 rows using the
-``head()`` -function prints the first 5 rows by default
+- Let's take a look at our data and print the first 5 rows using the ``head()`` -function prints the first 5 rows by default
 
 .. ipython:: python
 
     data.head()
 
-- Let's also take a look how our data looks like on a map. If you just
+Let's also take a look how our data looks like on a map. If you just
 want to explore your data on a map, you can use ``.plot()`` -function
 in geopandas that creates a simple map out of the data (uses
 matplotlib as a backend):
@@ -79,12 +72,16 @@ matplotlib as a backend):
    @savefig damselfish.png width=5in
    data.plot();
 
+
+.. image:: ../../_static/damselfish.png
+
+
 Writing a Shapefile
 -------------------
 
 Writing a new Shapefile is also something that is needed frequently.
 
-- Let's select 50 first rows of the input data and write those into a
+Let's select 50 first rows of the input data and write those into a
 new Shapefile by first selecting the data using index slicing and
 then write the selection into a Shapefile with ``gpd.to_file()`` -function:
 
@@ -109,7 +106,7 @@ Geopandas takes advantage of Shapely's geometric objects. Geometries are
 stored in a column called *geometry* that is a default column name for
 storing geometric information in geopandas.
 
--  Let's print the first 5 rows of the column 'geometry':
+Let's print the first 5 rows of the column 'geometry':
 
 .. ipython:: python
 
@@ -120,15 +117,14 @@ Since spatial data is stored as Shapely objects, **it is possible to use
 all of the functionalities of Shapely module** that we practiced
 earlier.
 
--  Let's print the areas of the first 5 polygons:
+Let's print the areas of the first 5 polygons:
 
 .. ipython:: python
 
     # Make a selection that contains only the first five rows
     selection = data[0:5]
 
-We can iterate over the selected rows using a specific
-``.iterrows()`` -function in (geo)pandas and print the area for each polygon:
+We can iterate over the selected rows using a specific ``.iterrows()`` -function in (geo)pandas and print the area for each polygon:
 
 .. ipython:: python
 
@@ -141,8 +137,7 @@ We can iterate over the selected rows using a specific
 Hence, as you might guess from here, all the functionalities of **Pandas** are available directly in
 Geopandas without the need to call pandas separately because Geopandas is an **extension** for Pandas.
 
-- Let's next create a new column into our GeoDataFrame where we calculate
-and store the areas individual polygons. Calculating the areas of polygons is really easy in geopandas by using ``GeoDataFrame.area`` attribute:
+Let's next create a new column into our GeoDataFrame where we calculate and store the areas individual polygons. Calculating the areas of polygons is really easy in geopandas by using ``GeoDataFrame.area`` attribute:
 
 .. ipython:: python
 
@@ -154,7 +149,7 @@ Let's see the first 2 rows of our 'area' column.
 
     data['area'].head(2)
 
-Okey, so we can see that the area of our first polygon seems to be 19.39 and 6.14 for the second polygon.
+So we can see that the area of our first polygon seems to be 19.39 and 6.14 for the second polygon.
 They correspond to the ones we saw in previous step when iterating rows, hence, everything seems to work as it should.
 Let's check what is the min and the max of those areas using familiar functions from our previous Pandas lessions.
 
@@ -168,7 +163,7 @@ Let's check what is the min and the max of those areas using familiar functions 
 
     print("Max area: %s\nMean area: %s" % (round(max_area, 2), round(mean_area, 2)))
 
-Okey, so the largest Polygon in our dataset seems to be 1494 square decimal degrees (~ 165 000 km2) and the average size is ~20 square decimal degrees (~2200 km2).
+So the largest Polygon in our dataset seems to be 1494 square decimal degrees (~ 165 000 km2) and the average size is ~20 square decimal degrees (~2200 km2).
 
 Creating geometries into a GeoDataFrame
 ---------------------------------------
@@ -237,7 +232,7 @@ Let's create a Shapely Polygon repsenting the Helsinki Senate square that we can
     # Let's see what we have
     poly
 
-Okey, so now we have appropriate Polygon -object.
+So now we have appropriate Polygon -object.
 
 Let's insert the polygon into our 'geometry' column in our GeoDataFrame:
 
@@ -262,7 +257,7 @@ Let's add another column to our GeoDataFrame called ``Location`` with text *Sena
     # Let's check the data
     newdata
 
-Okey, now we have additional information that is useful to be able to
+Now we have additional information that is useful to be able to
 recognice what the feature represents.
 
 Before exporting the data it is useful to **determine the coordinate

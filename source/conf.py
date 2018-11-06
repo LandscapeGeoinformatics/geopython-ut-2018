@@ -209,6 +209,10 @@ html_logo = 'img/logo_ut.png'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
+ipython_savefig_dir = '_static/'
+
+# ipython_savefig_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'docs', '_static')
+
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
 # directly to the root of the documentation.

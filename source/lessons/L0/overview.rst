@@ -5,6 +5,9 @@ Python in a Notebook
 
 This lessons materials contain notebooks that are intended to aid students in learning and refreshing Python programming.
 
+1. :doc:`Installing Miniconda Python package manager <Installing_Miniconda_GIS>`
+2. :doc:`Python Refresher as Jupyter Notebooks <recap-python>`
+
 Learning goals
 --------------
 

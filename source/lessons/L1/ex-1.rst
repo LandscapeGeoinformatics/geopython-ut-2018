@@ -7,7 +7,7 @@ This lesson we will practice how to create geometric objects using Shapely modul
 We will also take advantage of what we have learned earlier, specifically functions, that you should use for making different GIS operations easier to use
 in the future. We will also use Pandas to read data from a file.
 
-Write all your codes for all the challenges here into a single ``exercise1.ipynb`` -file, **submit for grading in Moodle**.
+Write all your codes for all the challenges here into a single ``exercise1.ipynb`` -file, `**submit for grading in Moodle** <https://moodle.ut.ee/mod/assign/view.php?id=528469>`_ by Wednesday, 7 November 2018 , 9:00 AM (EET Tartu time)
 Use common sense to structure your Jupyter Notebook file with several cells according to solving the problems from this exercise.
 Include comments in order to document your functions and codes.
 
@@ -75,15 +75,15 @@ travel times between specific locations in Helsinki Region. The first four rows 
 
 Thus, we have many columns of data, but the few important ones are:
 
-+--------+-------------+
-| Column | Description |
-+========+=============+
-| from_x | x-coordinate of the **origin** location (longitude) |
-| from_y | y-coordinate of the **origin** location (latitude) |
-| to_x   | x-coordinate of the **destination** location (longitude)|
-| to_y   | y-coordinate of the **destination** location (latitude) |
-| total_route_time | Travel time with public transportation at the route |
-+----------------+---------------------------------+
++------------------+---------------------------------------------------------+
+| Column           | Description                                             |
++==================+=========================================================+
+| from_x           | x-coordinate of the **origin** location (longitude)     |
+| from_y           | y-coordinate of the **origin** location (latitude)      |
+| to_x             | x-coordinate of the **destination** location (longitude)|
+| to_y             | y-coordinate of the **destination** location (latitude) |
+| total_route_time | Travel time with public transportation at the route     |
++------------------+---------------------------------------------------------+
 
 **Tasks**
 
@@ -94,7 +94,7 @@ Thus, we have many columns of data, but the few important ones are:
 .. _problem-4-Creating-LineStrings-that-represent-the-movements-optional-task-for-advanced-students:
 
 Problem 4: Creating LineStrings that represent the movements (optional task for advanced students, additional max 3 points)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This is an optional extra task for those who likes to learn even more.
 

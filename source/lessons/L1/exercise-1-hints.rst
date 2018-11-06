@@ -90,3 +90,23 @@ Applying a function to every row of a Pandas dataframe
 
     print(df.head(5))
 
+
+Tricky directory path names in windows
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In the lesson and exercise 1 hints for reading a CSV file in Pandas, a few students got a very cryptic error message, something about "decoding of sequence \UCXXXXX not possible".
+The error occurs in the line with 'pd.read_csv' and you likely have used the complete path:
+
+.. code::
+
+    df = pd.read_csv('c:\users\alex\geopython\L1\global-city-population-estimates.csv', sep=';', encoding='latin1')
+
+Windows uses backslashes '\' as folder separators. However, using backslashes can cause problems in String variables in programming languages.
+Therefore in Python we put an 'r' for 'raw' in front of the quotes for the String with the path name to the file, like so:
+
+.. code::
+
+    df = pd.read_csv(r'c:\users\alex\geopython\L1\global-city-population-estimates.csv', sep=';', encoding='latin1')
+
+You could also just omit the long path and use only the filename. For that the file should also be saved where you Jupyter Notebook *.ipynb is located.
+
