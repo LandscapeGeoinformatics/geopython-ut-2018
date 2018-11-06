@@ -5,7 +5,7 @@ In this lesson, we will learn how to read and write spatial data, and how to dea
 and some useful data management functionalities.
 
 1. :doc:`Git Version Control Basics <Introduction-GIT>`
-2. :doc:`Git Version Control Basics <Introduction-GIT>`
+2. :doc:`Working with an IDE (Spyder) <spyder-ide>`
 3. :doc:`Introduction to Geopandas <geopandas-basics>`
 4. :doc:`Managing map projections <projections>`
 5. :doc:`Exercise 2: Working with geometric objects <ex-2>`
