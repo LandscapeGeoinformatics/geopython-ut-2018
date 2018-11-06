@@ -26,7 +26,7 @@ Coordinate Reference Systems (CRS), also referred to as Spatial Reference System
     To be correct, WGS84, is a Geographic Coordinate System and **NOT** a projection.
 
 
-Geographic coordinate system
+Geographic coordinate system (GCS)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A geographic coordinate system uses a ellipsoidal surface to define locations on the Earth.
@@ -42,7 +42,7 @@ Both latitude and longitude are typically represented in two ways:
 - Decimal Degrees (DD) used by computers and stored as float data type, for example, 58.38667 and 26.7225
 
 
-Projected coordinate system
+Projected coordinate system (PCS)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Projected coordinate systems define a flat 2D Cartesian surface. Unlike a geographic coordinate system,
