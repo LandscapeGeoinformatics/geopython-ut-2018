@@ -29,15 +29,15 @@ The IDE "knows" about modules and will help you importing the right one, telling
 
 *Data types in Python*
 
-Python knows basic data types (such as integers or floating point numbers)
-Basic data types can be combined in lists, e.g., lst = [1, 2.3, "hi there"]
-Lists can also be nested: nested_list = [1, [2, 3]]
-List elements can be retrieved by using indices: lst[1] returns the second element (indexing starts at 0 for the first element)
+- Python knows basic data types (such as integers or floating point numbers)
+- Basic data types can be combined in lists, e.g., ``lst = [1, 2.3, "hi there"]``
+- Lists can also be nested: ``nested_list = [1, [2, 3]]``
+- List elements can be retrieved by using indices: ``lst[1]`` returns the second element (indexing starts at 0 for the first element)
+- Dictionaries are indexed lists: ``mydict = {"a" : 1984, "b": 1995}``
+- You can now use the index "b" to return the second element: ``mydict["b"]``
 
-Dictionaries are indexed lists: mydict = {"a" : 1984, "b": 1995}
-You can now use the index "b" to return the second element: mydict["b"]
-
-The IDE knows these structures and will help you type those correctly. It wlll also often be able to show you if you missed brackets or quotes.
+The IDE knows these structures and will help you type those correctly.
+It wlll also often be able to show you if you missed brackets or quotes.
 
 *Functions and scope*
 

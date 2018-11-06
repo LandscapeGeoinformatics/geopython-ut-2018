@@ -64,9 +64,9 @@ Unless multiple users make changes to the same section of the document - a confl
 A version control system is a tool that keeps track of these changes for us,
 effectively creating different versions of our files. It allows us to
 decide which changes will be made to the next version (each record of these changes is called a
-`commit <#reference_commit>`_, and keeps useful metadata about them. The
+`commit <#tracking-changes>`_, and keeps useful metadata about them. The
 complete history of commits for a particular project and their metadata make up
-a `repository <#reference_repository>`_. Repositories can be kept in sync
+a `repository <#online-git-servers>`_. Repositories can be kept in sync
 across different computers, facilitating collaboration among different people.
 
 .. note:: The Long History of Version Control Systems
@@ -82,11 +82,12 @@ across different computers, facilitating collaboration among different people.
 
 .. note:: Paper Writing
 
-    * Imagine you drafted an excellent paragraph for a paper you are writing, but later ruin it. How would you retrieve
-        the *excellent* version of your conclusion? Is it even possible?
-    * Imagine you have 5 co-authors. How would you manage the changes and comments they make to your paper?
-        If you use LibreOffice Writer or Microsoft Word, what happens if you accept changes made using the
-        ``Track Changes`` option? Do you have a history of those changes?
+    Imagine you drafted an excellent paragraph for a paper you are writing, but later ruin it. How would you retrieve
+    the *excellent* version of your conclusion? Is it even possible?
+
+    Imagine you have 5 co-authors. How would you manage the changes and comments they make to your paper?
+    If you use LibreOffice Writer or Microsoft Word, what happens if you accept changes made using the
+    ``Track Changes`` option? Do you have a history of those changes?
 
 
 Installing Git
@@ -94,8 +95,8 @@ Installing Git
 
 .. note::
 
-    In the University computer lab you DO NOT have to install Git.
-    If you are attending the course in the University computer lab, please jump to `So what is a shell? <Introduction-GIT.html#so-what-is-a-shell>`_
+    In the University computer lab you **DO NOT** have to install Git.
+    If you are attending the course in the University computer lab, please jump to `So what is a shell? <Introduction-GIT.html#id1>`_
     This section only for general info if you want to install Git on your own computer, and for remote students.
 
 Windows
@@ -252,9 +253,8 @@ only thing missing is to copy changes from one repository to another.
 Systems like Git allow us to move work between any two repositories.  In
 practice, though, it's easiest to use one copy as a central hub, and to keep it
 on the web rather than on someone's laptop.  Most programmers use hosting
-services like [GitHub](https://github.com), [BitBucket](https://bitbucket.org) or
-[GitLab](https://gitlab.com/) to hold those master copies; we'll explore the pros
-and cons of this in the final section of this lesson.
+services like `GitHub <https://github.com>`_, `BitBucket <https://bitbucket.org>`_ or
+`GitLab <https://gitlab.com/>`_ to hold those master copies`.
 
 The most popular Git server online for free and public use is `GitHub (github.com) <httpS://github.com>`_.
 
@@ -335,8 +335,7 @@ identify it:
     Where to Find Repository URL on GitHub
 
 
-Click on the 'HTTPS' link to change the `protocol <#protocol>`_ from
-SSH to HTTPS.
+Click on the 'HTTPS' link to change the protocol from SSH to HTTPS.
 
 
 HTTPS vs. SSH

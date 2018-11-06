@@ -59,7 +59,7 @@ So from the above we can see that our ``data`` -variable is a
 spatial data within pandas (hence the name geopandas). GeoDataFrame have
 some special features and functions that are useful in GIS.
 
-- Let's take a look at our data and print the first 5 rows using the ``head()`` -function prints the first 5 rows by default
+Let's take a look at our data and print the first 5 rows using the ``head()`` -function prints the first 5 rows by default
 
 .. ipython:: python
 
@@ -274,10 +274,10 @@ case since we are creating the data from the scratch:
 
     print(newdata.crs)
 
--  Let's add a crs for our GeoDataFrame. A Python module called
-   **fiona** has a nice function called ``from_epsg()`` for passing
-   coordinate system for the GeoDataFrame. Next we will use that and
-   determine the projection to WGS84 (epsg code: 4326):
+Let's add a crs for our GeoDataFrame. A Python module called
+**fiona** has a nice function called ``from_epsg()`` for passing
+coordinate system for the GeoDataFrame. Next we will use that and
+determine the projection to WGS84 (epsg code: 4326):
 
 .. ipython:: python
 
@@ -290,10 +290,8 @@ case since we are creating the data from the scratch:
     # Let's see how the crs definition looks like
     newdata.crs
 
--  Finally, we can export the data using GeoDataFrames ``.to_file()``
-   -function. The function works similarly as numpy or pandas, but here
-   we only need to provide the output path for the Shapefile. Easy isn't
-   it!:
+Finally, we can export the data using GeoDataFrames ``.to_file()`` -function.
+The function works similarly as numpy or pandas, but here we only need to provide the output path for the Shapefile:
 
 .. code:: python
 
@@ -315,12 +313,14 @@ Practical example: Save multiple Shapefiles
 -------------------------------------------
 
 One really useful function that can be used in Pandas/Geopandas is `.groupby() <http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.groupby.html>`_.
-We saw and `used this function already in Lesson 5 of the Geo-Python course <https://geo-python.github.io/2017/lessons/L6/pandas-analysis.html?highlight=group#aggregating-data-in-pandas-by-grouping>`_.
-Group by function is useful to group data based on values on selected column(s).
+With the ``Group by`` function we can group data based on values on selected column(s).
 
-- Let's group individual fish species in ``DAMSELFISH_distribution.shp`` and export to individual Shapefiles.
+Let's group individual fish species in ``DAMSELFISH_distribution.shp`` and export to individual Shapefiles.
 
-  - *Note: If your `data` -variable doesn't contain the Damselfish data anymore, read the Shapefile again into memory using `gpd.read_file()` -function*
+.. Note::
+
+    If your `data` -variable doesn't contain the Damselfish data anymore, read the Shapefile again into memory using `gpd.read_file()` -function*
+
 
 .. ipython:: python
 
@@ -330,7 +330,7 @@ Group by function is useful to group data based on values on selected column(s).
     # Let's see what we got
     grouped
 
-- ``groupby`` -function gives us an object called ``DataFrameGroupBy`` which is similar to list of keys and values (in a dictionary) that we can iterate over.
+The ``groupby`` -function gives us an object called ``DataFrameGroupBy`` which is similar to list of keys and values (in a dictionary) that we can iterate over.
 
 .. ipython:: python
 
@@ -346,7 +346,7 @@ Group by function is useful to group data based on values on selected column(s).
 From here we can see that an individual_fish variable now contains all the rows that belongs to a fish called ``Teixeirichthys jordani``. Notice that the index numbers refer to the row numbers in the
 original data -GeoDataFrame.
 
-- Let's check again the datatype of the grouped object and what does the ``key`` variable contain
+Let's check again the datatype of the grouped object and what does the ``key`` variable contain
 
 .. ipython:: python
 
@@ -355,7 +355,7 @@ original data -GeoDataFrame.
     print(key)
 
 As can be seen from the example above, each set of data are now grouped into separate GeoDataFrames that we can export into Shapefiles using the variable ``key``
-for creating the output filepath names. Here we use a specific string formatting method to produce the output filename using ``% operator`` (`read more here <https://www.learnpython.org/en/String_Formatting>`__).
+for creating the output filepath names. Here we use a specific string formatting method to produce the output filename using the ``.format()`` (`read more here (we use the new style with Python 3) <https://pyformat.info/>`_).
 Let's now export those species into individual Shapefiles.
 
 .. code:: python
@@ -375,9 +375,9 @@ Let's now export those species into individual Shapefiles.
         out_name = updated_key + ".shp"
 
         # Print some information for the user
-        print("Processing: {}".format(out_name))
+        print( "Processing: {}".format(out_name) )
 
-        # Create an output path
+        # Create an output path, we join two folder names together without using slash or back-slash -> avoiding operating system differences
         outpath = os.path.join(result_folder, out_name)
 
         # Export the data
