@@ -301,7 +301,7 @@ Let's take a look of our data and create a map, so we can see what we have now.
 .. image:: ../../_static/europe_euqdist.png
 
 
-From here we can see that indeed our map is now centered to Helsinki as the 0-position in both x and y is on top of Tartu.
+From here we can see that indeed our map is now centered to Tartu as the 0-position in both x and y is on top of Tartu.
 
 - Let's continue our analysis by creating a Point object from Tartu and insert it into a GeoPandas GeoSeries. We also specify that the CRS of the GeoSeries is WGS84. You can do this by using ``crs`` parameter when creating the GeoSeries.
 
@@ -332,7 +332,7 @@ We saw an example in an erarlier lessen/exercise where we used ``apply()`` funct
 
 In (Geo)Pandas, the ``apply()`` function takes advantage of numpy when looping, and is hence much faster
 which can give a lot of speed benefit when you have many rows to iterate over. Here, we will see how we can use that
-to calculate the distance between the centroids and Helsinki. We will create our own function to do this calculation.
+to calculate the distance between the centroids and Tartu. We will create our own function to do this calculation.
 
  - Let's first create our function called ``calculateDistance()``.
 
@@ -370,7 +370,7 @@ to calculate the distance between the centroids and Helsinki. We will create our
 
 The parameter row is used to pass the data from each row of our GeoDataFrame into our function and then the other paramaters are used for passing other necessary information for using our function.
 
-- Before using our function and calculating the distances between Helsinki and centroids, we need to get the Shapely point geometry from the re-projected Helsinki center point. We can use the ``get()`` function to retrieve a value from specific index (here index 0).
+- Before using our function and calculating the distances between Tartu and centroids, we need to get the Shapely point geometry from the re-projected Tartu center point. We can use the ``get()`` function to retrieve a value from specific index (here index 0).
 
 .. ipython:: python
 
@@ -385,9 +385,9 @@ This specifies that the calculations should be done row by row (instead of colum
    data_d = data_d.apply(calculateDistance, dest_geom=tartu_geom, src_col='country_centroid', target_col='dist_to_tartu', axis=1)
    data_d.head(20)
 
-Great! Now we have successfully calculated the distances between the Polygon centroids and Helsinki. :)
+Great! Now we have successfully calculated the distances between the Polygon centroids and Tartu. :)
 
-Let's check what is the longest and mean distance to Helsinki from the centroids of other European countries.
+Let's check what is the longest and mean distance to Tartu from the centroids of other European countries.
 
 .. ipython:: python
 
