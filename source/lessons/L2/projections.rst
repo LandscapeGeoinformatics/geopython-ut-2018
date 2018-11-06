@@ -255,7 +255,7 @@ Calculating distances
 ---------------------
 
 Let's, continue working with our ``Europe_borders.shp`` file and find out the Euclidean distances from
-the centroids of the European countries to Helsinki, Finland. We will calculate the distance between Helsinki and
+the centroids of the European countries to Tartu, Estonia. We will calculate the distance between Tartu and
 other European countries (centroids) using a metric projection (World Equidistant Cylindrical) that gives us the distance
 in meters.
 
@@ -268,7 +268,7 @@ in meters.
 
 Next we need to specify our CRS to metric system using `World Equidistant Cylindrical -projection <http://spatialreference.org/ref/esri/world-azimuthal-equidistant/>`_ where distances are represented correctly from the center longitude and latitude.
 
-- Let's specify our target location to be the coordinates of Helsinki (lon=26.7290 and lat=58.3780).
+- Let's specify our target location to be the coordinates of Tartu (lon=26.7290 and lat=58.3780).
 
 .. ipython:: python
     
@@ -276,7 +276,7 @@ Next we need to specify our CRS to metric system using `World Equidistant Cylind
     tartu_lat = 58.3780
 
 Next we need to specify a Proj4 string to reproject our data into World Equidistant Cylindrical
-in which we want to center our projection to Helsinki. We need to specify the ``+lat_0`` and ``+lon_0`` parameters in Proj4 string to do this.
+in which we want to center our projection to Tartu. We need to specify the ``+lat_0`` and ``+lon_0`` parameters in Proj4 string to do this.
 
 .. ipython:: python
 
@@ -301,9 +301,9 @@ Let's take a look of our data and create a map, so we can see what we have now.
 .. image:: ../../_static/europe_euqdist.png
 
 
-From here we can see that indeed our map is now centered to Helsinki as the 0-position in both x and y is on top of Helsinki.
+From here we can see that indeed our map is now centered to Helsinki as the 0-position in both x and y is on top of Tartu.
 
-- Let's continue our analysis by creating a Point object from Helsinki and insert it into a GeoPandas GeoSeries. We also specify that the CRS of the GeoSeries is WGS84. You can do this by using ``crs`` parameter when creating the GeoSeries.
+- Let's continue our analysis by creating a Point object from Tartu and insert it into a GeoPandas GeoSeries. We also specify that the CRS of the GeoSeries is WGS84. You can do this by using ``crs`` parameter when creating the GeoSeries.
 
 .. ipython:: python
 
@@ -316,7 +316,7 @@ From here we can see that indeed our map is now centered to Helsinki as the 0-po
    tartu = tartu.to_crs(proj4_txt)
    print(tartu)
 
-Aha! So the Point coordinates of Helsinki are 0. This confirms us that the center point of our projection is indeed Helsinki.
+Aha! So the Point coordinates of Tartu are 0. This confirms us that the center point of our projection is indeed Tartu.
 
 Next we need to calculate the centroids for all the Polygons of the European countries. This can be done easily in Geopandas by using the ``centroid`` attribute.
 
@@ -327,7 +327,7 @@ Next we need to calculate the centroids for all the Polygons of the European cou
 
 So now we have a new column ``country_centroid`` that has the Point geometries representing the centroids of each Polygon.
 
-Now we can calculate the distances between the centroids and Helsinki.
+Now we can calculate the distances between the centroids and Tartu.
 We saw an example in an erarlier lessen/exercise where we used ``apply()`` function for doing the loop instead of using the ``iterrows()`` function.
 
 In (Geo)Pandas, the ``apply()`` function takes advantage of numpy when looping, and is hence much faster
