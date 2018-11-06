@@ -84,7 +84,8 @@ that contains a Shapefile with following files:
     Europe_borders.cpg  Europe_borders.prj  Europe_borders.sbx  Europe_borders.shx
     Europe_borders.dbf  Europe_borders.sbn  Europe_borders.shp
 
-
+Changing Coordinate Reference System
+-------------
 
 GeoDataFrame that is read from a Shapefile contains *always* (well not
 always but should) information about the coordinate system in which the
