@@ -79,9 +79,13 @@ Thus, we have many columns of data, but the few important ones are:
 | Column           | Description                                             |
 +==================+=========================================================+
 | from_x           | x-coordinate of the **origin** location (longitude)     |
++------------------+---------------------------------------------------------+
 | from_y           | y-coordinate of the **origin** location (latitude)      |
++------------------+---------------------------------------------------------+
 | to_x             | x-coordinate of the **destination** location (longitude)|
++------------------+---------------------------------------------------------+
 | to_y             | y-coordinate of the **destination** location (latitude) |
++------------------+---------------------------------------------------------+
 | total_route_time | Travel time with public transportation at the route     |
 +------------------+---------------------------------------------------------+
 

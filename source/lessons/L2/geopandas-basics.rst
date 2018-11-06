@@ -26,11 +26,14 @@ Spatial data can be read easily with geopandas using ``gpd.from_file()`` -functi
     @suppress
     import gdal
     
-    # Import necessary modules
+    # Import necessary module
     import geopandas as gpd
 
-    # Set filepath (fix path relative to yours, from where your Jupyter Notebook or spyder is started)
+    # Set filepath relative to your ``geopython`` working directory, from where your Jupyter Notebook or spyder also should be started
     fp = r"L2\Data\DAMSELFISH_distributions.shp"
+
+    # or full path
+    # fp = r"C:\Users\Alex\geopython\L2\Data\DAMSELFISH_distributions.shp"
 
     @suppress
     import os
@@ -83,27 +86,27 @@ Writing a new Shapefile is also something that is needed frequently.
 
 Let's select 50 first rows of the input data and write those into a
 new Shapefile by first selecting the data using index slicing and
-then write the selection into a Shapefile with ``gpd.to_file()`` -function:
+then write the selection into a Shapefile with the ``gpd.to_file()`` -function:
 
 .. code:: python
 
     # Create a output path for the data
-    out = r"/home/geo/Data/DAMSELFISH_distributions_SELECTION.shp"
+    out_file_path = r"Data\DAMSELFISH_distributions_SELECTION.shp"
 
-    # Select first 50 rows
+    # Select first 50 rows, this a the numpy/pandas syntax to ``slice`` parts out a dataframe or array, from position 0 until (excluding) 50
     selection = data[0:50]
 
     # Write those rows into a new Shapefile (the default output file format is Shapefile)
-    selection.to_file(out)
+    selection.to_file(out_file_path)
 
-**Task:** Open the Shapefile now in QGIS that has been installed into
-our computer instance, and see how the data looks like.
+**Task:** Open the Shapefile now in QGIS (or ArcGIS) on
+your computer, and see how the data looks like.
 
 Geometries in Geopandas
 -----------------------
 
-Geopandas takes advantage of Shapely's geometric objects. Geometries are
-stored in a column called *geometry* that is a default column name for
+Geopandas takes advantage of Shapely's geometric objects. Geometries are typically
+stored in a column called *geometry* (or geom). This is a default column name for
 storing geometric information in geopandas.
 
 Let's print the first 5 rows of the column 'geometry':
@@ -247,18 +250,18 @@ Let's insert the polygon into our 'geometry' column in our GeoDataFrame:
 Now we have a GeoDataFrame with Polygon that we can export to a
 Shapefile.
 
-Let's add another column to our GeoDataFrame called ``Location`` with text *Senaatintori*.
+Let's add another column to our GeoDataFrame called ``Location`` with the text *Helsinki Senate Square*.
 
 .. ipython:: python
 
     # Add a new column and insert data
-    newdata.loc[0, 'Location'] = 'Senaatintori'
+    newdata.loc[0, 'Location'] = 'Helsinki Senate Square'
 
     # Let's check the data
     newdata
 
 Now we have additional information that is useful to be able to
-recognice what the feature represents.
+recognize what the feature represents.
 
 Before exporting the data it is useful to **determine the coordinate
 reference system (projection) for the GeoDataFrame.**
@@ -295,10 +298,10 @@ case since we are creating the data from the scratch:
 .. code:: python
 
     # Determine the output path for the Shapefile
-    outfp = r"/home/geo/Data/Senaatintori.shp"
+    out_file = r"Data\Senaatintori.shp"
 
     # Write the data into that Shapefile
-    newdata.to_file(out)
+    newdata.to_file(out_file)
 
 Now we have successfully created a Shapefile from the scratch using only
 Python programming. Similar approach can be used to for example to read
@@ -315,7 +318,7 @@ One really useful function that can be used in Pandas/Geopandas is `.groupby() <
 We saw and `used this function already in Lesson 5 of the Geo-Python course <https://geo-python.github.io/2017/lessons/L6/pandas-analysis.html?highlight=group#aggregating-data-in-pandas-by-grouping>`_.
 Group by function is useful to group data based on values on selected column(s).
 
-- Let's group individual fishes in ``DAMSELFISH_distribution.shp`` and export the species to individual Shapefiles.
+- Let's group individual fish species in ``DAMSELFISH_distribution.shp`` and export to individual Shapefiles.
 
   - *Note: If your `data` -variable doesn't contain the Damselfish data anymore, read the Shapefile again into memory using `gpd.read_file()` -function*
 
@@ -335,6 +338,7 @@ Group by function is useful to group data based on values on selected column(s).
 
     for key, values in grouped:
         individual_fish = values
+        print(key)
 
     # Let's see what is the LAST item that we iterated
     individual_fish
@@ -342,7 +346,7 @@ Group by function is useful to group data based on values on selected column(s).
 From here we can see that an individual_fish variable now contains all the rows that belongs to a fish called ``Teixeirichthys jordani``. Notice that the index numbers refer to the row numbers in the
 original data -GeoDataFrame.
 
-- Let's check the datatype of the grouped object and what does the ``key`` variable contain
+- Let's check again the datatype of the grouped object and what does the ``key`` variable contain
 
 .. ipython:: python
 
@@ -357,26 +361,28 @@ Let's now export those species into individual Shapefiles.
 .. code:: python
 
     # Determine outputpath
-    outFolder = r"/home/geo/Data"
+    out_folder = "Data"
 
     # Create a new folder called 'Results' (if does not exist) to that folder using os.makedirs() function
-    resultFolder = os.path.join(outFolder, 'Results')
-    if not os.path.exists(resultFolder):
-        os.makedirs(resultFolder)
+    result_folder = os.path.join(out_folder, 'Results')
+    if not os.path.exists(result_folder):
+        os.makedirs(result_folder)
 
     # Iterate over the
     for key, values in grouped:
         # Format the filename (replace spaces with underscores)
-        outName = "%s.shp" % key.replace(" ", "_")
+        updated_key = key.replace(" ", "_")
+        out_name = updated_key + ".shp"
 
         # Print some information for the user
-        print("Processing: %s" % key)
+        print("Processing: {}".format(out_name))
 
         # Create an output path
-        outpath = os.path.join(resultFolder, outName)
+        outpath = os.path.join(result_folder, out_name)
 
         # Export the data
         values.to_file(outpath)
 
-Now we have saved those individual fishes into separate Shapefiles and named the file according to the species name. These kind of grouping operations can be really
-handy when dealing with Shapefiles. Doing similar process manually would be really laborious and error-prone.
+Now we have saved those individual fishes into separate Shapefiles and named the file according to the species name.
+These kind of grouping operations can be really handy when dealing with Shapefiles.
+Doing similar process manually would be really laborious and error-prone.

@@ -125,6 +125,7 @@ Contents
    lessons/L2/exercise-2-hints
 
 .. commented out
+   lessons/L2/more-git-hints
    lessons/L2/lecture
    lessons/L2/using-functions
 

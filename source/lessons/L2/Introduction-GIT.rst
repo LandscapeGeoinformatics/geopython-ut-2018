@@ -709,4 +709,4 @@ You can now try programming and scripting with Spyder instead of a Jupyter noteb
 
 .. note::
 
-    Spyder has a lot of features. See https://docs.spyder-ide.org/ for more details.
+    Spyder has a lot of features. See https://docs.spyder-ide.org/editor.html for more details.

@@ -1,14 +1,18 @@
 Lesson 2 Overview
 =================
 
-In this lesson, we will learn how to read and write spatial data, and how to deal with projections in Python using `Geopandas <http://geopandas.org/>`_ -module
+In this lesson, we will learn how to read and write spatial data, and how to deal with projections in Python using the `Geopandas <http://geopandas.org/>`_ -module
 and some useful data management functionalities.
 
 1. :doc:`Git Version Control Basics <Introduction-GIT>`
-2. :doc:`Introduction to Geopandas <geopandas-basics>`
-3. :doc:`Managing map projections <projections>`
-4. :doc:`Exercise 2: Working with geometric objects <ex-2>`
-5. :doc:`Exercise 2 hints <exercise-2-hints>`
+2. :doc:`Git Version Control Basics <Introduction-GIT>`
+3. :doc:`Introduction to Geopandas <geopandas-basics>`
+4. :doc:`Managing map projections <projections>`
+5. :doc:`Exercise 2: Working with geometric objects <ex-2>`
+6. :doc:`Exercise 2 hints <exercise-2-hints>`
+
+.. comment
+    7. :doc:`More Git hints for the interested reader <more-git-hints>`
 
 Learning goals
 --------------
