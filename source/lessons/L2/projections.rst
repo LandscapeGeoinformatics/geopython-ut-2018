@@ -268,19 +268,19 @@ in meters.
 
 Next we need to specify our CRS to metric system using `World Equidistant Cylindrical -projection <http://spatialreference.org/ref/esri/world-azimuthal-equidistant/>`_ where distances are represented correctly from the center longitude and latitude.
 
-- Let's specify our target location to be the coordinates of Helsinki (lon=24.9417 and lat=60.1666).
+- Let's specify our target location to be the coordinates of Helsinki (lon=26.7290 and lat=58.3780).
 
 .. ipython:: python
-
-   hki_lon = 24.9417
-   hki_lat = 60.1666
+    
+    tartu_lon = 26.7290
+    tartu_lat = 58.3780
 
 Next we need to specify a Proj4 string to reproject our data into World Equidistant Cylindrical
 in which we want to center our projection to Helsinki. We need to specify the ``+lat_0`` and ``+lon_0`` parameters in Proj4 string to do this.
 
 .. ipython:: python
 
-   proj4_txt = '+proj=eqc +lat_ts=60 +lat_0=60.1666 +lon_0=24.9417 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs'
+   proj4_txt = '+proj=eqc +lat_ts=60 +lat_0=58.3780 +lon_0=26.7290 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs'
 
 Now we are ready to transform our ``Europe_borders.shp`` data into the desired projection. Let's create a new
 copy of our GeoDataFrame called ``data_d`` (d for 'distance').
@@ -307,14 +307,14 @@ From here we can see that indeed our map is now centered to Helsinki as the 0-po
 
 .. ipython:: python
 
-   hki = gpd.GeoSeries([Point(hki_lon, hki_lat)], crs=from_epsg(4326))
+   tartu = gpd.GeoSeries([Point(tartu_lon, tartu_lat)], crs=from_epsg(4326))
 
 - Let's convert this point to the same CRS as our Europe data is.
 
 .. ipython:: python
 
-   hki = hki.to_crs(proj4_txt)
-   print(hki)
+   tartu = tartu.to_crs(proj4_txt)
+   print(tartu)
 
 Aha! So the Point coordinates of Helsinki are 0. This confirms us that the center point of our projection is indeed Helsinki.
 
@@ -374,15 +374,15 @@ The parameter row is used to pass the data from each row of our GeoDataFrame int
 
 .. ipython:: python
 
-   hki_geom = hki.get(0)
-   print(hki_geom)
+   tartu_geom = tartu.get(0)
+   print(tartu_geom)
 
 Now we are ready to use our function with ``apply()`` function. When using the function, it is important to specify that the ``axis=1``.
 This specifies that the calculations should be done row by row (instead of column-wise).
 
 .. ipython:: python
 
-   data_d = data_d.apply(calculateDistance, dest_geom=hki_geom, src_col='country_centroid', target_col='dist_to_Hki', axis=1)
+   data_d = data_d.apply(calculateDistance, dest_geom=tartu_geom, src_col='country_centroid', target_col='dist_to_tartu', axis=1)
    data_d.head(20)
 
 Great! Now we have successfully calculated the distances between the Polygon centroids and Helsinki. :)
@@ -391,8 +391,8 @@ Let's check what is the longest and mean distance to Helsinki from the centroids
 
 .. ipython:: python
 
-   max_dist = data_d['dist_to_Hki'].max()
-   mean_dist = data_d['dist_to_Hki'].mean()
+   max_dist = data_d['dist_to_tartu'].max()
+   mean_dist = data_d['dist_to_tartu'].mean()
    print("Maximum distance to Helsinki is {:.2f} km, and the mean distance is {:.2f} km.".format(max_dist, mean_dist))
 
 It seems that the Finns in the North are fairly far away from all other European countries as the mean distance to other countries is 1185 kilometers.
