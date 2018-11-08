@@ -381,7 +381,7 @@ Let's check what is the longest and mean distance to Tartu from the centroids of
    mean_dist = data_d['dist_to_tartu'].mean()
    print("Maximum distance to Tartu is {:.2f} km, and the mean distance is {:.2f} km.".format(max_dist, mean_dist))
 
-It seems that Estonia is fairly far away from all other European countries as the mean distance to other countries is 1253 kilometers.
+
 
 .. note::
 
