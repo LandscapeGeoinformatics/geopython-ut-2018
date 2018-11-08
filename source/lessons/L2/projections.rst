@@ -242,7 +242,7 @@ Calculating distances
 
 Let's, continue working with our ``Europe_borders.shp`` file and find out the Euclidean distances from
 the centroids of the European countries to Tartu, Estonia. We will calculate the distance between Tartu and
-other European countries (centroids) using a metric projection (World Equidistant Cylindrical) that gives us the distance
+other European countries (centroids) using a metric projection (World Azimuthal Equidistant) that gives us the distance
 in meters.
 
 - Let's first import necessary packages.
@@ -261,8 +261,8 @@ Next we need to specify our CRS to metric system using `World Azimuthal Equidist
     tartu_lon = 26.7290
     tartu_lat = 58.3780
 
-Next we need to specify a Proj4 string to reproject our data into World Equidistant Cylindrical
-in which we want to center our projection to Tartu. We need to specify the ``+lat_0`` and ``+lon_0`` parameters in Proj4 string to do this.
+Next we need to specify a Proj4 string to reproject our data into World Azimuthal Equidistant
+in which we also want to center our projection to Tartu. We need to specify the ``+lat_0`` and ``+lon_0`` parameters in Proj4 string to do this.
 
 .. ipython:: python
 
