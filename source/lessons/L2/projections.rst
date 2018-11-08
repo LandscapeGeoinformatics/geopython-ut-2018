@@ -280,6 +280,7 @@ Let's take a look of our data and create a map, so we can see what we have now.
 .. ipython:: python
 
    data_d.plot(facecolor='purple');
+   plt.title("World Azimuthal Equidistant, centred on Tartu");
    @savefig europe_euqdist.png width=4.5in
    plt.tight_layout();
 
