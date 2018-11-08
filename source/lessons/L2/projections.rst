@@ -227,7 +227,7 @@ Finally, let's save our projected layer into a Shapefile so that we can use it l
 .. note::
 
    On Windows, the prj -file might NOT update with the new CRS value when using the ``from_epsg()`` -function. If this happens
-   it is possible to fix the prj by passing the coordinate reference information as proj4 text, like following.
+   it is possible to fix the prj by passing the coordinate reference information as proj4 text for EPSG:3035, like following.
 
    .. ipython:: python
 
@@ -252,7 +252,7 @@ in meters.
     from shapely.geometry import Point
     from fiona.crs import from_epsg
 
-Next we need to specify our CRS to metric system using `World Equidistant Cylindrical -projection <http://spatialreference.org/ref/esri/world-azimuthal-equidistant/>`_ where distances are represented correctly from the center longitude and latitude.
+Next we need to specify our CRS to metric system using `World Azimuthal Equidistant -projection <https://epsg.io/54032>`_ where distances are represented correctly from the center longitude and latitude.
 
 - Let's specify our target location to be the coordinates of Tartu (lon=26.7290 and lat=58.3780).
 
@@ -266,7 +266,7 @@ in which we want to center our projection to Tartu. We need to specify the ``+la
 
 .. ipython:: python
 
-   proj4_txt = '+proj=eqc +lat_ts=60 +lat_0=58.3780 +lon_0=26.7290 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs'
+   proj4_txt = '+proj=aeqd +lat_0=58.3780 +lon_0=26.7290 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs'
 
 Now we are ready to transform our ``Europe_borders.shp`` data into the desired projection. Let's create a new
 copy of our GeoDataFrame called ``data_d`` (d for 'distance').
