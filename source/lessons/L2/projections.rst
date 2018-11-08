@@ -219,10 +219,10 @@ Finally, let's save our projected layer into a Shapefile so that we can use it l
 .. code:: python
 
     # Ouput file path
-    outfp = r"/home/geo/Europe_borders_epsg3035.shp"
+    out_fp = r"Data\Europe_borders_epsg3035.shp"
     
     # Save to disk
-    data_proj.to_file(outfp)
+    data_proj.to_file(out_fp)
 
 .. note::
 
