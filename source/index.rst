@@ -62,9 +62,8 @@ The materials are divided into several sections:
 |                | Managing projections;           |
 |                |                                 |
 +----------------+---------------------------------+
-| **Lesson 3**   | Geocoding and making spatial    |
-|                | queries                         |
-|                | Table join;                     |
+| **Lesson 3**   | making spatial queries          |
+|                | and joins;                      |
 |                |                                 |
 +----------------+---------------------------------+
 | **Lesson 4**   | Geometric operations;           |

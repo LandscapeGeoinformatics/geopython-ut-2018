@@ -133,12 +133,12 @@ Contents
    lessons/L3/overview
    lessons/L3/point-in-polygon
    lessons/L3/spatial-join
-   lessons/L3/ex-3
-   lessons/L3/exercise-3-hints
    lessons/L3/lecture
 
 .. commented out
    lessons/L3/nearest-neighbour
+   lessons/L3/ex-3
+   lessons/L3/exercise-3-hints
 
 .. toctree::
    :maxdepth: 2

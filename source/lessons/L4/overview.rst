@@ -19,7 +19,6 @@ After this lesson's lesson you should be able to:
 
  - Aggregate data, i.e. merge geometric objects together, based on some common identifier.
 
- - Simplify geometries
 
 Sources
 -------

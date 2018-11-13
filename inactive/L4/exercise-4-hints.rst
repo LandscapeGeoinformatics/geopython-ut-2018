@@ -5,7 +5,6 @@ General
 -------
 
 - Documentation of the Travel Time Matrix dataset and explanation for different column names can be found at the Accessibility Research Group website: `Helsinki Region Travel Time Matrix 2015 <http://blogs.helsinki.fi/accessibility/helsinki-region-travel-time-matrix-2015>`__
-- If visualizing takes for ever (as computer instance can be a bit slow), it is enough that you visualize only one map using plotting in Geopandas. If it is really slow, you can do the visualization also using the QGIS in the computer instance or even ArcGIS in the GIS-lab.
 
 Problem 1
 ---------
@@ -16,6 +15,15 @@ Problem 1
 - See hints for joining the travel time data to the grid shapefile from our earlier materials from first period (Geo-Python course): `Table join <https://geo-python.github.io/2017/lessons/L6/exercise-6-hints.html?highlight=merge#joining-data-from-one-dataframe-to-another>`__
 - Plotting the data takes a while (be patient!)
 
+Problem 2
+---------
+
+**General steps**:
+
+ 1. Read the files and prepare a single DataFrame where you have travel times for all shopping centers
+ 2. Find out for each row what is the minimum travel time from those shopping centers
+ 3. Find out for each row what is the column name of that shopping center that had the minimum travel time
+ 4. Make maps from the results
 
 Reading multiple files efficiently
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -94,4 +102,4 @@ It is also possible to find out which column contains that value by applying ``.
     closest_center = row[value_columns].idxmin()
 
 In order to calculate the results for each row, you can take advantage of the `.iterrows()` and `.loc()` -functions in (geo)pandas.
-We already practiced these functions before.
+See example from Geo-Python course: `Lesson 5: Selecting data <https://geo-python.github.io/2017/lessons/L5/pandas-basic-operations.html#selecting-data-using-indices>`__

@@ -297,7 +297,7 @@ Let's finally confirm that our Point in Polygon query worked as it should by plo
 
 .. ipython:: python
 
-   southern = polys.ix[polys['Name']=='Eteläinen']
+   southern = polys.loc[polys['Name']=='Eteläinen']
    southern.reset_index(drop=True, inplace=True)
    fig, ax = plt.subplots()
    polys.plot(ax=ax, facecolor='gray');

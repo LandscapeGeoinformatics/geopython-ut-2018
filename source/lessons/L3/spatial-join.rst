@@ -209,7 +209,7 @@ points where color intensity indicates the population numbers.
     import matplotlib.pyplot as plt
 
     # Plot the points with population info
-    join.plot(column='pop15', cmap="Reds", markersize=7, scheme='natural_breaks', legend=True);
+    join.plot(column='pop15', cmap="Reds", markersize=7, scheme='fisher_jenks', legend=True);
 
     # Add title
     plt.title("Amount of inhabitants living close the the point");
