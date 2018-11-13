@@ -93,6 +93,7 @@ Different variants to join two list
 - the special Python zip method (imagine a zipper):
 
 .. code::
+
     # zipped variable here is in a state of waiting to be iterated over, zipped itself is not yet a list again
     zipped = zip(list_1, list_2)
     # trying to make a python list out of something list-like or something that can be iterated over

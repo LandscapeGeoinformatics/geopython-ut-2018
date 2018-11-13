@@ -2,19 +2,19 @@
 Spatial join
 ============
 
-`Spatial join <http://wiki.gis.com/wiki/index.php/Spatial_Join>`__ is
+`Spatial join <http://wiki.gis.com/wiki/index.php/Spatial_Join>`_ is
 yet another classic GIS problem. Getting attributes from one layer and
 transferring them into another layer based on their spatial relationship
 is something you most likely need to do on a regular basis.
 
-The previous materials focused on learning how to perform a `Point in Polygon query <Lesson3-point-in-polygon.html#how-to-check-if-point-is-inside-a-polygon>`__.
+The previous materials focused on learning how to perform a `Point in Polygon query <point-in-polygon.html>`_.
 We could now apply those techniques and create our
 own function to perform a spatial join between two layers based on their
 spatial relationship. We could for example join the attributes of a
 polygon layer into a point layer where each point would get the
 attributes of a polygon that ``contains`` the point.
 
-Luckily, `spatial join <http://geopandas.org/mergingdata.html#spatial-joins>`__
+Luckily, `spatial join <http://geopandas.org/mergingdata.html#spatial-joins>`_
 (``gpd.sjoin()`` -function) is already implemented in Geopandas, thus we
 do not need to create it ourselves. There are three possible types of
 join that can be applied in spatial join that are determined with ``op``
@@ -25,49 +25,44 @@ join that can be applied in spatial join that are determined with ``op``
 -  ``"contains"``
 
 Sounds familiar? Yep, all of those spatial relationships were discussed
-in the `previous materials <Lesson3-point-in-polygon.html>`__, thus you should know how they work.
+in the `previous materials <point-in-polygon.html>`_, thus you should know how they work.
 
-Let's perform a spatial join between the address-point Shapefile that we
-`created <Lesson3-table-join.html>`__ and then `reprojected <Lesson3-projections.html>`__
-and a Polygon layer that is a
+Let's perform a spatial join between the address-point `Shapefile (addresses.shp) <../../_static/data/L3/addresses.zip>`_ that we
+already used before and a Polygon layer that is a
 250m x 250m grid showing the amount of people living in Helsinki Region.
+
 
 Download and clean the data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For this lesson we will be using publicly available population data from
 Helsinki that can be downloaded from `Helsinki Region Infroshare
-(HRI) <http://www.hri.fi/en/dataset/vaestotietoruudukko>`__ which is an
-excellent source that provides all sorts of open data from Helsinki,
-Finland.
+(HRI) <http://www.hri.fi/en/dataset/vaestotietoruudukko>`_ .
 
-From HRI **download a** `Population grid for year
-2015 <https://www.hsy.fi/sites/AvoinData/AvoinData/SYT/Tietoyhteistyoyksikko/Shape%20(Esri)/V%C3%A4est%C3%B6tietoruudukko/Vaestotietoruudukko_2015.zip>`__
+From HRI **download ** the `Population grid for year
+2015 <https://www.hsy.fi/sites/AvoinData/AvoinData/SYT/Tietoyhteistyoyksikko/Shape%20(Esri)/V%C3%A4est%C3%B6tietoruudukko/Vaestotietoruudukko_2015.zip>`_
 that is a dataset (.shp) produced by Helsinki Region Environmental
 Services Authority (HSY) (see `this
-page <https://www.hsy.fi/fi/asiantuntijalle/avoindata/Sivut/AvoinData.aspx?dataID=7>`__
+page <https://www.hsy.fi/fi/asiantuntijalle/avoindata/Sivut/AvoinData.aspx?dataID=7>`_
 to access data from different years).
 
--  Unzip the file in Terminal into a folder called Pop15 (using -d flag)
+-  Unzip the file into a folder called Pop15 (using -d flag)
 
-.. code:: bash
+.. code::
 
-    $ cd
-    $ unzip Vaestotietoruudukko_2015.zip -d Pop15
-    $ ls Pop15
     Vaestotietoruudukko_2015.dbf  Vaestotietoruudukko_2015.shp
     Vaestotietoruudukko_2015.prj  Vaestotietoruudukko_2015.shx
 
-You should now have a folder ``/home/geo/Pop15`` with files listed
-above.
+You should now have the files listed above in your Data folder.
 
--  Let's read the data into memory and see what we have.
+-  Let's read the data into geopandas and see what we have.
 
 .. ipython:: python
   :suppress:
 
     import os
     import gdal
+    import geopandas as gpd
     fp = os.path.join(os.path.abspath('data'), "Vaestotietoruudukko_2015.shp")
     pop = gpd.read_file(fp)
 
@@ -76,7 +71,7 @@ above.
     import geopandas as gpd
 
     # Filepath
-    fp = "/home/geo/Pop15/Vaestotietoruudukko_2015.shp"
+    fp = fp = r"Data\Vaestotietoruudukko_2015.shp"
 
     # Read the data
     pop = gpd.read_file(fp)
@@ -133,8 +128,8 @@ addresses point layer ``addresses_epsg3879.shp``.
 
 .. ipython:: python
 
-    # Addresses filpath
-    addr_fp = r"/home/geo/addresses_epsg3879.shp"
+    # Addresses file path
+    addr_fp = r"Data\addresses.shp"
 
     @suppress
     import os
@@ -143,11 +138,17 @@ addresses point layer ``addresses_epsg3879.shp``.
     "NOTICE: Following is the real path to the data, the one above is for online documentation to reflect the situation at computing instance"
 
     @suppress
-    addr_fp = os.path.join(os.path.abspath('data'), "addresses_epsg3879.shp")
+    addr_fp = os.path.join(os.path.abspath('data'), "addresses.shp")
     
     # Read data
     addresses = gpd.read_file(addr_fp)
-    
+
+    # Check the crs of population layer, it's not immediately visiable, but it is EPSG 3879
+    pop.crs
+
+    # So we need to reproject the geometries to make them comparable
+    addresses = addresses.to_crs(pop.crs)
+
     # Check the head of the file
     addresses.head(2)
 
@@ -165,7 +166,7 @@ addresses point layer ``addresses_epsg3879.shp``.
     # Do they match? - We can test that
     addresses.crs == pop.crs
 
-Indeed they are identical. Thus, we can be sure that when doing spatial
+They are identical. Thus, we can be sure that when doing spatial
 queries between layers the locations match and we get the right results
 e.g. from the spatial join that we are conducting here.
 
@@ -191,7 +192,7 @@ located.
 .. code:: python
 
     # Output path
-    outfp = r"/home/geo/addresses_pop15_epsg3979.shp"
+    outfp = r"Data\addresses_pop15_projected.shp"
     
     # Save to disk
     join.to_file(outfp)
@@ -216,6 +217,9 @@ points where color intensity indicates the population numbers.
     # Remove white space around the figure
     @savefig population_points.png width=7in
     plt.tight_layout()
+
+
+.. image:: ../../_static/population_points.png
 
 By knowing approximately how population is distributed in Helsinki, it
 seems that the results do make sense as the points with highest

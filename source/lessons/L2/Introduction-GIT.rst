@@ -345,7 +345,7 @@ We use HTTPS here because it does not require additional configuration.  If you 
 following one of the great tutorials from
 `GitHub <https://help.github.com/articles/generating-ssh-keys>`_,
 `Atlassian/BitBucket <https://confluence.atlassian.com/display/BITBUCKET/Set+up+SSH+for+Git>`_
-and `GitLab <https://about.gitlab.com/2014/03/04/add-ssh-key-screencast/>`_
+and `GitLab video <https://about.gitlab.com/2014/03/04/add-ssh-key-screencast/>`_
 (this one has a screencast).
 
 .. figure:: img/github-change-repo-string.png

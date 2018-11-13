@@ -15,21 +15,21 @@ How to check if point is inside a polygon?
 
 Computationally, detecting if a point is inside a polygon is most
 commonly done using a specific formula called `Ray Casting
-algorithm <https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm>`__.
+algorithm <https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm>`_.
 Luckily, we do not need to create such a function ourselves for
 conducting the Point in Polygon (PIP) query. Instead, we can take
 advantage of `Shapely's binary
-predicates <http://toblerity.org/shapely/manual.html#binary-predicates>`__
+predicates <http://toblerity.org/shapely/manual.html#binary-predicates>`_
 that can evaluate the topolocical relationships between geographical
 objects, such as the PIP as we're interested here.
 
 There are basically two ways of conducting PIP in Shapely:
 
 1. using a function called
-   `.within() <http://toblerity.org/shapely/manual.html#object.within>`__
+   `.within() <http://toblerity.org/shapely/manual.html#object.within>`_
    that checks if a point is within a polygon
 2. using a function called
-   `.contains() <http://toblerity.org/shapely/manual.html#object.contains>`__
+   `.contains() <http://toblerity.org/shapely/manual.html#object.contains>`_
    that checks if a polygon contains a point
 
 Notice: even though we are talking here about **Point** in Polygon
@@ -108,25 +108,20 @@ Thus, both ways of checking the spatial relationship results in the same way.
 
 Which one should you use then? Well, it depends:
 
--  if you have many points and just one polygon and you try to find out
-   which one of them is inside the polygon:
+- if you have many points and just one polygon and you try to find out which one of them is inside the polygon:
+- you need to iterate over the points and check one at a time if it is **within()** the polygon specified
 
-   -  you need to iterate over the points and check one at a time if it
-      is **within()** the polygon specified
 
--  if you have many polygons and just one point and you want to find out
-   which polygon contains the point
+- if you have many polygons and just one point and you want to find out which polygon contains the point
+- you need to iterate over the polygons until you find a polygon that **contains()** the point specified (assuming there are no overlapping polygons)
 
-    -  you need to iterate over the polygons until you find a polygon that
-       **contains()** the point specified (assuming there are no overlapping
-       polygons)
 
 Intersect
 ---------
 
 Another typical geospatial operation is to see if a geometry
-`intersect <http://toblerity.org/shapely/manual.html#object.intersects>`__
-or `touches <http://toblerity.org/shapely/manual.html#object.touches>`__
+`intersect <http://toblerity.org/shapely/manual.html#object.intersects>`_
+or `touches <http://toblerity.org/shapely/manual.html#object.touches>`_
 another one. The difference between these two is that:
 
 -  if objects intersect, the boundary and interior of an object needs to
@@ -194,18 +189,19 @@ However, if the lines overlap fully, they don't touch due to the spatial relatio
     # Does the line intersect with itself?
     line_a.intersects(line_a)
 
+
 Point in Polygon using Geopandas
 --------------------------------
 
-Next we will do a practical example where we check which of the addresses from `previous tutorial <https://automating-gis-processes.github.io/2017/lessons/L3/geocoding.html>`__ are located in Southern district of Helsinki.
-Let's start by `downloading a KML-file <../../_static/data/L3/PKS_suuralue.kml>`__ that has the Polygons for districts of Helsinki Region (data openly available from `Helsinki Region Infoshare <http://www.hri.fi/fi/dataset/paakaupunkiseudun-aluejakokartat>`__).
+Next we will do a practical example where we check which of the addresses from `a prepared addresses shapefile addresses.shp <../../_static/data/L3/addresses.zip>`_ are located in Southern district of Helsinki,
+by cross-checking with a polygon from `a KML-file <../../_static/data/L3/PKS_suuralue.kml>`_ . The Polygons is for districts of Helsinki Region (data openly available from `Helsinki Region Infoshare <http://www.hri.fi/fi/dataset/paakaupunkiseudun-aluejakokartat>`_).
 
-- Let's start by reading the addresses from the Shapefile that we saved earlier.
+- Let's start by reading the addresses from the Shapefile.
 
 .. code:: python
 
    import geopandas as gpd
-   fp = "/home/geo/addresses.shp"
+   fp = r"Data\addresses.shp"
    data = gpd.read_file(fp)
 
 .. ipython:: python
@@ -215,6 +211,7 @@ Let's start by `downloading a KML-file <../../_static/data/L3/PKS_suuralue.kml>`
       import geopandas as gpd
       fp = os.path.join(os.path.abspath('data'), "addresses.shp")
       data = gpd.read_file(fp)
+
 
 Reading KML-files in Geopandas
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -236,7 +233,7 @@ Now we should be able to read a KML file with Geopandas.
 .. code:: python
 
    # Filepath to KML file
-   fp = "/home/geo/PKS_suuralue.kml"
+   fp = r"Data\PKS_suuralue.kml"
 
 .. ipython:: python
    :suppress:
@@ -246,7 +243,7 @@ Now we should be able to read a KML file with Geopandas.
 .. ipython:: python
 
    polys = gpd.read_file(fp, driver='KML')
-   polys
+   polys.head(5)
 
 Nice, now we can see that we have 22 districts in our area. We are interested in an area that is called ``Eteläinen`` (*'Southern'* in english).
 
@@ -254,7 +251,7 @@ Nice, now we can see that we have 22 districts in our area. We are interested in
 
 .. ipython:: python
 
-   southern = polys.ix[polys['Name']=='Eteläinen']
+   southern = polys.loc[polys['Name']=='Eteläinen']
    southern.reset_index(drop=True, inplace=True)
    fig, ax = plt.subplots()
    polys.plot(ax=ax, facecolor='gray');
@@ -262,6 +259,9 @@ Nice, now we can see that we have 22 districts in our area. We are interested in
    data.plot(ax=ax, color='blue', markersize=5);
    @savefig helsinki_districts.png width=7in
    plt.tight_layout();
+
+
+.. image:: ../../_static/helsinki_districts.png
 
 Okey, so we can see that, indeed, certain points are within the selected red Polygon.
 
@@ -306,4 +306,8 @@ Let's finally confirm that our Point in Polygon query worked as it should by plo
    @savefig helsinki_districts_pip.png width=7in
    plt.tight_layout();
 
-Perfect! Now we only have the (golden) points that, indeed, are inside the red Polygon which is exactly what we wanted!
+
+.. image:: ../../_static/helsinki_districts_pip.png
+
+
+Now we only have the (golden) points that, indeed, are inside the red Polygon which is exactly what we wanted!

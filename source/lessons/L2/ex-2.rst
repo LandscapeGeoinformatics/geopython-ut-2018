@@ -35,6 +35,7 @@ The problem 2 this lesson continues the process that we started last lesson, i.e
 Here our aim is to plot a set of x and y coordinates that we should read from the `**some_posts.csv** <../../_static/exercises/Exercise-2/data/some_posts.csv>`_ comma separated file that contains following kind of data:
 
 .. code::
+
     lat,lon,timestamp,userid
     -24.980792492,31.484633302,2015-07-07 03:02,66487960
     -25.499224667,31.508905612,2015-07-07 03:18,65281761
