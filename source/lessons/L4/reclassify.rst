@@ -469,6 +469,56 @@ Great, now we have those values in our population GeoDataFrame. Let's visualize 
 
 .. image:: ../../_static/natural_breaks_population.png
 
+
+Now we have the plot, but it would be great to know the actual class ranges for the values.
+In order to get the min() and max() per class group, we use **groupby** again.
+
+
+.. ipython:: python
+
+    grouped = acc.groupby('population_classes')
+
+    # legend_dict = { 'class from to' : 'white'}
+    legend_dict = {}
+
+    for cl, valds in grouped:
+        minv = valds['population_int'].min()
+        maxv = valds['population_int'].max()
+        print("Class {}: {} - {}".format(cl, minv, maxv))
+
+
+And in order to add our custom legend info to the plot, we need to employ a bit more of Python's matplotlib magic:
+
+.. ipython:: python
+
+    import matplotlib.patches as mpatches
+    import matplotlib.pyplot as plt
+
+    # legend_dict, a dictionary that holds our class description and gives it a colour on the legend (we leave it "background" white for now)
+    legend_dict = {}
+    #
+    for cl, valds in grouped:
+        minv = valds['population_int'].min()
+        maxv = valds['population_int'].max()
+        legend_dict["Class {}: {} - {}".format(cl, minv, maxv)] = "white"
+    # Plot preps for several plot into one figure
+    fig, ax = plt.subplots()
+    # plot the dataframe, with the natural breaks colour scheme
+    acc.plot(ax=ax, column="population_classes", linewidth=0, legend=True);
+    # the custom "patches" per legend entry of our additional labels
+    patchList = []
+    for key in legend_dict:
+            data_key = mpatches.Patch(color=legend_dict[key], label=key)
+            patchList.append(data_key)
+    # plot the custom legend
+    plt.legend(handles=patchList, loc='lower center', bbox_to_anchor=(0.5, -0.5), ncol=1)
+    @savefig natural_breaks_population_extra_labels.png width=7in
+    plt.tight_layout()
+
+.. image:: ../../_static/natural_breaks_population_extra_labels.png
+
+
+
 .. todo::
 
    **Task:**
