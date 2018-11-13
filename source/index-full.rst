@@ -116,12 +116,15 @@ Contents
 
    lessons/L2/overview
    lessons/L2/Introduction-GIT
+   lessons/L2/spyder-ide
    lessons/L2/geopandas-basics
    lessons/L2/projections
-   lessons/L2/using-functions
    lessons/L2/ex-2
    lessons/L2/exercise-2-hints
    lessons/L2/lecture
+
+.. commented out
+   lessons/L2/more-git-hints
 
 .. toctree::
    :maxdepth: 2

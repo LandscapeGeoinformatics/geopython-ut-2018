@@ -56,8 +56,10 @@ geo.loc[0, 'geometry'] = poly
 # Note: you do not need to define the coordinate reference system at this time
 
 
-# P6. Plot the polygon using taking advantage of the .plot() -function in GeoDataFrame. Save a PNG figure out of your plot and upload it to your GitHub repository.
-# -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+# P6. Plot the polygon using taking advantage of the .plot() -function in GeoDataFrame. Save a PNG figure out of your plot.
+# -------------------------------------------------------------------------------------------------------------------------
+
+
 
 
 

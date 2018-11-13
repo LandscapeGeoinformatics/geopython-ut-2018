@@ -60,11 +60,11 @@ The materials are divided into several sections:
 |                | Working with GeoDataFrames;     |
 |                | Working with an IDE (Spyder);   |
 |                | Managing projections;           |
-|                | Table join;                     |
 |                |                                 |
 +----------------+---------------------------------+
 | **Lesson 3**   | Geocoding and making spatial    |
 |                | queries                         |
+|                | Table join;                     |
 |                |                                 |
 +----------------+---------------------------------+
 | **Lesson 4**   | Geometric operations;           |
@@ -127,7 +127,6 @@ Contents
 .. commented out
    lessons/L2/more-git-hints
    lessons/L2/lecture
-   lessons/L2/using-functions
 
 .. toctree::
    :maxdepth: 2
@@ -137,12 +136,16 @@ Contents
 
 .. commented out
    lessons/L3/overview
-   lessons/L3/geocoding
    lessons/L3/point-in-polygon
    lessons/L3/spatial-join
    lessons/L3/nearest-neighbour
+
+.. commented out
    lessons/L3/ex-3
    lessons/L3/exercise-3-hints
+   lessons/L3/geocoding
+
+
    lessons/L3/lecture
 
 .. toctree::
@@ -157,6 +160,8 @@ Contents
    lessons/L4/geometric-operations
    lessons/L4/ex-4
    lessons/L4/exercise-4-hints
+
+.. commented out
    lessons/L4/lecture
 
 .. toctree::

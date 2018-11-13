@@ -27,7 +27,7 @@ Coordinate Reference Systems (CRS), also referred to as Spatial Reference System
 
 
 Geographic coordinate system (GCS)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A geographic coordinate system uses a ellipsoidal surface to define locations on the Earth.
 There are three parts to a geographic coordinate system:
@@ -43,7 +43,7 @@ Both latitude and longitude are typically represented in two ways:
 
 
 Projected coordinate system (PCS)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Projected coordinate systems define a flat 2D Cartesian surface. Unlike a geographic coordinate system,
 a projected coordinate system has constant lengths, angles, and areas across the two dimensions.
@@ -57,7 +57,7 @@ Projected Coordinate Systems consist of:
 - Linear units (meters, kilometers, miles etc)
 
 Defining and changing CRSs in Geopandas
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Luckily, defining and changing CRSs is easy in Geopandas. In this tutorial we will see how to retrieve the
 coordinate reference system information from the data, and how to change it. We will re-project a data file from
@@ -85,7 +85,7 @@ that contains a Shapefile with following files:
     Europe_borders.dbf  Europe_borders.sbn  Europe_borders.shp
 
 Changing Coordinate Reference System
--------------
+------------------------------------
 
 GeoDataFrame that is read from a Shapefile contains *always* (well not
 always but should) information about the coordinate system in which the
