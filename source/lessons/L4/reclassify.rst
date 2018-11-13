@@ -18,15 +18,15 @@ The purpose of this lesson is to see how we can reclassify values based on some 
     IF NOT TRUE: ==> I go and enjoy my beer inside at a table
 
 Even though, the above would be an interesting study case, we will use slightly more traditional cases to learn classifications.
-We will use Corine land cover layer from year 2012, and a Travel Time Matrix data from Helsinki to classify some features of them based on our own
+We will use Corine land cover layer from year 2012, and a Population Matrix data from Estonia to classify some features of them based on our own
 self-made classifier, or using a ready made classifiers that are commonly used e.g. when doing visualizations.
 
 The target in this part of the lesson is to:
 
-1. classify the lakes into big and small lakes where
+1. classify the bogs into big and small bogs where
 
-    - a big lake is a lake that is larger than the average size of all lakes in our study region
-    - a small lake ^ vice versa
+    - a big bog is a bog that is larger than the average size of all bogs in our study region
+    - a small bog ^ vice versa
 
 2. use travel times and distances to find out
 
@@ -38,27 +38,26 @@ The target in this part of the lesson is to:
 Download data
 -------------
 
-Download (and then extract) the dataset zip-package used during this lesson `from this link <https://github.com/Automating-GIS-processes/Lesson-4-Classification-overlay/raw/master/data/data.zip>`_.
+Download (and then extract) the dataset zip-package used during this lesson `from this link <../../_static//L4/L4.zip>`_.
 
 You should have following Shapefiles in the ``data`` folder:
 
-.. code:: bash
+.. code::
 
-   $ cd /home/geo/L4/data
-   $ ls
-   Corine2012_Uusimaa.cpg      Helsinki_borders.cpg                       TravelTimes_to_5975375_RailwayStation.dbf
-   Corine2012_Uusimaa.dbf      Helsinki_borders.dbf                       TravelTimes_to_5975375_RailwayStation.prj
-   Corine2012_Uusimaa.prj      Helsinki_borders.prj                       TravelTimes_to_5975375_RailwayStation.shp
-   Corine2012_Uusimaa.shp      Helsinki_borders.shp                       TravelTimes_to_5975375_RailwayStation.shx
-   Corine2012_Uusimaa.shp.xml  Helsinki_borders.shx
-   Corine2012_Uusimaa.shx      TravelTimes_to_5975375_RailwayStation.cpg
+    corine_legend/    corine_tartu.shp            population_admin_units.prj
+    corine_tartu.cpg  corine_tartu.shp.xml        population_admin_units.sbn
+    corine_tartu.dbf  corine_tartu.shx            population_admin_units.sbx
+    corine_tartu.prj  L4.zip                      population_admin_units.shp
+    corine_tartu.sbn  population_admin_units.cpg  population_admin_units.shp.xml
+    corine_tartu.sbx  population_admin_units.dbf  population_admin_units.shx
+
 
 Data preparation
 ----------------
 
 Before doing any classification, we need to prepare our data a little bit.
 
-Let's read the data in and select only English columns from it and plot our data so that we can see how it looks like on a map.
+Let's read the data in and have a look at the columnsand plot our data so that we can see how it looks like on a map.
 
 .. ipython:: python
     :suppress:
@@ -68,68 +67,133 @@ Let's read the data in and select only English columns from it and plot our data
       import matplotlib.pyplot as plt
       import os
 
-      fp = os.path.join(os.path.abspath('data'), "Corine2012_Uusimaa.shp")
+      fp = os.path.join(os.path.abspath('data'), "corine_tartu.shp")
       data = gpd.read_file(fp)
+
+      import pandas as pd
+      fp2 = os.path.join(os.path.abspath('data'), "corine_legend")
+      fp_clc = os.path.join(fp2, "clc_legend.csv")
+      data_legend = pd.read_csv(fp_clc, sep=';', encoding='latin1')
+
+
 
 .. code::
 
+   import pandas as pd
    import geopandas as gpd
    import matplotlib.pyplot as plt
 
    # File path
-   fp = "/home/data/Corine2012_Uusimaa.shp"
+   fp = r"Data\corine_tartu.shp"
 
    data = gpd.read_file(fp)
+
+   import pandas as pd
+   fp_clc = r"Data\corine_legend\clc_legend.csv"
+   data_legend = pd.read_csv(fp_clc, sep=';', encoding='latin1')
 
 Let's see what we have.
 
 .. ipython:: python
 
-   data.head(2)
+   data.head(5)
 
-Let's select only English columns
+We see that the Land Use in column "code_12" is numerical and we don't know right now what that means.
+So we should at first join the "clc_legend" in order to know what the codes mean:
+
+.. code::
+
+   import pandas as pd
+   import geopandas as gpd
+   import matplotlib.pyplot as plt
+
+   # File path
+   fp = r"Data\corine_tartu.shp"
+
+   data = gpd.read_file(fp)
+
+   import pandas as pd
+   fp_clc = r"Data\corine_legend\clc_legend.csv"
+   data_legend = pd.read_csv(fp_clc, sep=';', encoding='latin1')
+   data_legend.head(5)
+
+
+We could now try to merge / join the two dataframes, ideally by the 'code_12' column of "data" and the "CLC_CODE" of "data_legend".
+
+.. code::
+
+    display(data.dtypes)
+    display(data_legend.dtypes)
+    data = data.merge(data_legend, how='inner', left_on='code_12', right_on='CLC_CODE'))
+
+But if we try, we will receive an error telling us that the columns are of different data type and therefore can't be used as join-index.
+So we have to add a column where have the codes in the same type. I am choosing to add a column on "data", where we transform the String/Text based "code_12" into an integer number.
 
 .. ipython:: python
 
-   # Select only English columns
-   selected_cols = ['Level1', 'Level1Eng', 'Level2', 'Level2Eng', 'Level3', 'Level3Eng', 'Luokka3', 'geometry']
+    def change_type(row):
+        code_as_int = int(row['code_12'])
+        return code_as_int
 
-   # Select data
-   data = data[selected_cols]
+    data['clc_code_int'] = data.apply(change_type, axis=1)
+    data.head(2)
 
-   # What are the columns now?
-   data.columns
+Here we are "casting" the String-based value, which happens to be a number, to be interpreted as an actula numeric data type.
+Using the  ``int()`` function. This can go wrong if the String cannot be interpreted as a number, and we should be more defensive.
 
-Let's plot the data and use column 'Level3' as our color.
+Now we can merge/join the legend dateframe into ourcorine landuse dataframe:
 
 .. ipython:: python
 
-   data.plot(column='Level3', linewidth=0.05)
+    data = data.merge(data_legend, how='inner', left_on='clc_code_int', right_on='CLC_CODE', suffixes=('', '_legend'))
+
+
+We have now also added more columns. Let's drop a few, so we can focus on the data we need.
+
+.. ipython:: python
+
+    selected_cols = ['ID','Remark','Shape_Area','CLC_CODE','LABEL3','RGB','geometry']
+
+    # Select data
+    data = data[selected_cols]
+
+    # What are the columns now?
+    data.columns
+
+Let's plot the data and use column 'CLC_CODE' as our color.
+
+.. ipython:: python
+
+   data.plot(column='CLC_CODE', linewidth=0.05)
 
    # Use tight layout and remove empty whitespace around our map
-   @savefig corine-level3.png width=7in
+   @savefig corine-CLC_CODE.png width=7in
    plt.tight_layout()
 
-Let's see what kind of values we have in 'Level3Eng' column.
+
+.. image:: ../../_static/corine-CLC_CODE.png
+
+Let's see what kind of values we have in 'code_12' column.
 
 .. ipython:: python
 
-   list(data['Level3Eng'].unique())
+   print(list(data['CLC_CODE'].unique()))
+   print(list(data['LABEL3'].unique()))
 
-Okey we have plenty of different kind of land covers in our data. Let's select only lakes from our data. Selecting specific rows from a DataFrame
-based on some value(s) is easy to do in Pandas / Geopandas using a specific indexer called ``.ix[]``, read more from `here <http://pandas.pydata.org/pandas-docs/stable/indexing.html#different-choices-for-indexing>`_..
+Okey we have different kind of land covers in our data. Let's select only bogs from our data. Selecting specific rows from a DataFrame
+based on some value(s) is easy to do in Pandas / Geopandas using the indexer called ``.loc[]``, read more from `here <http://pandas.pydata.org/pandas-docs/stable/indexing.html#different-choices-for-indexing>`_.
 
 .. ipython:: python
 
-   # Select lakes (i.e. 'waterbodies' in the data) and make a proper copy out of our data
-   lakes = data.ix[data['Level3Eng'] == 'Water bodies'].copy()
-   lakes.head(2)
+   # Select bogs (i.e. 'Peat bogs' in the data) and make a proper copy out of our data
+   bogs = data.loc[data['LABEL3'] == 'Peat bogs'].copy()
+   bogs.head(2)
 
 Calculations in DataFrames
 --------------------------
 
-Okey now we have our lakes dataset ready. The aim was to classify those lakes into small and big lakes based on **the average size of all lakes** in our
-study area. Thus, we need to calculate the average size of our lakes.
+Okey now we have our bogs dataset ready. The aim was to classify those bogs into small and big bogs based on **the average size of all bogs** in our
+study area. Thus, we need to calculate the average size of our bogs.
 
 Let's check the coordinate system.
 
@@ -138,30 +202,30 @@ Let's check the coordinate system.
    # Check coordinate system information
    data.crs
 
-Okey we can see that the units are in meters and we have a `UTM projection.  <https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system>`_
+Okey we can see that the units are in meters and we have a `projected coordinate system.  <http://spatialreference.org/ref/epsg/etrs89-etrs-laea/>`_
 
-Let's calculate first the are of our lakes.
+Let's calculate first the are of our bogs.
 
 .. ipython:: python
 
-   # Calculate the area of lakes
-   lakes['area'] = lakes.area
+   # Calculate the area of bogs
+   bogs['area'] = bogs.area
 
    # What do we have?
-   lakes['area'].head(2)
+   bogs['area'].head(2)
 
-Notice that the values are now in square meters.. Let's change those into square kilometers so they are easier to read. Doing calculations in Pandas / Geopandas
+Notice that the values are now in square meters. Let's change those into square kilometers so they are easier to read. Doing calculations in Pandas / Geopandas
 are easy to do:
 
 .. ipython:: python
 
-   lakes['area_km2'] = lakes['area'] / 1000000
+   bogs['area_km2'] = bogs['area'] / 1000000
 
-   # What is the mean size of our lakes?
-   l_mean_size = lakes['area_km2'].mean()
+   # What is the mean size of our bogs?
+   l_mean_size = bogs['area_km2'].mean()
    l_mean_size
 
-Okey so the size of our lakes seem to be approximately 1.58 square kilometers.
+Okey so the size of our bogs seem to be approximately 1.58 square kilometers.
 
 .. note::
 
@@ -175,6 +239,7 @@ Okey so the size of our lakes seem to be approximately 1.58 square kilometers.
       # Calculate the difference of three columns
       data['difference'] = data['some_column'] - data['col_1'] + data['col_2']
 
+
 Classifying data
 ----------------
 
@@ -182,9 +247,8 @@ Creating a custom classifier
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Let's create a function where we classify the geometries into two classes based on a given ``threshold`` -parameter.
-If the area of a polygon is lower than the threshold value (average size of the lake), the output column will get a value 0,
+If the area of a polygon is lower than the threshold value (average size of the bog), the output column will get a value 0,
 if it is larger, it will get a value 1. This kind of classification is often called a `binary classification <https://en.wikipedia.org/wiki/Binary_classification>`_.
-
 
 First we need to create a function for our classification task. This function takes a single row of the GeoDataFrame as input,
 plus few other parameters that we can use.
@@ -201,6 +265,7 @@ plus few other parameters that we can use.
            row[output_col] = 1
        # Return the updated row
        return row
+
 
 .. ipython:: python
    :suppress:
@@ -220,202 +285,59 @@ Let's create an empty column for our classification
 
 .. ipython:: python
 
-   lakes['small_big'] = None
+   bogs['small_big'] = None
 
 We can use our custom function by using a Pandas / Geopandas function called ``.apply()``.
 Thus, let's apply our function and do the classification.
 
 .. ipython:: python
 
-   lakes = lakes.apply(binaryClassifier, source_col='area_km2', output_col='small_big', threshold=l_mean_size, axis=1)
+   bogs = bogs.apply(binaryClassifier, source_col='area_km2', output_col='small_big', threshold=l_mean_size, axis=1)
 
-Let's plot these lakes and see how they look like.
+Let's plot these bogs and see how they look like.
 
 .. ipython:: python
 
-   lakes.plot(column='small_big', linewidth=0.05, cmap="seismic")
+   bogs.plot(column='small_big', linewidth=0.05, cmap="seismic")
 
-   @savefig small-big-lakes.png width=6in
+   @savefig small-big-bogs.png width=6in
    plt.tight_layout()
 
-Okey so it looks like they are correctly classified, good. As a final step let's save the lakes as a file to disk.
+
+.. image:: ../../_static/small-big-bogs.png
+
+Okey so it looks like they are correctly classified, good. As a final step let's save the bogs as a file to disk.
 
 .. code:: python
 
-    In [20]: outfp_lakes = r"/home/geo/lakes.shp"
-    In [21]: lakes.to_file(outfp_lakes)
+    outfp_bogs = r"Data\bogs.shp"
+    bogs.to_file(outfp_bogs)
 
 .. ipython:: python
    :suppress:
 
-    outfp_lakes = os.path.join(os.path.abspath('data'), "lakes.shp")
-    lakes.to_file(outfp_lakes)
+    outfp_bogs = os.path.join(os.path.abspath('data'), "bogs.shp")
+    bogs.to_file(outfp_bogs)
 
 .. note::
 
    There is also a way of doing this without a function but with the previous example might be easier to understand how the function works.
    Doing more complicated set of criteria should definitely be done in a function as it is much more human readable.
 
-   Let's give a value 0 for small lakes and value 1 for big lakes by using an alternative technique:
+   Let's give a value 0 for small bogs and value 1 for big bogs by using an alternative technique:
 
    .. code:: python
 
-      lakes['small_big_alt'] = None
-      lakes.loc[lakes['area_km2'] < l_mean_size, 'small_big_alt'] = 0
-      lakes.loc[lakes['area_km2'] >= l_mean_size, 'small_big_alt'] = 1
+      bogs['small_big_alt'] = None
+      bogs.loc[bogs['area_km2'] < l_mean_size, 'small_big_alt'] = 0
+      bogs.loc[bogs['area_km2'] >= l_mean_size, 'small_big_alt'] = 1
 
-Multicriteria data classification
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-It also possible to do classifiers with multiple criteria easily in Pandas/Geopandas by extending the example that we started earlier.
-Now we will modify our binaryClassifier function a bit so that it classifies the data based on two columns.
-
-Let's call it customClassifier2 as it takes into account two criteria:
-
-.. code:: python
-
-   def customClassifier2(row, src_col1, src_col2, threshold1, threshold2, output_col):
-       # 1. If the value in src_col1 is LOWER than the threshold1 value
-       # 2. AND the value in src_col2 is HIGHER than the threshold2 value, give value 1, otherwise give 0
-       if row[src_col1] < threshold1 and row[src_col2] > threshold2:
-           # Update the output column with value 0
-           row[output_col] = 1
-       # If area of input geometry is higher than the threshold value update with value 1
-       else:
-           row[output_col] = 0
-
-       # Return the updated row
-       return row
-
-.. ipython:: python
-  :suppress:
-
-    def customClassifier2(row, src_col1, src_col2, threshold1, threshold2, output_col):
-        if row[src_col1] < threshold1 and row[src_col2] > threshold2:
-            row[output_col] = 1
-        else:
-            row[output_col] = 0
-        return row
-
-Okey, now we have our classifier ready, let's use it to our data.
-
-First, we need to read our Travel Time data from Helsinki into memory from the GeoJSON file that `we prepared earlier <Lesson4-geometric-operations.html>`_ with overlay analysis.
-
-.. code:: python
-
-   fp = r"/home/geo/TravelTimes_to_5975375_RailwayStation_Helsinki.geojson"
-
-   # Read the GeoJSON file similarly as Shapefile
-   acc = gpd.read_file(fp)
-
-   # Let's see what we have
-   acc.head(2)
-
-.. ipython:: python
-   :suppress:
-
-     import gdal
-     import geopandas as gpd
-     import os
-     fp = os.path.join(os.path.abspath('data'), "TravelTimes_to_5975375_RailwayStation_Helsinki.geojson")
-     acc = gpd.read_file(fp)
-     acc.head(2)
-
-Okey we have plenty of different variables (see `from here the description <http://blogs.helsinki.fi/accessibility/helsinki-region-travel-time-matrix-2015/>`_
-for all attributes) but what we are
-interested in are columns called ``pt_r_tt`` which is telling the time in minutes that it takes to reach city center
-from different parts of the city, and ``walk_d`` that tells the network distance by roads to reach city center
-from different parts of the city (almost equal to Euclidian distance).
-
-**The NoData values are presented with value -1**. Thus we need to remove those first.
-
-.. ipython:: python
-
-   acc = acc.ix[acc['pt_r_tt'] >=0]
-
-Let's plot it and see how our data looks like.
-
-.. ipython:: python
-
-   import matplotlib.pyplot as plt
-
-   # Plot using 9 classes and classify the values using "Fisher Jenks" classification
-   acc.plot(column="pt_r_tt", scheme="Fisher_Jenks", k=9, cmap="RdYlBu", linewidth=0);
-
-   # Use tight layour
-   @savefig pt_time.png width=7in
-   plt.tight_layout()
-
-Okey so from this figure we can see that the travel times are lower in the south where
-the city center is located but there are some areas of "good" accessibility also in some other areas
-(where the color is red).
-
-Let's also make a plot about walking distances
-
-.. ipython:: python
-
-   acc.plot(column="walk_d", scheme="Fisher_Jenks", k=9, cmap="RdYlBu", linewidth=0);
-
-   # Use tight layour
-   @savefig walk_distances.png width=7in
-   plt.tight_layout();
-
-Okey, from here we can see that the walking distances (along road network) reminds
-more or less Euclidian distances.
-
-Let's finally do our classification based on two criteria
-and find out grid cells where the **travel time is lower or equal to 20 minutes** but they are further away
-**than 4 km (4000 meters) from city center**.
-
-Let's create an empty column for our classification results called "Suitable_area".
-
-.. ipython:: python
-
-   acc["Suitable_area"] = None
-
-Now we are ready to apply our custom classifier to our data with our own criteria.
-
-.. ipython:: python
-
-   acc = acc.apply(customClassifier2, src_col1='pt_r_tt', src_col2='walk_d', threshold1=20, threshold2=4000, output_col="Suitable_area", axis=1)
-
-Let's see what we got.
-
-.. ipython:: python
-
-   acc.head()
-
-Okey we have new values in ``Suitable_area`` .column.
-
-How many Polygons are suitable for us? Let's find out by using a Pandas function called ``value_counts()`` that return the count of
-different values in our column.
-
-.. ipython:: python
-
-   acc['Suitable_area'].value_counts()
-
-Okey so there seems to be nine suitable locations for us where we can try to find an appartment to buy
-Let's see where they are located.
-
-.. ipython:: python
-
-   # Plot
-   acc.plot(column="Suitable_area", linewidth=0);
-
-   # Use tight layour
-   @savefig suitable_areas.png width=7in
-   plt.tight_layout();
-
-A-haa, okey so we can see that suitable places for us with our criteria seem to be located in the
-eastern part from the city center. Actually, those locations are along the metro line which makes them
-good locations in terms of travel time to city center since metro is really fast travel mode.
 
 .. todo::
 
    **Task:**
 
-   Try to change your classification criteria and see how your results change! What places would be
-   suitable for you to buy an apartment in Helsinki region? You can also change the travel mode and see how
+   Try to change your classification criteria and see how your results change! Change the LandUse Code/Label and see how
    they change the results.
 
 
@@ -442,14 +364,48 @@ Available map classifiers in pysal -module are (`see here for more details <http
  - Std_Mean
  - User_Defined
 
+
+For this we will use the Adminstrative Units dataset for population.
+It is in the Estonian "vald-kond" level, which compares to the level at municipality.
+It has the following fields:
+
+- VID, an Id for the "vald"
+- KOOD, a unique code for the Statistics Board
+- NIMI, the name of the municipality
+- population, the population, number of people living
+- geometry, the polygon for the municpality district border
+
 Let's apply one of those classifiers into our data and classify the travel times by public transport into 9 classes.
+
+.. ipython:: python
+    :suppress:
+
+      import gdal
+      import geopandas as gpd
+      import matplotlib.pyplot as plt
+      import os
+
+      fp = os.path.join(os.path.abspath('data'), "population_admin_units.shp")
+      acc = gpd.read_file(fp)
+
+
+.. code::
+
+   import geopandas as gpd
+   import matplotlib.pyplot as plt
+
+   # File path
+   fp = r"Data\population_admin_units.shp"
+   acc = gpd.read_file(fp)
+
+
 
 .. ipython:: python
 
   import pysal as ps
 
   # Define the number of classes
-  n_classes = 9
+  n_classes = 5
 
 The classifier needs to be initialized first with ``make()`` function that takes the number of desired classes as input parameter.
 
@@ -463,35 +419,29 @@ Now we can apply that classifier into our data quite similarly as in our previou
 .. ipython:: python
 
   # Classify the data
-  classifications = acc[['pt_r_tt']].apply(classifier)
+  acc['population_classes'] = acc[['population_int']].apply(classifier)
 
   # Let's see what we have
-  classifications.head()
-
-Okey, so we have a DataFrame where our input column was classified into 9 different classes (numbers 1-9) based on `Natural Breaks classification <http://wiki-1-1930356585.us-east-1.elb.amazonaws.com/wiki/index.php/Jenks_Natural_Breaks_Classification>`_.
-
-Now we want to join that reclassification into our original data but let's first rename the column so that we recognize it later on.
-
-.. ipython:: python
-
-  # Rename the column so that we know that it was classified with natural breaks
-  classifications.columns = ['nb_pt_r_tt']
-
-  # Join with our original data (here index is the key
-  acc = acc.join(classifications)
-
-  # Let's see how our data looks like
   acc.head()
 
-Great, now we have those values in our accessibility GeoDataFrame. Let's visualize the results and see how they look.
+Okey, so we have add a column to our DataFrame where our input column was classified into 5 different classes (numbers 0-4) based on `Natural Breaks classification <http://wiki.gis.com/wiki/index.php/Jenks_Natural_Breaks_Classification>`_.
+
+Great, now we have those values in our population GeoDataFrame. Let's visualize the results and see how they look.
 
 .. ipython:: python
 
     # Plot
-    acc.plot(column="nb_pt_r_tt", linewidth=0, legend=True);
+    acc.plot(column="population_classes", linewidth=0, legend=True);
 
     # Use tight layour
-    @savefig natural_breaks_pt_accessibility.png width=7in
+    @savefig natural_breaks_population.png width=7in
     plt.tight_layout()
 
-And here we go, now we have a map where we have used one of the common classifiers to classify our data into 9 classes.
+.. image:: ../../_static/natural_breaks_population.png
+
+.. todo::
+
+   **Task:**
+
+   Try to test different classification methods 'Equal Interval', 'Quantiles', and 'Std_Mean' and visualise them.
+

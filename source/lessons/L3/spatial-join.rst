@@ -27,9 +27,8 @@ join that can be applied in spatial join that are determined with ``op``
 Sounds familiar? Yep, all of those spatial relationships were discussed
 in the `previous materials <point-in-polygon.html>`_, thus you should know how they work.
 
-Let's perform a spatial join between the address-point `Shapefile (addresses.shp) <../../_static/data/L3/addresses.zip>`_ that we
-already used before and a Polygon layer that is a
-250m x 250m grid showing the amount of people living in Helsinki Region.
+Let's perform a spatial join between the address-point `Shapefile (addresses.shp) <../../_static/data/L3/addresses.zip>`_
+and a Polygon layer that is a 250m x 250m grid showing the amount of people living in Helsinki Region.
 
 
 Download and clean the data

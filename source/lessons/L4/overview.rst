@@ -4,7 +4,6 @@ Lesson 4 overview
 During this lesson we will learn a few really useful and commonly used GIS functionalities using Geopandas, namely:
 
 1. :doc:`Data classification <reclassify>`
-2. :doc:`Geometric operations: Overlay analysis, spatial aggregation <geometric-operations>`
 3. :doc:`Exercise 4 <ex-4>`
 4. :doc:`Exercise 4 hints <exercise-4-hints>`
 

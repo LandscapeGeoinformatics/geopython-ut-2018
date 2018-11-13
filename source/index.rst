@@ -66,8 +66,7 @@ The materials are divided into several sections:
 |                | and joins;                      |
 |                |                                 |
 +----------------+---------------------------------+
-| **Lesson 4**   | Geometric operations;           |
-|                | Reclassifying data with Pysal   |
+| **Lesson 4**   | Reclassifying data with Pysal   |
 |                |                                 |
 +----------------+---------------------------------+
 | **Lesson 5**   | Visualization, making static    |
@@ -146,16 +145,15 @@ Contents
    :maxdepth: 2
    :caption: Lesson 4
 
-   lessons/currently-not-available
-
-.. commented out
    lessons/L4/overview
    lessons/L4/reclassify
-   lessons/L4/geometric-operations
+
+.. commented out
    lessons/L4/ex-4
    lessons/L4/exercise-4-hints
 
 .. commented out
+   lessons/L4/geometric-operations
    lessons/L4/lecture
 
 .. toctree::
