@@ -415,6 +415,36 @@ The classifier needs to be initialized first with ``make()`` function that takes
   classifier = ps.Natural_Breaks.make(k=n_classes)
 
 Now we can apply that classifier into our data quite similarly as in our previous examples.
+But we will run into the "numbers as text problem" again.
+
+.. ipython:: python
+
+    # data types in the population dataset
+    acc.dtypes
+
+
+Therefor, we have to change the column type for population into a numerical data type first:
+
+.. ipython:: python
+
+    # data types in the population dataset
+    acc.dtypes
+
+
+.. ipython:: python
+
+    import numpy as np
+
+    def change_type_defensively(row):
+        try:
+            return int(row['population'])
+        except Exception:
+            return np.nan
+    acc['population_int'] = acc.apply(change_type_defensively, axis=1)
+    acc.head(5)
+
+Here we demonstrate a more defensive strategy to convert datatypes. Many operations can cause **Exceptions** and then you can't ignore the problem anymore because your code breaks.
+But with ``try - except`` we can catch expected exception (aka crashes) and react appropriately.
 
 .. ipython:: python
 

@@ -20,7 +20,7 @@ We define the geographical area from where the given service (shopping center) i
 
 **Steps:**
 
- - Download a dataset from `**here** <../../_static/exercises/Exercise-1/data/E4.zip>`_ that includes 7 text files containing data about accessibility in Helsinki Region and a Shapefile that contains a Polygon grid that can be used to visualize and analyze the data spatially. The datasets are:
+ - Download a dataset from `**here** <../../_static/exercises/Exercise-4/data/E4.zip>`_ that includes 7 text files containing data about accessibility in Helsinki Region and a Shapefile that contains a Polygon grid that can be used to visualize and analyze the data spatially. The datasets are:
 
      - ``travel_times_to_[XXXXXXX]_[NAME-OF-THE-CENTER].txt`` including travel times and road network distances to specific shopping center
      - ``MetropAccess_YKR_grid_EurefFIN.shp`` including the Polygon grid with YKR_ID column that can be used to join the grid with the    accessibility data
@@ -38,5 +38,5 @@ We define the geographical area from where the given service (shopping center) i
 
     - **OR** create your own `custom classifiers from pysal <reclassify.html>`_. If you create your own, remember to document it well how it works! Write a general description of it and comment your code as well.
 
- - Submit the map(s) you have visualized (they don't need to be pretty).
+ - Submit the code as Jupyter notebook or Python Script and the map(s) you have visualized (as png).
 
