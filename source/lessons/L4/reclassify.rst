@@ -358,7 +358,8 @@ It has the following fields:
 - geometry, the polygon for the municpality district border
 
 Let's apply one of those schemes into our data and classify the population into 5 classes.
-Choosing Number of Classes – if you choose too many classes then it requires the map reader to remember too much when viewing 
+
+**Choosing Number of Classes** – if you choose too many classes then it requires the map reader to remember too much when viewing 
 the map and it may also make the differentiation of class colors difficult for the map reared. 
 On the other hand, if you choose too few classes, it oversimplifies the data possibly hiding important patterns. 
 Additionally, each class may group dissimilar items together which is in direct opposition of one of the main goals of classification. 
