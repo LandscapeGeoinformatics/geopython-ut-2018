@@ -27,4 +27,9 @@ After this lesson, you should know how to:
 Sources
 -------
 
+The Git lessons are based on materials from `The Carpentries - Software Carpentry Foundation <http://swcarpentry.github.io/git-novice/>`_
+
 These materials are partly based on `Geopandas documentation <http://geopandas.org/>`_.
+
+The lesson reuses materials from Henrikki Tenkanen from the University of Helsinki, under CC-BY-SA from `from AutoGIS GitHub repository <https://github.com/Automating-GIS-processes/2017>`_.
+

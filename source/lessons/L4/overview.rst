@@ -4,8 +4,10 @@ Lesson 4 overview
 During this lesson we will learn a few really useful and commonly used GIS functionalities using Geopandas, namely:
 
 1. :doc:`Data classification <reclassify>`
-3. :doc:`Exercise 4 <ex-4>`
-4. :doc:`Exercise 4 hints <exercise-4-hints>`
+
+.. comented_out
+    3. :doc:`Exercise 4 <ex-4>`
+    4. :doc:`Exercise 4 hints <exercise-4-hints>`
 
 Learning goals
 --------------
@@ -14,9 +16,7 @@ After this lesson's lesson you should be able to:
 
  - Reclassify data based on different criteria (custom or common classifiers).
 
- - Do a simple overlay analysis such as selecting data from one layer based on boundaries of another layer.
-
- - Aggregate data, i.e. merge geometric objects together, based on some common identifier.
+ - merge data, i.e. join spatial and non-spatial datasets together, based on some common identifier.
 
 
 Sources
@@ -24,4 +24,7 @@ Sources
 
 Following materials are partly based on documentation of `Geopandas <http://geopandas.org/geocoding.html>`__, `Pandas <http://pandas.pydata.org/>`__, `Shapely
 <http://toblerity.org/shapely/manual.html#>`__, and `pysal <http://pysal.readthedocs.io/en/latest/>`_.
+
+The lesson reuses materials from Henrikki Tenkanen from the University of Helsinki, under CC-BY-SA from `from AutoGIS GitHub repository <https://github.com/Automating-GIS-processes/2017>`_.
+
 

@@ -23,22 +23,15 @@ self-made classifier, or using a ready made classifiers that are commonly used e
 
 The target in this part of the lesson is to:
 
-1. classify the bogs into big and small bogs where
-
-    - a big bog is a bog that is larger than the average size of all bogs in our study region
-    - a small bog ^ vice versa
-
-2. use travel times and distances to find out
-
-   - good locations to buy an apartment with good public tranportation accessibility to city center
-   - but from a bit further away from city center where the prices are lower (or at least we assume so).
-
-3. use ready made classifiers from pysal -module to classify travel times into multiple classes.
+- classify the bogs into big and small bogs where
+- a big bog is a bog that is larger than the average size of all bogs in our study region
+- a small bog ^ vice versa
+- use ready made classifiers from pysal -module to classify municipal into multiple classes.
 
 Download data
 -------------
 
-Download (and then extract) the dataset zip-package used during this lesson `from this link <../../_static//L4/L4.zip>`_.
+Download (and then extract) the dataset zip-package used during this lesson `from this link <../../_static/data/L4.zip>`_.
 
 You should have following Shapefiles in the ``data`` folder:
 
@@ -88,9 +81,6 @@ Let's read the data in and have a look at the columnsand plot our data so that w
 
    data = gpd.read_file(fp)
 
-   import pandas as pd
-   fp_clc = r"Data\corine_legend\clc_legend.csv"
-   data_legend = pd.read_csv(fp_clc, sep=';', encoding='latin1')
 
 Let's see what we have.
 
@@ -98,19 +88,11 @@ Let's see what we have.
 
    data.head(5)
 
+
 We see that the Land Use in column "code_12" is numerical and we don't know right now what that means.
 So we should at first join the "clc_legend" in order to know what the codes mean:
 
 .. code::
-
-   import pandas as pd
-   import geopandas as gpd
-   import matplotlib.pyplot as plt
-
-   # File path
-   fp = r"Data\corine_tartu.shp"
-
-   data = gpd.read_file(fp)
 
    import pandas as pd
    fp_clc = r"Data\corine_legend\clc_legend.csv"
@@ -124,7 +106,7 @@ We could now try to merge / join the two dataframes, ideally by the 'code_12' co
 
     display(data.dtypes)
     display(data_legend.dtypes)
-    data = data.merge(data_legend, how='inner', left_on='code_12', right_on='CLC_CODE'))
+    data = data.merge(data_legend, how='inner', left_on='code_12', right_on='CLC_CODE')
 
 But if we try, we will receive an error telling us that the columns are of different data type and therefore can't be used as join-index.
 So we have to add a column where have the codes in the same type. I am choosing to add a column on "data", where we transform the String/Text based "code_12" into an integer number.
@@ -141,7 +123,7 @@ So we have to add a column where have the codes in the same type. I am choosing 
 Here we are "casting" the String-based value, which happens to be a number, to be interpreted as an actula numeric data type.
 Using the  ``int()`` function. This can go wrong if the String cannot be interpreted as a number, and we should be more defensive.
 
-Now we can merge/join the legend dateframe into ourcorine landuse dataframe:
+Now we can merge/join the legend dateframe into our corine landuse dataframe:
 
 .. ipython:: python
 
@@ -471,6 +453,26 @@ Great, now we have those values in our population GeoDataFrame. Let's visualize 
 
 
 Now we have the plot, but it would be great to know the actual class ranges for the values.
+
+Also, to understand the distribution into the different, we can use the histogram.
+A histogram shows how the numerical values of a datasets are distributed within the overall data.
+It shows the frequency of values (how many single "features") are within each "bin".
+
+.. ipython:: python
+
+    # Plot
+    fig, ax = plt.subplots()
+
+    acc["population_int"].plot.hist(bins=20);
+
+    # Add title
+    plt.title("Amount of inhabitants column histogram")
+    @savefig population_histogram.png width=7in
+    plt.tight_layout()
+
+.. image:: ../../_static/population_histogram.png
+
+
 In order to get the min() and max() per class group, we use **groupby** again.
 
 
@@ -512,11 +514,12 @@ And in order to add our custom legend info to the plot, we need to employ a bit 
             patchList.append(data_key)
     # plot the custom legend
     plt.legend(handles=patchList, loc='lower center', bbox_to_anchor=(0.5, -0.5), ncol=1)
+    # Add title
+    plt.title("Amount of inhabitants natural breaks classifier")
     @savefig natural_breaks_population_extra_labels.png width=7in
     plt.tight_layout()
 
 .. image:: ../../_static/natural_breaks_population_extra_labels.png
-
 
 
 .. todo::
@@ -524,4 +527,11 @@ And in order to add our custom legend info to the plot, we need to employ a bit 
    **Task:**
 
    Try to test different classification methods 'Equal Interval', 'Quantiles', and 'Std_Mean' and visualise them.
+
+
+.. image:: ../../_static/population_equal_interval.png
+
+.. image:: ../../_static/population_quantiles.png
+
+.. image:: ../../_static/population_std_mean.png
 

@@ -25,3 +25,8 @@ After this lesson you should:
   - know what kind of geometric objects are available
   - know how to create different kind of geometries using Shapely
   - know how to read coordinates from a file and create Points based on those
+
+Sources
+-------
+
+This lesson reuses materials from Henrikki Tenkanen from the University of Helsinki, under CC-BY-SA from `from AutoGIS GitHub repository <https://github.com/Automating-GIS-processes/2017>`_.
