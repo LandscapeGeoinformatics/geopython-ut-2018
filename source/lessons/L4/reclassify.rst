@@ -429,6 +429,8 @@ Therefor, we have to change the column type for population into a numerical data
             return int(row['population'])
         except Exception:
             return np.nan
+        acc['population_int'] = acc.apply(change_type_defensively, axis=1)
+        acc.head(5)
 
 Here we demonstrate a more defensive strategy to convert datatypes. Many operations can cause **Exceptions** and then you can't ignore the problem anymore because your code breaks.
 But with ``try - except`` we can catch expected exception (aka crashes) and react appropriately.
