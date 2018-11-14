@@ -31,7 +31,7 @@ The target in this part of the lesson is to:
 Download data
 -------------
 
-Download (and then extract) the dataset zip-package used during this lesson `from this link <../../_static/data/L4.zip>`_.
+Download (and then extract) the dataset zip-package used during this lesson `from this link <../../_static/data/L4/L4.zip>`_.
 
 You should have following Shapefiles in the ``data`` folder:
 
@@ -106,7 +106,8 @@ We could now try to merge / join the two dataframes, ideally by the 'code_12' co
 
     display(data.dtypes)
     display(data_legend.dtypes)
-    data = data.merge(data_legend, how='inner', left_on='code_12', right_on='CLC_CODE')
+    # please don't actually do it right now, it might cause extra troubles later
+    # data = data.merge(data_legend, how='inner', left_on='code_12', right_on='CLC_CODE')
 
 But if we try, we will receive an error telling us that the columns are of different data type and therefore can't be used as join-index.
 So we have to add a column where have the codes in the same type. I am choosing to add a column on "data", where we transform the String/Text based "code_12" into an integer number.
@@ -117,11 +118,17 @@ So we have to add a column where have the codes in the same type. I am choosing 
         code_as_int = int(row['code_12'])
         return code_as_int
 
+
+.. ipython:: python
+
     data['clc_code_int'] = data.apply(change_type, axis=1)
     data.head(2)
 
 Here we are "casting" the String-based value, which happens to be a number, to be interpreted as an actula numeric data type.
-Using the  ``int()`` function. This can go wrong if the String cannot be interpreted as a number, and we should be more defensive.
+Using the  ``int()`` function. Pandas (and therefore also Geopandas) also provides an in-built function that provides similar functionality `astype() <https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.astype.html>`_ ,
+e.g. like so ``data['code_astype_int'] = data['code_12'].astype('int64', copy=True)``
+
+Both versions can go wrong if the String cannot be interpreted as a number, and we should be more defensive (more details later, don't worry right now).
 
 Now we can merge/join the legend dateframe into our corine landuse dataframe:
 
@@ -142,11 +149,37 @@ We have now also added more columns. Let's drop a few, so we can focus on the da
     # What are the columns now?
     data.columns
 
+
+Before we plot, let's check the coordinate system.
+
+.. ipython:: python
+
+   # Check coordinate system information
+   data.crs
+
+Okey we can see that the units are in meters, but ...
+
+... geographers will realise that the Corine dataset is in the `ETRS89 / LAEA Europe coordinate system, aka EPSG:3035 <http://spatialreference.org/ref/epsg/etrs89-etrs-laea/>`_.
+Because it is a European dataset it is in the recommended CRS for Europe-wide data. It is a single CRS for all of Europe and predominantly used for statistical mapping at all scales and other purposes where **true area representation is required**.
+
+However, being in Estonia and only using an Estonian part of the data, we should consider reprojecting it into the Estonian national grid (aka Estonian Coordinate System of 1997 -> EPSG:3301) before we plot or calculate the area of our bogs.
+
+
+.. ipython:: python
+
+   data_proj = data.to_crs(epsg=3301)
+   # Calculate the area of bogs
+   data_proj['area'] = data_proj.area
+
+   # What do we have?
+   data_proj['area'].head(2)
+
+
 Let's plot the data and use column 'CLC_CODE' as our color.
 
 .. ipython:: python
 
-   data.plot(column='CLC_CODE', linewidth=0.05)
+   data_proj.plot(column='CLC_CODE', linewidth=0.05)
 
    # Use tight layout and remove empty whitespace around our map
    @savefig corine-CLC_CODE.png width=7in
@@ -159,8 +192,8 @@ Let's see what kind of values we have in 'code_12' column.
 
 .. ipython:: python
 
-   print(list(data['CLC_CODE'].unique()))
-   print(list(data['LABEL3'].unique()))
+   print(list(data_proj['CLC_CODE'].unique()))
+   print(list(data_proj['LABEL3'].unique()))
 
 Okey we have different kind of land covers in our data. Let's select only bogs from our data. Selecting specific rows from a DataFrame
 based on some value(s) is easy to do in Pandas / Geopandas using the indexer called ``.loc[]``, read more from `here <http://pandas.pydata.org/pandas-docs/stable/indexing.html#different-choices-for-indexing>`_.
@@ -168,7 +201,7 @@ based on some value(s) is easy to do in Pandas / Geopandas using the indexer cal
 .. ipython:: python
 
    # Select bogs (i.e. 'Peat bogs' in the data) and make a proper copy out of our data
-   bogs = data.loc[data['LABEL3'] == 'Peat bogs'].copy()
+   bogs = data_proj.loc[data['LABEL3'] == 'Peat bogs'].copy()
    bogs.head(2)
 
 Calculations in DataFrames
@@ -177,27 +210,8 @@ Calculations in DataFrames
 Okey now we have our bogs dataset ready. The aim was to classify those bogs into small and big bogs based on **the average size of all bogs** in our
 study area. Thus, we need to calculate the average size of our bogs.
 
-Let's check the coordinate system.
-
-.. ipython:: python
-
-   # Check coordinate system information
-   data.crs
-
-Okey we can see that the units are in meters and we have a `projected coordinate system.  <http://spatialreference.org/ref/epsg/etrs89-etrs-laea/>`_
-
-Let's calculate first the are of our bogs.
-
-.. ipython:: python
-
-   # Calculate the area of bogs
-   bogs['area'] = bogs.area
-
-   # What do we have?
-   bogs['area'].head(2)
-
-Notice that the values are now in square meters. Let's change those into square kilometers so they are easier to read. Doing calculations in Pandas / Geopandas
-are easy to do:
+We remember also that the CRS was projected with units in metre, and the calculated values are therefore be in square meters. Let's change those into square kilometers so they are easier to read.
+Doing calculations in Pandas / Geopandas are easy to do:
 
 .. ipython:: python
 
@@ -207,7 +221,7 @@ are easy to do:
    l_mean_size = bogs['area_km2'].mean()
    l_mean_size
 
-Okey so the size of our bogs seem to be approximately 1.58 square kilometers.
+Okey so the size of our bogs seem to be approximately 2.15 square kilometers.
 
 .. note::
 
@@ -412,12 +426,7 @@ But we will run into the "numbers as text problem" again.
     acc.dtypes
 
 
-Therefor, we have to change the column type for population into a numerical data type first:
-
-.. ipython:: python
-
-    # data types in the population dataset
-    acc.dtypes
+Therefore, we have to change the column type for population into a numerical data type first:
 
 
 .. ipython:: python
@@ -429,11 +438,17 @@ Therefor, we have to change the column type for population into a numerical data
             return int(row['population'])
         except Exception:
             return np.nan
-        acc['population_int'] = acc.apply(change_type_defensively, axis=1)
-        acc.head(5)
+    acc['population_int'] = acc.apply(change_type_defensively, axis=1)
+    acc.head(5)
 
 Here we demonstrate a more defensive strategy to convert datatypes. Many operations can cause **Exceptions** and then you can't ignore the problem anymore because your code breaks.
 But with ``try - except`` we can catch expected exception (aka crashes) and react appropriately.
+
+Pandas (and therefore also Geopandas) also provides an in-built function that provides similar functionality `to_numeric() <https://pandas.pydata.org/pandas-docs/stable/generated/pandas.to_numeric.html#pandas.to_numeric>`_ ,
+e.g. like so ``data['code_tonumeric_int'] = pd.to_numeric(data['code_12'], errors='coerce')``. Beware, ``to_numeric()`` is called as ``pandas/pd`` function, not on the dataframe.
+
+Both versions will at least return a useful NaN value (not_a_number, sort of a nodata value) without crashing. Pandas, Geopandas, numpy and many other Python libraries have some functionality to work with or ignore Nan values without breaking calculations.
+
 
 .. ipython:: python
 
@@ -443,7 +458,7 @@ But with ``try - except`` we can catch expected exception (aka crashes) and reac
   # Let's see what we have
   acc.head()
 
-Okey, so we have add a column to our DataFrame where our input column was classified into 5 different classes (numbers 0-4) based on `Natural Breaks classification <http://wiki.gis.com/wiki/index.php/Jenks_Natural_Breaks_Classification>`_.
+Okey, so we have added a column to our DataFrame where our input column was classified into 5 different classes (numbers 0-4) based on `Natural Breaks classification <http://wiki.gis.com/wiki/index.php/Jenks_Natural_Breaks_Classification>`_.
 
 Great, now we have those values in our population GeoDataFrame. Let's visualize the results and see how they look.
 
@@ -461,7 +476,7 @@ Great, now we have those values in our population GeoDataFrame. Let's visualize 
 
 Now we have the plot, but it would be great to know the actual class ranges for the values.
 
-Also, to understand the distribution into the different, we can use the histogram.
+Also, to understand the distribution into the different, we can use the `histogram <https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.plot.hist.html>`_.
 A histogram shows how the numerical values of a datasets are distributed within the overall data.
 It shows the frequency of values (how many single "features") are within each "bin".
 
@@ -502,14 +517,15 @@ And in order to add our custom legend info to the plot, we need to employ a bit 
 
     import matplotlib.patches as mpatches
     import matplotlib.pyplot as plt
+    import collections
 
-    # legend_dict, a dictionary that holds our class description and gives it a colour on the legend (we leave it "background" white for now)
-    legend_dict = {}
+    # legend_dict, a special ordered dictionary (which reliably remembers order of adding things) that holds our class description and gives it a colour on the legend (we leave it "background" white for now)
+    legend_dict = collections.OrderedDict([])
     #
     for cl, valds in grouped:
         minv = valds['population_int'].min()
         maxv = valds['population_int'].max()
-        legend_dict["Class {}: {} - {}".format(cl, minv, maxv)] = "white"
+        legend_dict.update({"Class {}: {} - {}".format(cl, minv, maxv): "white"})
     # Plot preps for several plot into one figure
     fig, ax = plt.subplots()
     # plot the dataframe, with the natural breaks colour scheme
