@@ -348,7 +348,7 @@ Available map classifiers in pysal -module are (`see here for more details <http
 
 
 For this we will use the Adminstrative Units dataset for population.
-It is in the Estonian "vald-kond" level, which compares to the level at municipality.
+It is in the Estonian "vald" level, which compares to the level at municipality.
 It has the following fields:
 
 - VID, an Id for the "vald"
