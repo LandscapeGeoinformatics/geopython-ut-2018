@@ -323,12 +323,12 @@ Okey so it looks like they are correctly classified, good. As a final step let's
    they change the results.
 
 
-Classification based on common classifiers
+Classification based on common classification schemes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 `Pysal <http://pysal.readthedocs.io/en/latest/>`_ -module is an extensive Python library including various functions and tools to
-do spatial data analysis. It also includes all of the most common data classifiers that are used commonly e.g. when visualizing data.
-Available map classifiers in pysal -module are (`see here for more details <http://pysal.readthedocs.io/en/latest/library/esda/mapclassify.html>`_):
+do spatial data analysis. It also includes all of the most common data classification schemes that are used commonly e.g. when visualizing data.
+Available map classification schemes in pysal -module are (`see here for more details <http://pysal.readthedocs.io/en/latest/library/esda/mapclassify.html>`_):
 
  - Box_Plot
  - Equal_Interval
@@ -357,7 +357,13 @@ It has the following fields:
 - population, the population, number of people living
 - geometry, the polygon for the municpality district border
 
-Let's apply one of those classifiers into our data and classify the travel times by public transport into 9 classes.
+Let's apply one of those schemes into our data and classify the population into 5 classes.
+Choosing Number of Classes – if you choose too many classes then it requires the map reader to remember too much when viewing 
+the map and it may also make the differentiation of class colors difficult for the map reared. 
+On the other hand, if you choose too few classes, it oversimplifies the data possibly hiding important patterns. 
+Additionally, each class may group dissimilar items together which is in direct opposition of one of the main goals of classification. 
+Typically in cartography three to seven classes are preferred and five is the most common and optimal for most thematic maps.
+
 
 .. ipython:: python
     :suppress:
