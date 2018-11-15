@@ -39,4 +39,14 @@ We define the geographical area from where the given service (shopping center) i
     - **OR** create your own `custom classifiers from pysal <reclassify.html>`_. If you create your own, remember to document it well how it works! Write a general description of it and comment your code as well.
 
  - Submit the code as Jupyter notebook or Python Script and the map(s) you have visualized (as png).
+ 
+ 
+ --------
+ In this excercise you will practice making heatmaps with jupyter gmap.
+ You may use our example dataset about Earthquakes which you can download here `**here** <.....>` 
+ or you may also try to use your own dataset or find some interesting dataset from Kaggle `**Kaggle** <https://www.kaggle.com/datasets>`
+ 
+ Your
+ 
+ 
 
