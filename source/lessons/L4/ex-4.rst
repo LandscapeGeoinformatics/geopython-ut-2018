@@ -46,12 +46,12 @@ We define the geographical area from where the given service (shopping center) i
  
  Problem: Create a heatmap of one fenomena (10 points)
 
- You may use our example dataset about Earthquakes which you can download here `**here** <.....>` 
+ You may use example dataset about Earthquakes which you can download here `**here** <https://www.kaggle.com/usgs/earthquake-database>` 
  or you may also try to use your own dataset or find some interesting dataset from Kaggle `**Kaggle** <https://www.kaggle.com/datasets>`
 
 **Steps:**
 
- - Download a dataset from `**here** <.....>` 
+ - Download a dataset from `**here** <https://www.kaggle.com/usgs/earthquake-database>` 
     or use your own dataset which has to be initially in csv format (not shp)
     or  find some interesting dataset from Kaggle `**Kaggle** <https://www.kaggle.com/datasets>`. Dataset has to be in csv format (not shp)
 
