@@ -146,6 +146,7 @@ Contents
 
    lessons/L4/overview
    lessons/L4/reclassify
+   lessons/L4/gmaps-heatmap
    lessons/L4/ex-4
    lessons/L4/exercise-4-hints
    lessons/L4/lecture

@@ -223,6 +223,25 @@ Doing calculations in Pandas / Geopandas are easy to do:
 
 Okey so the size of our bogs seem to be approximately 2.15 square kilometers.
 
+But to understand the overall distribution of the different sizes of the bogs, we can use the `histogram <https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.plot.hist.html>`_.
+A histogram shows how the numerical values of a datasets are distributed within the overall data.
+It shows the frequency of values (how many single "features") are within each "bin".
+
+.. ipython:: python
+
+    # Plot
+    fig, ax = plt.subplots()
+
+    bogs['area_km2'].plot.hist(bins=10);
+
+    # Add title
+    plt.title("Bogs area_km2 histogram")
+    @savefig bogs_area_histogram.png width=7in
+    plt.tight_layout()
+
+.. image:: ../../_static/bogs_area_histogram.png
+
+
 .. note::
 
    It is also easy to calculate e.g. sum or difference between two or more layers (plus all other mathematical operations), e.g.:
@@ -475,17 +494,14 @@ Great, now we have those values in our population GeoDataFrame. Let's visualize 
 
 
 Now we have the plot, but it would be great to know the actual class ranges for the values.
-
-Also, to understand the distribution into the different, we can use the `histogram <https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.plot.hist.html>`_.
-A histogram shows how the numerical values of a datasets are distributed within the overall data.
-It shows the frequency of values (how many single "features") are within each "bin".
+So let's plot the histogram again.
 
 .. ipython:: python
 
     # Plot
     fig, ax = plt.subplots()
 
-    acc["population_int"].plot.hist(bins=20);
+    acc["population_int"].plot.hist(bins=100);
 
     # Add title
     plt.title("Amount of inhabitants column histogram")

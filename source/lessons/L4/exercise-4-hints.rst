@@ -13,7 +13,7 @@ Problem 1
 - Note that the input travel time data is stored in text files when reading in the data.
 - Keep columns `'from_id'`,`'to_id'`,`'pt_r_tt'` and `'car_r_t'` in the travel time data files
 - Join the data using columns `'from_id'` from the travel time data, and `'YKR_ID'` in the grid-shapefile
-- See hints for joining the travel time data to the grid shapefile from our earlier materials from first period (Geo-Python course): `Table join <https://geo-python.github.io/2017/lessons/L6/exercise-6-hints.html?highlight=merge#joining-data-from-one-dataframe-to-another>`__
+- See hints for joining the travel time data to the grid shapefile from our earlier materials from the lesson regarding classifying the bogs via the landuse legend file.
 - Plotting the data takes a while (be patient!)
 
 
@@ -28,36 +28,36 @@ Listing and searching for file path names from file system can be done using a s
 The glob library contains a function, also called glob, that finds files and directories whose names match a pattern.
 We provide those patterns as strings: the character * matches zero or more characters, while ? matches any one character.
 
-- We can use this to get the names of all files in the data directory ('/home/geo/data'):
+- We can use this to get the names of all files in the data directory (C:\Users\Alex\geopython\L4):
 
 .. code:: python
 
   In [0]: import glob
-  In [1]: my_files = glob.glob('/home/geo/data/*')
+  In [1]: my_files = glob.glob('Data\\*')
   In [2]: print(my_files)
-  ['/home/geo/data/inflammation-08.csv',
-   '/home/geo/data/inflammation-10.csv',
-   '/home/geo/data/inflammation-11.csv',
-   '/home/geo/data/inflammation-06.csv',
-   '/home/geo/data/inflammation-12.csv',
-   '/home/geo/data/small-03.csv',
-   '/home/geo/data/small-02.csv',
-   '/home/geo/data/inflammation-07.csv',
-   '/home/geo/data/inflammation-05.csv',
-   '/home/geo/data/small-01.csv',
-   '/home/geo/data/inflammation-03.csv',
-   '/home/geo/data/inflammation-04.csv',
-   '/home/geo/data/inflammation-02.csv',
-   '/home/geo/data/inflammation-01.csv',
-   '/home/geo/data/inflammation-09.csv']
+  ['Data\\inflammation-08.csv',
+   'Data\\inflammation-10.csv',
+   'Data\\inflammation-11.csv',
+   'Data\\inflammation-06.csv',
+   'Data\\inflammation-12.csv',
+   'Data\\small-03.csv',
+   'Data\\small-02.csv',
+   'Data\\inflammation-07.csv',
+   'Data\\inflammation-05.csv',
+   'Data\\small-01.csv',
+   'Data\\inflammation-03.csv',
+   'Data\\inflammation-04.csv',
+   'Data\\inflammation-02.csv',
+   'Data\\inflammation-01.csv',
+   'Data\\inflammation-09.csv']
 
 - We can also search for only specific files and file formats. Here, we search for files that starts with the word 'small' and ends with file format '.csv':
 
 .. code:: python
 
-  In [3]: csv_files = glob.glob('/home/geo/data/small*.csv')
+  In [3]: csv_files = glob.glob('Data\\small*.csv')
   In [4]: print(csv_files)
-   ['/home/geo/data/small-03.csv', '/home/geo/data/small-02.csv', '/home/geo/data/small-01.csv']
+   ['Data\\small-03.csv', 'Data\\small-02.csv', 'Data\\small-01.csv']
 
 Now we have successfully filtered only certain types of files and as a result we have a list of files that we
 can loop over and process.
@@ -72,7 +72,7 @@ We want to rename our column from `pt_r_tt` into `pt_r_tt_XXXXXXX` where XXXXXX 
  - Rename the `pt_r_tt` value:
 
     - Parse the new column name where you combine `pt_r_tt` text and text from `destination` variable into a new variable called `new_name`.
-    - Rename the `pt_r_tt` column using value from `new_name` variable. Use `data.rename()` -function. See `lesson 6 materials in GeoPython <https://geo-python.github.io/2017/lessons/L6/pandas-analysis.html#exploring-data-and-renaming-columns>`__.
+    - Rename the `pt_r_tt` column using value from `new_name` variable.
 
 Finding out which shopping center is the closest
 

@@ -4,10 +4,9 @@ Lesson 4 overview
 During this lesson we will learn a few really useful and commonly used GIS functionalities using Geopandas, namely:
 
 1. :doc:`Data classification <reclassify>`
-
-.. comented_out
-    3. :doc:`Exercise 4 <ex-4>`
-    4. :doc:`Exercise 4 hints <exercise-4-hints>`
+2. :doc:`Heatmaps with Google Maps <gmaps-heatmap>`
+3. :doc:`Exercise 4 <ex-4>`
+4. :doc:`Exercise 4 hints <exercise-4-hints>`
 
 Learning goals
 --------------
@@ -23,8 +22,6 @@ Sources
 -------
 
 Following materials are partly based on documentation of `Geopandas <http://geopandas.org/geocoding.html>`__, `Pandas <http://pandas.pydata.org/>`__, `Shapely
-<http://toblerity.org/shapely/manual.html#>`__, and `pysal <http://pysal.readthedocs.io/en/latest/>`_.
+<http://toblerity.org/shapely/manual.html#>`__, `pysal <http://pysal.readthedocs.io/en/latest/>`_, and `Jupyter Gmaps <https://jupyter-gmaps.readthedocs.io>`_
 
 The lesson reuses materials from Henrikki Tenkanen from the University of Helsinki, under CC-BY-SA from `from AutoGIS GitHub repository <https://github.com/Automating-GIS-processes/2017>`_.
-
-
