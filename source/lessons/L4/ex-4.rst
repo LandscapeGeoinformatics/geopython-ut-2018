@@ -43,10 +43,22 @@ We define the geographical area from where the given service (shopping center) i
  
  --------
  In this excercise you will practice making heatmaps with jupyter gmap.
+ 
+ Problem: Create a heatmap of one fenomena (10 points)
+
  You may use our example dataset about Earthquakes which you can download here `**here** <.....>` 
  or you may also try to use your own dataset or find some interesting dataset from Kaggle `**Kaggle** <https://www.kaggle.com/datasets>`
- 
- Your
+
+**Steps:**
+
+ - Download a dataset from `**here** <.....>` 
+    or use your own dataset which has to be initially in csv format (not shp)
+    or  find some interesting dataset from Kaggle `**Kaggle** <https://www.kaggle.com/datasets>`. Dataset has to be in csv format (not shp)
+
+ - Read in your csv file and create point geometry from your coordinates
+ - Transform the coordinate system into suitable one for your study area
+ - Create heatmap using gmaps
+ - Submit the code as Jupyter notebook or Python Script and the heatmap you have visualized (as png).
  
  
 
