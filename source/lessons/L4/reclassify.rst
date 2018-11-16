@@ -357,7 +357,7 @@ Okey so it looks like they are correctly classified, good. As a final step let's
 
 
 Classification based on common classification schemes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 `Pysal <http://pysal.readthedocs.io/en/latest/>`_ -module is an extensive Python library including various functions and tools to
 do spatial data analysis. It also includes all of the most common data classification schemes that are used commonly e.g. when visualizing data.
