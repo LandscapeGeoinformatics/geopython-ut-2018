@@ -22,10 +22,11 @@ objects. Here we learn how to deal with such geometric objects when plotting bok
 .. code:: python
 
     # Filepaths
-    fp = r"/home/geo/data/TravelTimes_to_5975375_RailwayStation.shp"
-    roads_fp = r"/home/geo/data/roads.shp"
-    metro_fp = r"/home/geo/data/metro.shp"
+    fp = r"Data\TravelTimes_to_5975375_RailwayStation.shp"
+    roads_fp = r"Data\roads.shp"
+    metro_fp = r"Data\metro.shp"
 
+	
 .. ipython:: python
    :suppress:
 
@@ -55,7 +56,7 @@ Shapefiles etc. can often have Multi-geometries (MultiLineStrings etc.), thus we
 .. note::
 
    Nowadays, converting GeoDataFrames to a format that Bokeh understands is much easier with dedicated ``GeoJSONDataSource`` object than shown in here.
-   Take a look at the example_ at the end of this page.
+   Take a look at the example at the end of this page.
 
 
 - It is always a good practice to slice your functions into small pieces which is what we have done here:
@@ -369,7 +370,7 @@ Next, we want to classify the travel times with 5 minute intervals until 200 min
    p.add_tools(phover)
 
    # Output filepath to HTML
-   output_file = r"/home/geo/accessibility_map_Helsinki.html"
+   output_file = r"Data\accessibility_map_Helsinki.html"
 
    # Save the map
    save(p, output_file);
@@ -386,8 +387,8 @@ Next, we want to classify the travel times with 5 minute intervals until 200 min
       from bokeh.plotting import save, figure
       from bokeh.models import GeoJSONDataSource
 
-      addresses_fp = r'/home/geo/addresses.shp'
-      roads_fp = r'/home/geo/roads.shp'
+      addresses_fp = r'Data\addresses.shp'
+      roads_fp = r'Data\roads.shp'
 
       # Read the data
       addresses = gpd.read_file(addresses_fp)
@@ -411,7 +412,7 @@ Next, we want to classify the travel times with 5 minute intervals until 200 min
       p.circle('x', 'y', source=point_source, color='black', size=6)
 
       # Output filepath
-      outfp = r"C:\HY-DATA\HENTENKA\KOODIT\Opetus\Automating-GIS-processes\Test\Martta_Ex5\test_map.html"
+      outfp = r"Data\test_map.html"
 
       # Save the map
       save(p, outfp)

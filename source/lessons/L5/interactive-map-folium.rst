@@ -25,8 +25,7 @@ Let's first see how we can do a simple interactive web-map without any data on i
     import folium
 
     # Create a Map instance
-    m = folium.Map(location=[60.25, 24.8], tiles='Stamen Toner',
-                       zoom_start=10, control_scale=True)
+    m = folium.Map(location=[60.25, 24.8], zoom_start=10, control_scale=True)
 
 The first parameter ``location`` takes a pair of lat, lon values as list as an input which will determine where the map will be positioned when user opens up the map. ``zoom_start`` -parameter adjusts the default zoom-level for the map (the higher the number the closer the zoom is). ``control_scale`` defines if map should have a scalebar or not.
 
@@ -39,22 +38,25 @@ The first parameter ``location`` takes a pair of lat, lon values as list as an i
     from fiona.crs import from_epsg
 
     # Create a Map instance
-    m = folium.Map(location=[60.25, 24.8], zoom_start=10, control_scale=True, prefer_canvas=True)
+    m = folium.Map(location=[60.25, 24.8], zoom_start=10, control_scale=True)
 
 - Let's see what our map looks like. We can already now save the map without any content. It will now just show the basemap in such a way that we initialized it. Let's save the map as ``Data/base_map.html``.
 
 .. ipython:: python
-
-    @suppress
+   :suppress:
+   
     import os
+    outfp = os.path.join(os.path.abspath("data"), "base_map.html")
+    m.save(outfp)
+    
+.. code:: python
 
+    # Filepath to the output
     outfp = r"Data\base_map.html"
 
-    @suppress
-    outfp = os.path.join(os.path.abspath("./Data"), "base_map.html")
-
+    # Save the map
     m.save(outfp)
-
+    
 Take a look at the map by clicking it with right mouse and open it with Google Chrome which then opens it up in a web browser.
 
 - Let's change the basemap style to ``Stamen Toner`` and change the location of our map slightly. The ``tiles`` -parameter is used for changing the background map provider and map style (see here for all possible ones).
@@ -62,21 +64,19 @@ Take a look at the map by clicking it with right mouse and open it with Google C
 .. code:: python
 
     # Let's change the basemap style to 'Stamen Toner'
-    m = folium.Map(location=[40.730610, -73.935242], tiles='Stamen Toner',
-                   zoom_start=12, control_scale=True, prefer_canvas=True)
+    m = folium.Map(location=[60.25, 24.8], tiles='Stamen Toner', zoom_start=10, control_scale=True, prefer_canvas=True)
 
     # Filepath to the output
-    outfp = "Data/base_map2.html"
+    outfp = r"Data\base_map2.html"
 
-   # Save the map
+    # Save the map
     m.save(outfp)
 
 .. ipython:: python
   :suppress:
 
     m = folium.Map(location=[40.730610, -73.935242], tiles='Stamen Toner', zoom_start=12, control_scale=True, prefer_canvas=True)
-    outfp = "Data/base_map2.html"
-    outfp = os.path.join(os.path.abspath("./data"), "base_map2.html")
+    outfp = os.path.join(os.path.abspath("data"), "base_map2.html")
     m.save(outfp)
 
 .. admonition:: Task
@@ -1256,9 +1256,11 @@ First we need to prepare the data.
 
 .. code:: python
 
-    # Filepaths
-    fp = "Data/data/Vaestotietoruudukko_2015.shp"
-    addr_fp = "Data/data/addresses.shp"
+    from fiona.crs import from_epsg
+    
+	# Filepaths
+    fp = r"Data\Vaestotietoruudukko_2015.shp"
+    addr_fp = r"Data\addresses.shp"
 
     # Read Data
     data = gpd.read_file(fp)
@@ -1273,7 +1275,7 @@ First we need to prepare the data.
     ad.crs = from_epsg(4326)
 
     # Make a selection (only data above 0 and below 1000)
-    data = data.ix[(data['ASUKKAITA'] > 0) & (data['ASUKKAITA'] <= 1000)]
+    data = data.loc[(data['ASUKKAITA'] > 0) & (data['ASUKKAITA'] <= 1000)]
 
     # Create a Geo-id which is needed by the Folium (it needs to have a unique identifier for each row)
     data['geoid'] = data.index.astype(str)
@@ -1292,18 +1294,20 @@ Now we can start visualizing our data with Folium.
 
 .. code:: python
 
-    # Create a Clustered map where points are clustered
-    marker_cluster = folium.MarkerCluster().add_to(map_osm)
+    from folium.plugins import MarkerCluster
 
+    map_osm = folium.Map(location=[60.25, 24.8], tiles='Stamen Toner', zoom_start=10, control_scale=True, prefer_canvas=True, width=600, height=450)
+    
+    # Create a Clustered map where points are clustered
+    marker_cluster = MarkerCluster().add_to(map_osm)
 
     # Create Choropleth map where the colors are coming from a column "ASUKKAITA".
     # Notice: 'geoid' column that we created earlier needs to be assigned always as the first column
     # with threshold_scale we can adjust the class intervals for the values
-    map_osm.choropleth(geo_str=jsontxt, data=data, columns=['geoid', 'ASUKKAITA'], key_on="feature.id",
+    map_osm.choropleth(geo_data=jsontxt, data=data, columns=['geoid', 'ASUKKAITA'], key_on="feature.id",
                        fill_color='YlOrRd', fill_opacity=0.9, line_opacity=0.2, line_color='white', line_weight=0,
                        threshold_scale=[100, 250, 500, 1000, 2000],
                        legend_name='Population in Helsinki', highlight=False, smooth_factor=1.0)
-
 
     # Create Address points on top of the map
     for idx, row in ad.iterrows():
@@ -1331,30 +1335,39 @@ Open it with your browser and see the result.
     import os
     import geopandas as gpd
     from fiona.crs import from_epsg
+	from folium.plugins import MarkerCluster
     map_osm = folium.Map(location=[60.25, 24.8], tiles='Stamen Toner', zoom_start=10, control_scale=True, prefer_canvas=True, width=600, height=450)
-    marker_cluster = folium.MarkerCluster().add_to(map_osm)
+    marker_cluster = MarkerCluster().add_to(map_osm)
     fp = os.path.join(os.path.abspath('data'), "Vaestotietoruudukko_2015.shp")
-    addr_fp = outfp = os.path.join(os.path.abspath('data'), "addresses.shp")
+    addr_fp = os.path.join(os.path.abspath('data'), "addresses.shp")
     data = gpd.read_file(fp)
     ad = gpd.read_file(addr_fp)
     data['geometry'] = data['geometry'].to_crs(epsg=4326)
     ad['geometry'] = ad['geometry'].to_crs(epsg=4326)
     data.crs = from_epsg(4326)
     ad.crs = from_epsg(4326)
-    data = data.ix[(data['ASUKKAITA'] > 0) & (data['ASUKKAITA'] <= 1000)]
+    data = data.loc[(data['ASUKKAITA'] > 0) & (data['ASUKKAITA'] <= 1000)]
     data['geoid'] = data.index.astype(str)
     ad['geoid'] = ad.index.astype(str)
     data = data[['geoid', 'ASUKKAITA', 'geometry']]
     jsontxt = data.to_json()
-    map_osm.choropleth(geo_str=jsontxt, data=data, columns=['geoid', 'ASUKKAITA'], key_on="feature.id", fill_color='YlOrRd', fill_opacity=0.9, line_opacity=0.2, line_color='white', line_weight=0, threshold_scale=[100, 250, 500, 1000, 2000], legend_name='Population in Helsinki', highlight=False, smooth_factor=1.0)
+    map_osm.choropleth(geo_data=jsontxt, data=data, columns=['geoid', 'ASUKKAITA'], key_on="feature.id", fill_color='YlOrRd', fill_opacity=0.9, line_opacity=0.2, line_color='white', line_weight=0, threshold_scale=[100, 250, 500, 1000, 2000], legend_name='Population in Helsinki', highlight=False, smooth_factor=1.0)
+
+
+.. ipython:: python
+   :suppress:
+
     for idx, row in ad.iterrows():
         lon = row['geometry'].x
         lat = row['geometry'].y
         address = row['address']
         folium.RegularPolygonMarker(location=[lat, lon], popup=address, fill_color='#2b8cbe', number_of_sides=6, radius=8).add_to(marker_cluster)
 
+
+
 .. ipython:: python
    :suppress:
+    
     outfp = os.path.join(os.path.abspath('data'), 'pop15.html')
     map_osm.save(outfp)
 

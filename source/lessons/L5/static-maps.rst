@@ -15,8 +15,6 @@ You should have following Shapefiles in the ``Data`` folder:
   - TravelTimes_to_5975375_RailwayStation.shp
   - Vaestotietoruudukko_2015.shp
 
-Extract the files into a folder called ``Data``:
-
 .. code::
 
     addresses.cpg             population_square_km.dbf      TravelTimes_to_5975375_RailwayStation.cpg
@@ -53,7 +51,7 @@ First, we need to read the data.
     import os
     import gdal
     import geopandas as gpd
-    import maptlotlib.pyplot as plt
+    import matplotlib.pyplot as plt
 
     # Filepaths
     grid_fp = os.path.join(os.path.abspath('data'), "TravelTimes_to_5975375_RailwayStation.shp")
@@ -111,7 +109,7 @@ For example we can adjust various parameters
     # Visualize the travel times into 9 classes using "Quantiles" classification scheme
     # Add also a little bit of transparency with `alpha` parameter
     # (ranges from 0 to 1 where 0 is fully transparent and 1 has no transparency)
-    my_map = grid.plot(column="car_r_t", linewidth=0.03, cmap="Reds", scheme="quantiles", k=9, alpha=0.9, legend=True)
+    my_map = grid.plot(column="car_r_t", linewidth=0.03, Spectral="Reds", scheme="quantiles", k=9, alpha=0.9, legend=True)
 
     # Add roads on top of the grid
     # (use ax parameter to define the map on top of which the second items are plotted)
@@ -136,6 +134,7 @@ And this is how our map should look like:
     roads.plot(ax=my_map, color="grey", linewidth=1.5);
     metro.plot(ax=my_map, color="red", linewidth=2.5);
     @savefig static_map.png width=7in
+    plt.tight_layout()
 
 
 .. image:: ../../_static/static_map.png
@@ -144,4 +143,12 @@ And this is how our map should look like:
 This kind of approach can be used really effectively to produce large quantities of nice looking maps
 (*though this example of ours isn't that pretty yet, but it could be*) which is one of the most useful aspects
 of coding and what makes it so important to learn how to code.
+
+
+.. todo::
+
+   **Task:**
+
+   Try to change your plotting parameters, colors and colormaps and see how your results change!
+   Change the order of plotting the layers and vector plotting criteria and see how they change the results.
 
