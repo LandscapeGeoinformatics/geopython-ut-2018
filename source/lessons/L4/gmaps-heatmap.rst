@@ -321,7 +321,7 @@ Base configuration:
 Most operations on Google Maps require that you tell Google who you are.
 
 
-.. admonition::
+.. admonition:: API key note
 
     For the lesson we will provide an API key in Moodle!
 

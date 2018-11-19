@@ -3,14 +3,15 @@ Interactive maps on Leaflet
 
 Whenever you go into a website that has some kind of interactive map, it
 is quite probable that you are wittnessing a map that has been made with
-a JavaScipt library called `Leaflet <http://leafletjs.com/>`__ (the
+a JavaScipt library called `Leaflet <http://leafletjs.com/>`_ (the
 other popular one that you might have wittnessed is called
-`OpenLayers <https://openlayers.org/>`__).
+`OpenLayers <https://openlayers.org/>`_).
 
 There is also a Python module called
-`Folium <https://github.com/python-visualization/folium>`__ that makes
+`Folium <https://github.com/python-visualization/folium>`_ that makes
 it possible visualize data that's been manipulated in Python on an
 interactive Leaflet map.
+
 
 Creating a simple interactive web-map
 -------------------------------------
@@ -40,17 +41,17 @@ The first parameter ``location`` takes a pair of lat, lon values as list as an i
     # Create a Map instance
     m = folium.Map(location=[60.25, 24.8], zoom_start=10, control_scale=True, prefer_canvas=True)
 
-- Let's see what our map looks like. We can already now save the map without any content. It will now just show the basemap in such a way that we initialized it. Let's save the map as ``/home/geo/base_map.html``.
+- Let's see what our map looks like. We can already now save the map without any content. It will now just show the basemap in such a way that we initialized it. Let's save the map as ``Data/base_map.html``.
 
 .. ipython:: python
 
     @suppress
     import os
 
-    outfp = "/home/geo/base_map.html"
+    outfp = r"Data\base_map.html"
 
     @suppress
-    outfp = os.path.join(os.path.abspath("./data"), "base_map.html")
+    outfp = os.path.join(os.path.abspath("./Data"), "base_map.html")
 
     m.save(outfp)
 
@@ -65,7 +66,7 @@ Take a look at the map by clicking it with right mouse and open it with Google C
                    zoom_start=12, control_scale=True, prefer_canvas=True)
 
     # Filepath to the output
-    outfp = "/home/geo/base_map2.html"
+    outfp = "Data/base_map2.html"
 
    # Save the map
     m.save(outfp)
@@ -74,7 +75,7 @@ Take a look at the map by clicking it with right mouse and open it with Google C
   :suppress:
 
     m = folium.Map(location=[40.730610, -73.935242], tiles='Stamen Toner', zoom_start=12, control_scale=True, prefer_canvas=True)
-    outfp = "/home/geo/base_map2.html"
+    outfp = "Data/base_map2.html"
     outfp = os.path.join(os.path.abspath("./data"), "base_map2.html")
     m.save(outfp)
 
@@ -1256,8 +1257,8 @@ First we need to prepare the data.
 .. code:: python
 
     # Filepaths
-    fp = "/home/geo/data/Vaestotietoruudukko_2015.shp"
-    addr_fp = "/home/geo/data/addresses.shp"
+    fp = "Data/data/Vaestotietoruudukko_2015.shp"
+    addr_fp = "Data/data/addresses.shp"
 
     # Read Data
     data = gpd.read_file(fp)
@@ -1316,7 +1317,7 @@ Now we can start visualizing our data with Folium.
         folium.RegularPolygonMarker(location=[lat, lon], popup=address, fill_color='#2b8cbe', number_of_sides=6, radius=8).add_to(marker_cluster)
 
     # Save the output
-    outfp = r'/home/geo/data/pop15.html'
+    outfp = r'Data\pop15.html'
     map_osm.save(outfp)
 
 That's it! Now we have a cool interactive map with some markers on it and grid showing the population in the Helsinki Region on top of a basemap.
@@ -1354,7 +1355,7 @@ Open it with your browser and see the result.
 
 .. ipython:: python
    :suppress:
-    outfp = outfp = os.path.join(os.path.abspath('data'), 'pop15.html')
+    outfp = os.path.join(os.path.abspath('data'), 'pop15.html')
     map_osm.save(outfp)
 
 

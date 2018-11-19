@@ -24,6 +24,7 @@ In addition to these modules, there are also several good and interesting other 
 
  - `mplleaflet <https://github.com/jwass/mplleaflet>`_ (converts Matplotlib plots easily to interactive Leaflet maps)
  - `Basemap <http://matplotlib.org/basemap/index.html>`_ (Matplotlib's own mapping module)
+ - `Cartopy <https://scitools.org.uk/cartopy/docs/latest/>`_ (The Cartopy project will replace Basemap, but it hasn’t yet implemented all of Basemap’s features.)
  - `GeoViews <http://geo.holoviews.org/>`_
 
 Learning goals
@@ -34,3 +35,12 @@ After this lessons lesson you should be able to (at least):
  - Create a static map using Geopandas (using the integrated matplotlib module)
  - Create a simple interactive map using Bokeh
  - Create a simple interactive web map using Folium (using the LeafletJS JavaScript web map library).
+
+
+Sources
+-------
+
+Following materials are partly based on documentation of `Geopandas <http://geopandas.org/geocoding.html>`_, `Matplotlib <http://matplotlib.org/>`_,
+`Bokeh <http://bokeh.pydata.org/en/latest/>`_, and `Folium <https://github.com/python-visualization/folium>`_.
+
+The lesson reuses materials from Henrikki Tenkanen from the University of Helsinki, under CC-BY-SA from `from AutoGIS GitHub repository <https://github.com/Automating-GIS-processes/2017>`_.

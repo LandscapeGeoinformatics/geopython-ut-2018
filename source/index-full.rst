@@ -52,23 +52,21 @@ The materials are divided into several sections:
 |                |                                 |
 +----------------+---------------------------------+
 | **Lesson 1**   | GIS in Python;                  |
-|                | Git Versioning Control System;  |
 |                | Spatial data model;             |
 |                | Geometric Objects; Shapely      |
 |                |                                 |
 +----------------+---------------------------------+
 | **Lesson 2**   | Introduction to Git;            |
 |                | Working with GeoDataFrames;     |
+|                | Working with an IDE (Spyder);   |
 |                | Managing projections;           |
-|                | Table join;                     |
 |                |                                 |
 +----------------+---------------------------------+
-| **Lesson 3**   | Geocoding and making spatial    |
-|                | queries                         |
+| **Lesson 3**   | making spatial queries          |
+|                | and joins;                      |
 |                |                                 |
 +----------------+---------------------------------+
-| **Lesson 4**   | Geometric operations;           |
-|                | Reclassifying data with Pysal   |
+| **Lesson 4**   | Reclassifying data with Pysal   |
 |                |                                 |
 +----------------+---------------------------------+
 | **Lesson 5**   | Visualization, making static    |

@@ -107,45 +107,44 @@ Make sure you are in the correct enviroment (don't install into ``base``, instal
 
 .. code::
 
-    # Install numpy (v 1.13.1)
+    # Install numpy
     conda install numpy
 
-    # Install pandas (v 0.20.3) --> bundled with python-dateutil (v 2.6.1) and pytz (v 2017.2)
+    # Install pandas
     conda install pandas
 
-    # Install scipy (v 0.19.1)
+    # Install scipy
     conda install scipy
 
-    # Install matplotlib (v 2.0.2) --> bundled with cycler, freetype, icu, jpeg, libpng, pyqt, qt, sip, sqlite, tornado, zlib
+    # Install matplotlib
     conda install matplotlib
     
     #Install Jupyter Notebook
     conda install jupyter
 
-    # Install scikit-learn (v 0.19.0)
+    # Install scikit-learn
     conda install scikit-learn
 
-    # Install bokeh (v 0.12.9) --> bundled with jinja2, markupsafe, pyyaml, yaml -packages
-    conda install bokeh
-
-    # Install statsmodels (v 0.8.0) --> bundled with patsy (0.4.1)
+    # Install statsmodels
     conda install statsmodels
 
-    # Install Geopandas (v 0.3.0) --> bundled with click, click-plugins, cligj, curl, descartes, expat, fiona, freexl, gdal, geos, hdf4, hdf5, kealib, krb5, libiconv, libnetcdf, libpq, libspatialindex, libspatialite, libtiff, libxml2, munch, openjpeg, pcre, proj4, psycopg2, pyproj, pysal, rtree, shapely, sqlalchemy, xerces-c
+    # Install Geopandas
     conda install -c conda-forge geopandas
 
-    # Install cartopy (v 0.15.1) --> bundled with libxslt, lxml, olefile, owslib, pillow, pyepsg, pyshp
+    # Install cartopy
     conda install -c conda-forge cartopy
 
-    # Install geoplot (v 0.0.4) using pip (on Linux: be sure to use pip that comes with conda distribution!) --> bundled with seaborn
-    conda install seaborn geoplot
+    # Install seaborn
+    conda install seaborn
 
-    # Install osmnx (v 0.5.4) --> bundled with altair, bleach, branca, colorama, entrypoints, folium, geopy, html5lib, ipykernel, ipython, ipython_genutils, jedi, jsonschema, jupyter_client, jupyter_core, mistune, nbconvert, nbformat, notebook, pandoc, pandocfilters, pickleshare, prompt_toolkit, pygments, pyzmq, simplegeneric, testpath, traitlets, vega, vincent, wcwidth, webencodings
-    conda install -c conda-forge osmnx
+    # Install geoplot
+    conda install geoplot
 
-    # Install Folium (v 0.5.0) --> bundled with altair, vega
+    # Install bokeh
+    conda install bokeh
+
+    # Install Folium
     conda install -c conda-forge folium
-
 
 
 .. commented out
@@ -153,6 +152,8 @@ Make sure you are in the correct enviroment (don't install into ``base``, instal
     conda install networkx
     # Install PySpark (v 2.2.0) --> bundled with py4j (v 0.10.6)
     conda install pyspark
+    # Install osmnx (v 0.5.4) --> bundled with altair, bleach, branca, colorama, entrypoints, folium, geopy, html5lib, ipykernel, ipython, ipython_genutils, jedi, jsonschema, jupyter_client, jupyter_core, mistune, nbconvert, nbformat, notebook, pandoc, pandocfilters, pickleshare, prompt_toolkit, pygments, pyzmq, simplegeneric, testpath, traitlets, vega, vincent, wcwidth, webencodings
+    conda install -c conda-forge osmnx
     # Install Dash using Pip
     pip install dash==0.19.0  # The core dash backend
     pip install dash-renderer==0.11.1  # The dash front-end
@@ -178,27 +179,29 @@ At first start the Python console:
 
      import numpy as np
      import pandas as pd
-     import geopandas as gpd
-     import scipy
-     import shapely
      import matplotlib.pyplot as plt
+     import scipy
+     import statsmodels
+     import sklearn
+     import shapely
+     import geopandas as gpd
      import pysal
      import bokeh
      import cartopy
-     import statsmodels
-     import sklearn
      import geoplot
-     import osmnx
      import folium
-     import dash
 
+
+.. commented out
+    import osmnx
+    import dash
 
 If you don't receive any errors, everything should be working!
 
 Final Remarks
 ~~~~~~~~~~~~~
 
-We saw that in some installations importing of ``import matplotlib.pyplot as plt`` or ``import osmnx`` crashed the Python.
+We saw that in some installations importing of ``import matplotlib.pyplot as plt`` crashed the Python.
 If that happens we had success in re-installing **matplotlib** again: ``conda install matplotlib``.
 
 Furthermore, a warning can appear, that a package (mkl-random) might require "cython" and complain that it is not installed. So far we can ignore that.
