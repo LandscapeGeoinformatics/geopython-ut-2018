@@ -125,17 +125,11 @@ Make sure you are in the correct enviroment (don't install into ``base``, instal
     # Install scikit-learn (v 0.19.0)
     conda install scikit-learn
 
-    # Install networkx (v 1.11) --> bundled with decorator (v 4.1.2)
-    conda install networkx
-
     # Install bokeh (v 0.12.9) --> bundled with jinja2, markupsafe, pyyaml, yaml -packages
     conda install bokeh
 
     # Install statsmodels (v 0.8.0) --> bundled with patsy (0.4.1)
     conda install statsmodels
-
-    # Install PySpark (v 2.2.0) --> bundled with py4j (v 0.10.6)
-    conda install pyspark
 
     # Install Geopandas (v 0.3.0) --> bundled with click, click-plugins, cligj, curl, descartes, expat, fiona, freexl, gdal, geos, hdf4, hdf5, kealib, krb5, libiconv, libnetcdf, libpq, libspatialindex, libspatialite, libtiff, libxml2, munch, openjpeg, pcre, proj4, psycopg2, pyproj, pysal, rtree, shapely, sqlalchemy, xerces-c
     conda install -c conda-forge geopandas
@@ -144,7 +138,7 @@ Make sure you are in the correct enviroment (don't install into ``base``, instal
     conda install -c conda-forge cartopy
 
     # Install geoplot (v 0.0.4) using pip (on Linux: be sure to use pip that comes with conda distribution!) --> bundled with seaborn
-    pip install geoplot
+    conda install seaborn geoplot
 
     # Install osmnx (v 0.5.4) --> bundled with altair, bleach, branca, colorama, entrypoints, folium, geopy, html5lib, ipykernel, ipython, ipython_genutils, jedi, jsonschema, jupyter_client, jupyter_core, mistune, nbconvert, nbformat, notebook, pandoc, pandocfilters, pickleshare, prompt_toolkit, pygments, pyzmq, simplegeneric, testpath, traitlets, vega, vincent, wcwidth, webencodings
     conda install -c conda-forge osmnx
@@ -152,12 +146,20 @@ Make sure you are in the correct enviroment (don't install into ``base``, instal
     # Install Folium (v 0.5.0) --> bundled with altair, vega
     conda install -c conda-forge folium
 
+
+
+.. commented out
+    # Install networkx (v 1.11) --> bundled with decorator (v 4.1.2)
+    conda install networkx
+    # Install PySpark (v 2.2.0) --> bundled with py4j (v 0.10.6)
+    conda install pyspark
     # Install Dash using Pip
     pip install dash==0.19.0  # The core dash backend
     pip install dash-renderer==0.11.1  # The dash front-end
     pip install dash-html-components==0.8.0  # HTML components
     pip install dash-core-components==0.14.0  # Supercharged components
     pip install plotly --upgrade  # Plotly graphing library
+
 
 Test that everything works
 ~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -55,7 +55,7 @@ Problem 2: Create a heatmap of one phenomenon (5 points)
 
 **Steps:**
 
- - Download am `earthquake datasets <https://www.kaggle.com/usgs/earthquake-database>`_
+ - Download an `earthquake datasets <https://www.kaggle.com/usgs/earthquake-database>`_
     **OR** use your own dataset which has to be initially in csv format (not shp)
     **OR**  find some interesting `dataset from Kaggle <https://www.kaggle.com/datasets>`_. The dataset has to be in csv format (not shp)
 

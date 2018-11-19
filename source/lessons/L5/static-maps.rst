@@ -4,23 +4,35 @@ Static maps
 Download datasets
 -----------------
 
-Before we start you need to download (and then extract) the dataset zip-package used during this lesson `from this link <https://github.com/Automating-GIS-processes/Lesson-5-Making-Maps/raw/master/data/dataE5.zip>`_.
+Before we start you need to download (and then extract) the dataset zip-package used during this lesson `from this link <../../_static/data/L5/L5.zip>`_.
 
-You should have following Shapefiles in the ``dataE5`` folder:
+You should have following Shapefiles in the ``Data`` folder:
 
   - addresses.shp
   - metro.shp
   - roads.shp
-  - some.geojson
+  - TravelTimes_to_5975375_RailwayStation_Helsinki.geojson
   - TravelTimes_to_5975375_RailwayStation.shp
   - Vaestotietoruudukko_2015.shp
 
-Extract the files into a folder called ``data``:
+Extract the files into a folder called ``Data``:
 
-.. code:: bash
+.. code::
 
-    $ cd
-    $ unzip dataE5.zip -d data
+    addresses.cpg             population_square_km.dbf      TravelTimes_to_5975375_RailwayStation.cpg
+    addresses.dbf             population_square_km.prj      TravelTimes_to_5975375_RailwayStation.dbf
+    addresses.prj             population_square_km.sbn      TravelTimes_to_5975375_RailwayStation.prj
+    addresses.shp             population_square_km.sbx      TravelTimes_to_5975375_RailwayStation.shp
+    addresses.shx             population_square_km.shp      TravelTimes_to_5975375_RailwayStation.shx
+    addresses.txt             population_square_km.shp.xml  TravelTimes_to_5975375_RailwayStation_Helsinki.geojson
+    metro.dbf                 population_square_km.shx      TravelTimes_to_5975375_RailwayStation_Helsinki.json
+    metro.prj                 roads.dbf                     Vaestotietoruudukko_2015.dbf
+    metro.sbn                 roads.prj                     Vaestotietoruudukko_2015.prj
+    metro.sbx                 roads.sbn                     Vaestotietoruudukko_2015.shp
+    metro.shp                 roads.sbx                     Vaestotietoruudukko_2015.shx
+    metro.shx                 roads.shp
+    population_square_km.cpg  roads.shx
+
 
 Static maps in Geopandas
 ------------------------
@@ -40,9 +52,9 @@ First, we need to read the data.
     import matplotlib.pyplot as plt
 
     # Filepaths
-    grid_fp = r"/home/geo/data/TravelTimes_to_5975375_RailwayStation.shp"
-    roads_fp = r"/home/geo/data/roads.shp"
-    metro_fp = r"/home/geo/data/metro.shp"
+    grid_fp = r"Data\TravelTimes_to_5975375_RailwayStation.shp"
+    roads_fp = r"Data\roads.shp"
+    metro_fp = r"Data\metro.shp"
 
     # Read files
     grid = gpd.read_file(grid_fp)
@@ -105,7 +117,7 @@ Finally we can make a visualization using the ``.plot()`` -function in Geopandas
     plt.tight_layout()
 
     # Save the figure as png file with resolution of 300 dpi
-    outfp = r"/home/geo/data/static_map.png"
+    outfp = r"Data\static_map.png"
     plt.savefig(outfp, dpi=300)
 
 And this is how our map should look like:
@@ -121,3 +133,4 @@ And this is how our map should look like:
 This kind of approach can be used really effectively to produce large quantities of nice looking maps
 (*though this example of ours isn't that pretty yet, but it could be*) which is one of the most useful aspects
 of coding and what makes it so important to learn how to code.
+
