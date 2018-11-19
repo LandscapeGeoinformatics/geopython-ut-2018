@@ -1258,7 +1258,7 @@ First we need to prepare the data.
 
     from fiona.crs import from_epsg
     
-	# Filepaths
+    # Filepaths
     fp = r"Data\Vaestotietoruudukko_2015.shp"
     addr_fp = r"Data\addresses.shp"
 
@@ -1335,7 +1335,7 @@ Open it with your browser and see the result.
     import os
     import geopandas as gpd
     from fiona.crs import from_epsg
-	from folium.plugins import MarkerCluster
+    from folium.plugins import MarkerCluster
     map_osm = folium.Map(location=[60.25, 24.8], tiles='Stamen Toner', zoom_start=10, control_scale=True, prefer_canvas=True, width=600, height=450)
     marker_cluster = MarkerCluster().add_to(map_osm)
     fp = os.path.join(os.path.abspath('data'), "Vaestotietoruudukko_2015.shp")
