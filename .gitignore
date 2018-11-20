@@ -41,12 +41,17 @@ source/_static/crime-by-month.png
 source/_static/crime-costs-histogram.png
 source/_static/crime-grid-3301_poly.png
 
-
-
 source/savefig
 
 data/metro_map.html
 data/point_map.html
 data/point_map_hover.html
 data/points.html
+
+data/base_map.html
+data/base_map2.html
+data/pop15.html
+data/roads_map.html
+source/_static/population_histogram2.png
+
 
