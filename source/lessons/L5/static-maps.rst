@@ -4,32 +4,30 @@ Static maps
 Download datasets
 -----------------
 
-Before we start you need to download (and then extract) the dataset zip-package used during this lesson `from this link <../../_static/data/L5/L5.zip>`_.
+Before we start you need to download (and then extract) the dataset zip-package used during this lesson `from this link <../../_static/data/L5/L5_data.zip>`_.
 
 You should have following Shapefiles in the ``Data`` folder:
 
-  - addresses.shp
-  - metro.shp
+  - population_square_km.shp
+  - schools_tartu.shp
   - roads.shp
-  - TravelTimes_to_5975375_RailwayStation_Helsinki.geojson
-  - TravelTimes_to_5975375_RailwayStation.shp
-  - Vaestotietoruudukko_2015.shp
 
 .. code::
 
-    addresses.cpg             population_square_km.dbf      TravelTimes_to_5975375_RailwayStation.cpg
-    addresses.dbf             population_square_km.prj      TravelTimes_to_5975375_RailwayStation.dbf
-    addresses.prj             population_square_km.sbn      TravelTimes_to_5975375_RailwayStation.prj
-    addresses.shp             population_square_km.sbx      TravelTimes_to_5975375_RailwayStation.shp
-    addresses.shx             population_square_km.shp      TravelTimes_to_5975375_RailwayStation.shx
-    addresses.txt             population_square_km.shp.xml  TravelTimes_to_5975375_RailwayStation_Helsinki.geojson
-    metro.dbf                 population_square_km.shx      TravelTimes_to_5975375_RailwayStation_Helsinki.json
-    metro.prj                 roads.dbf                     Vaestotietoruudukko_2015.dbf
-    metro.sbn                 roads.prj                     Vaestotietoruudukko_2015.prj
-    metro.sbx                 roads.sbn                     Vaestotietoruudukko_2015.shp
-    metro.shp                 roads.sbx                     Vaestotietoruudukko_2015.shx
-    metro.shx                 roads.shp
-    population_square_km.cpg  roads.shx
+    population_square_km.shp.xml  schools_tartu.cpg
+    population_square_km.shx      schools_tartu.csv
+    roads.cpg                     schools_tartu.dbf
+    roads.dbf                     schools_tartu.prj
+    L5_data.zip                   roads.prj                     schools_tartu.sbn
+    roads.sbn                     schools_tartu.sbx
+    roads.sbx                     schools_tartu.shp             schools5.csv
+    population_square_km.cpg      roads.shp                     schools_tartu.shp.xml
+    population_square_km.dbf      roads.shp.xml                 schools_tartu.shx
+    population_square_km.prj      roads.shx                     schools_tartu.txt.xml
+    population_square_km.sbn
+    population_square_km.sbx
+    population_square_km.shp
+
 
 
 Static maps in Geopandas
@@ -40,7 +38,7 @@ We have already seen during the previous lessons quite many examples how to crea
 Thus, we won't spend too much time repeating making such maps but let's create a one with more layers on it than just one
 which kind we have mostly done this far.
 
-Let's create a static accessibility map with roads and metro line on it.
+Let's create a static accessibility map with roads and schools line on it.
 
 First, we need to read the data.
 
@@ -54,9 +52,9 @@ First, we need to read the data.
     import matplotlib.pyplot as plt
 
     # Filepaths
-    grid_fp = os.path.join(os.path.abspath('data'), "TravelTimes_to_5975375_RailwayStation.shp")
-    roads_fp = os.path.join(os.path.abspath('data'), "roads.shp")
-    metro_fp = os.path.join(os.path.abspath('data'), "metro.shp")
+    grid_fp = os.path.join(os.path.abspath('data'), "L5_Data/population_square_km.shp")
+    roads_fp = os.path.join(os.path.abspath('data'),"L5_Data/roads.shp")
+    schools_fp = os.path.join(os.path.abspath('data'), "L5_Data/schools_tartu.shp")
 
 
 .. code::
@@ -65,9 +63,9 @@ First, we need to read the data.
     import matplotlib.pyplot as plt
 
     # Filepaths
-    grid_fp = r"Data\TravelTimes_to_5975375_RailwayStation.shp"
-    roads_fp = r"Data\roads.shp"
-    metro_fp = r"Data\metro.shp"
+    grid_fp = r"L5_Data\population_square_km.shp"
+    roads_fp = r"L5_Data\roads.shp"
+    schools_fp = r"L5_Data\schools_tartu.shp"
 
 
 .. ipython:: python
@@ -75,7 +73,7 @@ First, we need to read the data.
     # Read files
     grid = gpd.read_file(grid_fp)
     roads = gpd.read_file(roads_fp)
-    metro = gpd.read_file(metro_fp)
+    schools = gpd.read_file(schools_fp)
 
 
 Then, we need to be sure that the files are in the same coordinate system. Let's use the crs of our travel time grid.
@@ -84,7 +82,7 @@ Then, we need to be sure that the files are in the same coordinate system. Let's
 
     gridCRS = grid.crs
     roads['geometry'] = roads['geometry'].to_crs(crs=gridCRS)
-    metro['geometry'] = metro['geometry'].to_crs(crs=gridCRS)
+    schools['geometry'] = schools['geometry'].to_crs(crs=gridCRS)
 
 Finally we can make a visualization using the ``.plot()`` -function in Geopandas. The ``.plot()`` function takes all the matplotlib parameters where appropriate.
 For example we can adjust various parameters
@@ -103,41 +101,48 @@ For example we can adjust various parameters
 - `` vmax`` indicate a maximal value from the data column to be considered when plotting (also affects the classification scheme), can be used to "normalise" several plots where the data values don't aligh exactly
 
 
+Let's check the histgram first:
 
-.. code:: python
+.. ipython:: python
 
-    # Visualize the travel times into 9 classes using "Quantiles" classification scheme
+    # Plot
+    fig, ax = plt.subplots()
+    grid.hist(column="Population", bins=100)
+    # Add title
+    plt.title("Amount of population km2 Tartumaa histogram")
+    @savefig population_histogram2.png width=7in
+    plt.tight_layout()
+
+.. image:: ../../_static/population_histogram2.png
+
+
+.. ipython:: python
+
+    # Visualize the population density into 7 classes using "Quantiles" classification scheme
     # Add also a little bit of transparency with `alpha` parameter
     # (ranges from 0 to 1 where 0 is fully transparent and 1 has no transparency)
-    my_map = grid.plot(column="car_r_t", linewidth=0.03, Spectral="Reds", scheme="quantiles", k=9, alpha=0.9, legend=True)
+    my_map = grid.plot(column="Population", linewidth=0.03, cmap="Reds", scheme="quantiles", k=7, alpha=0.8, legend=True)
 
     # Add roads on top of the grid
     # (use ax parameter to define the map on top of which the second items are plotted)
     roads.plot(ax=my_map, color="grey", linewidth=1.5)
 
-    # Add metro on top of the previous map
-    metro.plot(ax=my_map, color="red", linewidth=2.5)
+    # Add schools on top of the previous map
+    schools.plot(ax=my_map, color="cyan", markersize=9.0)
 
     # Remove the empty white-space around the axes
-    plt.tight_layout()
-
-    # Save the figure as png file with resolution of 300 dpi
-    outfp = r"Data\static_map.png"
-    plt.savefig(outfp, dpi=300)
-
-And this is how our map should look like:
-
-.. ipython:: python
-   :suppress:
-
-    my_map = grid.plot(column="car_r_t", linewidth=0.03, cmap="Spectral", scheme="quantiles", k=9, alpha=0.9, legend=True);
-    roads.plot(ax=my_map, color="grey", linewidth=1.5);
-    metro.plot(ax=my_map, color="red", linewidth=2.5);
+    plt.title("population km2 Tartumaa in relation to schools and major roads")
     @savefig static_map.png width=7in
     plt.tight_layout()
 
 
 .. image:: ../../_static/static_map.png
+
+
+.. code::
+
+    outfp = r"Data\static_map.png"
+    plt.savefig(outfp, dpi=300)
 
 
 This kind of approach can be used really effectively to produce large quantities of nice looking maps
