@@ -1,12 +1,22 @@
 Examples 2018
 =============
 
-Birth rate in Estonia in 2016
------------------------------
+Birth rate and average income in Estonia in 2016
+------------------------------------------------
 
 Daiga Paršova, static map with geopandas/matplotlib
 
+"Birth rate in Estonia in 2016"
+
 .. image:: ../../_static/examples/BirthRateEstonia.png
+
+
+"Gross average monthly income in Estonia in 2016"
+
+.. image:: ../../_static/examples/daiga-parsova-Income2016_preview.png
+   :target: ../../_static/examples/daiga-parsova-Income2016.html
+
+`Click here to view interactive version! <../../_static/examples/daiga-parsova-Income2016.html>`_
 
 
 Number of crimes (burglary, robbery, vandalism) per district in Boston
@@ -40,7 +50,7 @@ by Veronika Mooses, dynamic maps with plotly
 
 `Click here to view interactive version! <../../_static/examples/outbound_travel_est.html>`_
 
-"Estonian speakers outbound (from Estonia to international destinations) travel 2014-2016"
+"Russian speakers outbound (from Estonia to international destinations) travel 2014-2016"
 
 .. image:: ../../_static/examples/outbound_travel_rus_preview.png
    :target: ../../_static/examples/outbound_travel_rus.html
