@@ -163,6 +163,7 @@ Contents
    lessons/L5/World-3D
    lessons/L5/ex-5
    lessons/L5/exercise-5-hints
+   lessons/L5/examples_2018
    lessons/L5/lecture
 
 .. commented out

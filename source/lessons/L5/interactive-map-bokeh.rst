@@ -13,12 +13,12 @@ Import necessary functionalities from bokeh.
 
 .. code:: python
 
-    from bokeh.plotting import figure, save, output_file, output_notebook, show
+    from bokeh.plotting import figure, output_file, output_notebook, show
 
 .. ipython:: python
    :suppress:
 
-    from bokeh.plotting import figure, save, output_file, show
+    from bokeh.plotting import figure, output_file, show
 
 
 First we need to initialize our plot by calling the ``figure`` object.
@@ -84,7 +84,7 @@ Finally, we can save our interactive plot into the disk with ``output_file`` -fu
     outfp = os.path.join(os.path.abspath('data'), "points.html")
 
     # Save the plot by passing the plot -object and output path
-    save(obj=p, filename=outfp)
+    output_file(outfp)
 
 Now open your interactive ``points.html`` plot by double-clicking it which should open it in a web browser.
 
@@ -390,7 +390,7 @@ Great it worked. Now the last thing is to save our map as html file into our com
     outfp = os.path.join(os.path.abspath('data'), "point_map.html")
 
     # Save the map
-    save(p, outfp)
+    output_file(outfp)
 
 Now you can open your point map in the browser. Your map should look like following:
 
@@ -514,7 +514,7 @@ Great! Let's save this enhanced version of our map as ``point_map_hover.html`` a
    :suppress:
 
     outfp = os.path.join(os.path.abspath('data'), "point_map_hover.html")
-    save(p, outfp)
+    output_file(outfp)
 
 
 .. raw:: html
@@ -726,7 +726,7 @@ Finally, we can make a map of the roads line and save it in a similar manner as 
     outfp = os.path.join(os.path.abspath('data'), "roads_map.html")
 
     # Save the map
-    save(p, outfp)
+    output_file(outfp)
 
 Now you can open your point map in the browser and it should look like following:
 
@@ -813,7 +813,7 @@ It is of course possible to add different layers on top of each other. Let's vis
 
 .. code:: python
 
-    from bokeh.plotting import figure, save, show, output_file, output_notebook
+    from bokeh.plotting import figure, show, output_file, output_notebook
     from bokeh.models import ColumnDataSource, HoverTool, LogColorMapper
     import geopandas as gpd
     import pysal as ps
@@ -831,7 +831,7 @@ It is of course possible to add different layers on top of each other. Let's vis
 .. ipython:: python
    :suppress:
 
-    from bokeh.plotting import figure, save, show, output_file, output_notebook
+    from bokeh.plotting import figure, show, output_file, output_notebook
     from bokeh.models import ColumnDataSource, HoverTool, LogColorMapper
     import geopandas as gpd
     import pysal as ps
@@ -946,41 +946,18 @@ Great, now we have x and y coordinates for all of our datasets. Let's see how ou
     # Show only head of x and y columns
     grid[['x', 'y']].head(2)
 
-Let's now classify the travel times of our grid int 5 minute intervals until 200 minutes using a pysal classifier called ``User_Defined`` that allows to set our own criteria for class intervals.
-But first we need to replace the No Data values with a large number so that they
-wouldn't be seen as the "best" accessible areas.
+Let's now classify the population data of our grid into 7 classes using a pysal classifier called ``Quantiles``.
 
-.. code:: python
 
-    # Classify our travel times into 5 minute classes until 200 minutes
-    # Create a list of values where minumum value is 5, maximum value is 200 and step is 5.
-    breaks = [x for x in range(5, 200, 5)]
+.. ipython:: python
 
     # Initialize the classifier and apply it
     classifier = ps.Quantiles.make(k=7)
     grid['pop_km2'] = grid[['Population']].apply(classifier)
-
-
-.. ipython:: python
-   :suppress:
-
-    # Classify our travel times into 5 minute classes until 200 minutes
-    # Create a list of values where minumum value is 5, maximum value is 200 and step is 5.
-    breaks = [x for x in range(5, 200, 5)]
-
-    # Initialize the classifier and apply it
-    # Initialize the classifier and apply it
-    classifier = ps.Quantiles.make(k=7)
-    grid['pop_km2'] = grid[['Population']].apply(classifier)
-
-What do we have now?
-
-.. ipython:: python
-
+    # What do we have now?
     grid.head(2)
 
-Okey, so we have many columns but the new one that we just got is the last one, i.e. ``pt_r_tt_ud`` that contains the classes that we reclassified based on the public transportation
-travel times on 5 minute intervals.
+Okey, so we have many columns but the new one that we just got is the last one, i.e. ``pop_km2`` that contains the classes that we reclassified based on the population per grid square.
 
 **3rd step**: Let's now convert our GeoDataFrames into Bokeh ColumnDataSources (without geometry columns)
 
@@ -1047,7 +1024,7 @@ Now we are ready to visualize our polygons and add the roads line and the school
 
     # Plot grid
     p.patches('x', 'y', source=gsource,
-             fill_color={'field': 'pt_r_tt_ud', 'transform': color_mapper},
+             fill_color={'field': 'pop_km2', 'transform': color_mapper},
              fill_alpha=1.0, line_color="black", line_width=0.05)
 
     # Add roads on top of the same figure
@@ -1058,7 +1035,9 @@ Now we are ready to visualize our polygons and add the roads line and the school
 
     # let's also add the hover over info tool
     tooltip = HoverTool()
-    tooltip.tooltips = [('Name of the school', '@name')]
+    tooltip.tooltips = [('Name  of the school', '@name'),
+                        ('Type of road', '@TYYP'),
+                        ('Population density', '@Population')]
     p.add_tools(tooltip)
     
     # Save the figure
@@ -1074,7 +1053,7 @@ Now we are ready to visualize our polygons and add the roads line and the school
 
     # Plot grid
     p.patches('x', 'y', source=gsource,
-             fill_color={'field': 'pt_r_tt_ud', 'transform': color_mapper},
+             fill_color={'field': 'pop_km2', 'transform': color_mapper},
              fill_alpha=1.0, line_color="black", line_width=0.05)
 
     # Add roads on top of the same figure
@@ -1085,12 +1064,14 @@ Now we are ready to visualize our polygons and add the roads line and the school
 
     # let's also add the hover over info tool
     tooltip = HoverTool()
-    tooltip.tooltips = [('Name  of the school', '@name')]
+    tooltip.tooltips = [('Name  of the school', '@name'),
+                        ('Type of road', '@TYYP'),
+                        ('Population density', '@Population')]
     p.add_tools(tooltip)
     
     # Save the figure
     outfp = os.path.join(os.path.abspath('data'), "roads_pop_km2_map.html")
-    save(p, outfp)
+    output_file(outfp)
 
 .. raw:: html
 

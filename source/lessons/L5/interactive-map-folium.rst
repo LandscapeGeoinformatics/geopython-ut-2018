@@ -20171,7 +20171,7 @@ Now we can start visualizing our data with Folium.
     outfp = r'Data\pop15.html'
     map_osm.save(outfp)
 
-That's it! Now we have a cool interactive map with some markers on it and grid showing the population in the Helsinki Region on top of a basemap.
+That's it! Now we have a cool interactive map with some markers on it and grid showing the population in the Tartumaa Region on top of a basemap.
 Open it with your browser and see the result.
 
 .. ipython:: python

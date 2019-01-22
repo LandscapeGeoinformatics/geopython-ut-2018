@@ -6,13 +6,14 @@ This lesson we will focus on learning how to create beautiful maps in Python wit
 1. :doc:`Static maps <static-maps>`
 2. :doc:`Interactive maps with bokeh <interactive-map-bokeh>`
 3. :doc:`Interactive Leaflet maps with Folium <interactive-map-folium>`
-
+4. :doc:`Exercise 5 <ex-5>`
+5. :doc:`Exercise 5 hints <exercise-5-hints>`
+5. :doc:`Examples 2018 <examples_2018>`
 
 .. commented_out:
     2.1 :doc:`Advanced map features in bokeh <advanced-bokeh>`
     4. :doc:`Sharing interactive maps on GitHub <share-on-github>`
-    5. :doc:`Exercise 5 <ex-5>`
-    6. :doc:`Exercise 5 hints <exercise-5-hints>`
+
 
 There are many different Python modules that can be used for making visualizations. And many of them allows you to create also different kinds of maps. During this lesson we will focus on few of them, namely:
 

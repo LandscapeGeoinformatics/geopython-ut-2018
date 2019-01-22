@@ -57,7 +57,7 @@ You should now have the files listed above in your Data folder.
 -  Let's read the data into geopandas and see what we have.
 
 .. ipython:: python
-  :suppress:
+   :suppress:
 
     import os
     import gdal
@@ -204,6 +204,7 @@ points where color intensity indicates the population numbers.
    values, ``markersize`` adjusts the size of a point, ``scheme`` parameter can be used to adjust the classification method based on `pysal <http://pysal.readthedocs.io/en/latest/library/esda/mapclassify.html>`_, and ``legend`` tells that we want to have a legend.
 
 .. ipython:: python
+   :okwarning:
 
     import matplotlib.pyplot as plt
 
@@ -215,7 +216,7 @@ points where color intensity indicates the population numbers.
 
     # Remove white space around the figure
     @savefig population_points.png width=7in
-    plt.tight_layout()
+    plt.tight_layout();
 
 
 .. image:: ../../_static/population_points.png

@@ -163,10 +163,9 @@ Contents
    lessons/L5/static-maps
    lessons/L5/interactive-map-bokeh
    lessons/L5/interactive-map-folium
-
-.. commented out
    lessons/L5/ex-5
    lessons/L5/exercise-5-hints
+   lessons/L5/examples_2018
 
 
 .. commented out
