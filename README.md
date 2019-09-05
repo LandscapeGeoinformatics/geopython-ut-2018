@@ -62,11 +62,11 @@ the data-reading-procedure from the user, from [here](https://raw.githubusercont
 
 ## Credits
 
-Supported by projects and funding from IT-Akadeemia <img alt="IT-akadeemia" style="border-width:0" src="source/img/IT_Akadeemia.jpg" />
+Supported by projects and funding from IT-Akadeemia <img alt="IT-akadeemia" style="border-width:0" src="source/img/IT_Akadeemia.jpg" height="100" />
 
-HITSA <img alt="HITSA " style="border-width:0" src="source/img/HITSA_logo.jpg" />
+HITSA <img alt="HITSA " style="border-width:0" src="source/img/HITSA_logo.jpg" height="100" />
 
-ETAG Mobilitas Pluss <img alt="Mobilitas Pluss " style="border-width:0" src="source/img/mobilitaspluss.jpg" />
+ETAG Mobilitas Pluss <img alt="Mobilitas Pluss " style="border-width:0" src="source/img/mobilitaspluss.jpg" height="100" />
 
 Source documents for maintaining the [Automating GIS-processes course pages, year 2017](https://automating-gis-processes.github.io/2017/).
 
