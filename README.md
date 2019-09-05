@@ -62,13 +62,15 @@ the data-reading-procedure from the user, from [here](https://raw.githubusercont
 
 ## Credits
 
+Supported by projects and funding from IT-Akadeemia <img alt="IT-akadeemia" style="border-width:0" src="source/img/IT_Akadeemia.jpg" />
+
+HITSA <img alt="HITSA " style="border-width:0" src="source/img/HITSA_logo.jpg" />
+
+ETAG Mobilitas Pluss <img alt="Mobilitas Pluss " style="border-width:0" src="source/img/mobilitaspluss.jpg" />
+
 Source documents for maintaining the [Automating GIS-processes course pages, year 2017](https://automating-gis-processes.github.io/2017/).
 
-Main developer and maintainer of these materials: **Henrikki Tenkanen**
-
-Co-developers: **Vuokko Heikinheimo**.
-
-See contact info from [here](https://github.com/Automating-GIS-processes/2016/blob/master/source/course-info.rst#instructors).
+Original developer and maintainer of these materials: **Henrikki Tenkanen**
 
 ## License and terms of usage
 
@@ -76,7 +78,7 @@ Adapted by Alexander Kmoch and Evelyn Uuemaa
 
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" align="left" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a></a>
 <img src="https://github.com/Automating-GIS-processes/2016/blob/master/source/img/GPLv3_Logo.jpg" width="80">
- 
+
 We hope that the materials provided here would be helpful for others. Thus, we share all the lesson materials openly, and also our source codes and lesson materials are openly available **from these pages**.
 
 **Our materials and code snippets are licensed** with **Creative Commons Attribution-ShareAlike 4.0 International licence** and **GNU GPLv3 license**. 
